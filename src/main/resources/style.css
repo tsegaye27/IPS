@@ -1,0 +1,26 @@
+.signUpBg{
+-fx-background-color: #53D7A8;
+}
+
+.username-input{
+-fx-background-color: white;
+-fx-background-radius: 15px;
+-fx-border-color: transparent;
+}
+
+.email-input{
+-fx-background-color: white;
+-fx-background-radius: 15px;
+-fx-border-color: transparent;
+}
+
+.password-input{
+-fx-background-color: white;
+-fx-background-radius: 15px;
+-fx-border-color: transparent;
+}
+
+.signUpBtn{
+-fx-background-color: #332FEC;
+-fx-background-radius: 20px;
+}
