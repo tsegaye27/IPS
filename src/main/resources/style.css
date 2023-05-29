@@ -29,8 +29,6 @@
 -fx-background-color: transparent;
 }
 
-/*.close-Btn:hover{
--fx-background-color: #53D2F3;
-}*/
-
-
+.login-link{
+-fx-text-fill: white;
+}
