@@ -24,3 +24,13 @@
 -fx-background-color: #332FEC;
 -fx-background-radius: 20px;
 }
+
+.close-Btn{
+-fx-background-color: transparent;
+}
+
+/*.close-Btn:hover{
+-fx-background-color: #53D2F3;
+}*/
+
+
