@@ -26,7 +26,6 @@
                   <TextField layoutX="40.0" layoutY="225.0" prefHeight="30.0" prefWidth="220.0" promptText="password" styleClass="password-input" stylesheets="@../../../style.css" />
                   <Label layoutX="77.0" layoutY="353.0" text="Already have an account" textFill="WHITE" />
                   <Button layoutX="40.0" layoutY="288.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@../../../style.css" text="Sign-up" textFill="WHITE" />
-<!--                  <BottomNavigationButton layoutX="251.0" layoutY="-1.0" styleClass="close" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />-->
                </children>
             </AnchorPane>
          </children>

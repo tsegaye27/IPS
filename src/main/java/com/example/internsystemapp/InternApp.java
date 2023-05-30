@@ -8,11 +8,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class App extends Application {
+public class InternApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add(String.valueOf((getClass().getResource("/style.css"))));
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
@@ -20,7 +20,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch(App.class, args);
+        launch(InternApp.class, args);
     }
 }
 

@@ -24,15 +24,15 @@
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <AnchorPane layoutX="300.0" layoutY="1.0" prefHeight="421.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
+            <AnchorPane fx:id="signUpPane" layoutX="300.0" layoutY="1.0" prefHeight="421.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
                <children>
                   <Label layoutX="105.0" layoutY="47.0" text="SIGN UP" textFill="WHITE">
                      <font>
                         <Font name="Roboto Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="fullNameField" layoutX="40.0" layoutY="90.0" prefHeight="30.0" prefWidth="220.0" promptText="Full Name" styleClass="username-input" />
-                  <TextField fx:id="emailField" layoutX="40.0" layoutY="122.0" prefHeight="30.0" prefWidth="220.0" promptText="email" styleClass="email-input" />
+                  <TextField fx:id="fullNameField" layoutX="40.0" layoutY="93.0" prefHeight="30.0" prefWidth="220.0" promptText="Full Name" styleClass="username-input" />
+                  <TextField fx:id="emailField" layoutX="40.0" layoutY="124.0" prefHeight="30.0" prefWidth="220.0" promptText="email" styleClass="email-input" />
                   <Label layoutX="85.0" layoutY="346.0" textFill="WHITE">
                      <font>
                         <Font name="Roboto" size="12.0" />
@@ -41,10 +41,10 @@
                   <Button fx:id="closeButton" layoutX="264.0" layoutY="1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0" styleClass="close-Btn" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="390.0" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0" />
                   <FontAwesomeIcon glyphName="CLOSE" layoutX="278.0" layoutY="18.0" wrappingWidth="16.666625976562273" />
                   <TextField fx:id="fieldOfStudyField" layoutX="40.0" layoutY="186.0" prefHeight="30.0" prefWidth="220.0" promptText="Field of study" styleClass="password-input" />
-                  <TextField fx:id="graduationYearField" layoutX="40.0" layoutY="218.0" prefHeight="30.0" prefWidth="220.0" promptText="Graduation year" styleClass="password-input" />
-                  <TextField fx:id="skillsArea" layoutX="40.0" layoutY="250.0" prefHeight="30.0" prefWidth="220.0" promptText="Skills/Areas of interest" styleClass="password-input" />
+                  <TextField fx:id="graduationYearField" layoutX="40.0" layoutY="217.0" prefHeight="30.0" prefWidth="220.0" promptText="Graduation year" styleClass="password-input" />
                   <Hyperlink fx:id="loginLink" layoutX="81.0" layoutY="351.0" styleClass="login-link" stylesheets="@../../../style.css" text="Already have an account" />
-                  <PasswordField fx:id="passwordField" layoutX="40.0" layoutY="154.0" prefHeight="30.0" prefWidth="220.0" promptText="password" styleClass="password-input" stylesheets="@../../../style.css" />
+                  <PasswordField fx:id="passwordField" layoutX="40.0" layoutY="155.0" prefHeight="30.0" prefWidth="220.0" promptText="password" styleClass="password-input" stylesheets="@../../../style.css" />
+                  <TextField fx:id="skillsField" layoutX="40.0" layoutY="248.0" prefHeight="30.0" prefWidth="220.0" promptText="Skills/ Areas of Interest" styleClass="password-input" />
                </children>
             </AnchorPane>
          </children>

@@ -28,11 +28,11 @@ public class SignUpController {
 
     @FXML
     private Button closeButton;
-    @FXML
-    private Label statusLabel;
 
     @FXML
     private Hyperlink loginLink;
+    @FXML
+    private Label statusLabel;
 
     @FXML
     private void signUpClicked(MouseEvent event) {
