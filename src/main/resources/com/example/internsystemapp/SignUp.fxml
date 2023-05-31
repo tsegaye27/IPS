@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -37,12 +36,11 @@
                      <font>
                         <Font name="Roboto" size="12.0" />
                      </font></Label>
-                  <Button fx:id="signUpButton" layoutX="84.0" layoutY="305.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" styleClass="signUpBtn" stylesheets="@../../../style.css" text="Sign-up" textFill="WHITE" />
-                  <Button fx:id="closeButton" layoutX="264.0" layoutY="1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0" styleClass="close-Btn" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="390.0" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0" />
-                  <FontAwesomeIcon glyphName="CLOSE" layoutX="278.0" layoutY="18.0" wrappingWidth="16.666625976562273" />
+                  <Button fx:id="signUpButton" layoutX="84.0" layoutY="305.0" mnemonicParsing="false" onAction="#signUpClicked" prefHeight="30.0" prefWidth="131.0" styleClass="signUpBtn" stylesheets="@../../../style.css" text="Sign-up" textFill="WHITE" />
+                  <Button fx:id="closeButton" layoutX="261.0" layoutY="3.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0" styleClass="close-Btn" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0" />
                   <TextField fx:id="fieldOfStudyField" layoutX="40.0" layoutY="186.0" prefHeight="30.0" prefWidth="220.0" promptText="Field of study" styleClass="password-input" />
                   <TextField fx:id="graduationYearField" layoutX="40.0" layoutY="217.0" prefHeight="30.0" prefWidth="220.0" promptText="Graduation year" styleClass="password-input" />
-                  <Hyperlink fx:id="loginLink" layoutX="81.0" layoutY="351.0" styleClass="login-link" stylesheets="@../../../style.css" text="Already have an account" />
+                  <Hyperlink fx:id="loginLink" layoutX="81.0" layoutY="351.0" onAction="#loginLinkClicked" styleClass="login-link" stylesheets="@../../../style.css" text="Already have an account" />
                   <PasswordField fx:id="passwordField" layoutX="40.0" layoutY="155.0" prefHeight="30.0" prefWidth="220.0" promptText="password" styleClass="password-input" stylesheets="@../../../style.css" />
                   <TextField fx:id="skillsField" layoutX="40.0" layoutY="248.0" prefHeight="30.0" prefWidth="220.0" promptText="Skills/ Areas of Interest" styleClass="password-input" />
                </children>

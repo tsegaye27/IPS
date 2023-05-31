@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>-->
-
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -9,25 +8,50 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.HomePageController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="600.0" prefWidth="814.0">
          <children>
-            <AnchorPane layoutY="1.0" prefHeight="400.0" prefWidth="300.0" />
-            <AnchorPane layoutX="300.0" layoutY="1.0" prefHeight="400.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
+            <AnchorPane prefHeight="600.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@../../../style.css">
                <children>
-                  <Label layoutX="111.0" layoutY="74.0" text="SIGN UP" textFill="WHITE">
+                  <Label layoutX="52.0" layoutY="98.0" text="InternXYZ" textFill="WHITE">
                      <font>
-                        <Font name="Roboto Bold" size="20.0" />
+                        <Font name="Roboto Bold" size="26.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="40.0" layoutY="123.0" prefHeight="30.0" prefWidth="220.0" promptText="username" styleClass="username-input" stylesheets="@../../../style.css" />
-                  <TextField layoutX="40.0" layoutY="170.0" prefHeight="30.0" prefWidth="220.0" promptText="email" styleClass="email-input" stylesheets="@../../../style.css" />
-                  <TextField layoutX="40.0" layoutY="225.0" prefHeight="30.0" prefWidth="220.0" promptText="password" styleClass="password-input" stylesheets="@../../../style.css" />
-                  <Label layoutX="77.0" layoutY="353.0" text="Already have an account" textFill="WHITE" />
-                  <Button layoutX="40.0" layoutY="288.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@../../../style.css" text="Sign-up" textFill="WHITE" />
+                  <Button layoutX="1.0" layoutY="232.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Home" textAlignment="CENTER">
+                     <font>
+                        <Font name="Roboto" size="10.0" />
+                     </font></Button>
+                  <Button layoutX="1.0" layoutY="265.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Search for Internships" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Button>
+                  <Button layoutX="1.0" layoutY="300.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Applied Internships" textAlignment="CENTER" />
+                  <Button layoutX="1.0" layoutY="534.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Log out" textAlignment="CENTER" />
                </children>
             </AnchorPane>
+            <Label layoutX="365.0" layoutY="29.0" text=" Welcome to InternXYZ !!">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="371.0" layoutY="81.0" text="Internship program finder for aspiring professionals">
+               <font>
+                  <Font name="Roboto" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="436.0" layoutY="174.0" text="Featured Internships">
+               <font>
+                  <Font name="Roboto Bold" size="23.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="265.0" layoutY="222.0" prefHeight="177.0" prefWidth="257.0" style="-fx-background-color: yellow;" />
+            <AnchorPane layoutX="533.0" layoutY="222.0" prefHeight="177.0" prefWidth="257.0" style="-fx-background-color: yellow;" />
+            <AnchorPane layoutX="267.0" layoutY="408.0" prefHeight="177.0" prefWidth="257.0" style="-fx-background-color: yellow;" />
+            <AnchorPane layoutX="533.0" layoutY="408.0" prefHeight="177.0" prefWidth="257.0" style="-fx-background-color: yellow;" />
+            <TextField layoutX="410.0" layoutY="129.0" prefHeight="25.0" prefWidth="233.0" styleClass="search-field" stylesheets="@../../../style.css" />
+            <FontAwesomeIcon glyphName="SEARCH" layoutX="655.0" layoutY="146.0" />
          </children>
       </AnchorPane>
    </children>

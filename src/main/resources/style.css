@@ -32,3 +32,19 @@
 .login-link{
 -fx-text-fill: white;
 }
+
+.sidebar{
+-fx-background-color: #53D7A8;
+}
+
+.sidebar-Btn{
+-fx-background-color:transparent;
+-fx-text-fill: #323543;
+-fx-font-size: 11px;
+}
+
+.sidebar-Btn:hover{
+-fx-text-fill: white;
+-fx-background-color: transparent;
+-fx-font-size: 12px;
+}
