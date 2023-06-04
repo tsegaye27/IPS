@@ -18,34 +18,32 @@
          <children>
             <AnchorPane layoutY="1.0" prefHeight="400.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
                <children>
-                  <ImageView fitHeight="421.0" fitWidth="300.0" pickOnBounds="true" styleClass="sign-up-img">
+                  <ImageView fitHeight="412.0" fitWidth="300.0" layoutY="9.0" pickOnBounds="true" styleClass="sign-up-img">
                      <image>
                         <Image url="@../../../img/signUp.jpg" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="signUpPane" layoutX="300.0" layoutY="1.0" prefHeight="421.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
+            <AnchorPane layoutX="300.0" layoutY="1.0" prefHeight="421.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
                <children>
                   <Label layoutX="105.0" layoutY="47.0" text="SIGN UP" textFill="WHITE">
                      <font>
                         <Font name="Roboto Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="fullNameField" layoutX="40.0" layoutY="93.0" prefHeight="30.0" prefWidth="220.0" promptText="Full Name" styleClass="input" />
-                  <TextField fx:id="emailField" layoutX="40.0" layoutY="124.0" prefHeight="30.0" prefWidth="220.0" promptText="email" styleClass="input" />
+                  <TextField fx:id="companyNameField" layoutX="40.0" layoutY="93.0" prefHeight="30.0" prefWidth="220.0" promptText="Company Name" styleClass="input" />
+                  <TextField fx:id="companyEmailField" layoutX="40.0" layoutY="124.0" prefHeight="30.0" prefWidth="220.0" promptText="Company Email" styleClass="input" />
                   <Label layoutX="85.0" layoutY="346.0" textFill="WHITE">
                      <font>
                         <Font name="Roboto" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="signUpButton" layoutX="84.0" layoutY="305.0" mnemonicParsing="false" onAction="#signUpClicked" prefHeight="30.0" prefWidth="131.0" styleClass="signUpBtn" stylesheets="@../../../style.css" text="Sign-up" textFill="WHITE" />
-                  <Button fx:id="closeButton" layoutX="261.0" layoutY="3.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0" styleClass="close-Btn" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0" />
-                  <TextField fx:id="fieldOfStudyField" layoutX="40.0" layoutY="186.0" prefHeight="30.0" prefWidth="220.0" promptText="Field of study" styleClass="input" />
-                  <TextField fx:id="graduationYearField" layoutX="40.0" layoutY="217.0" prefHeight="30.0" prefWidth="220.0" promptText="Graduation year" styleClass="input" />
-                  <Hyperlink fx:id="loginLink" layoutX="81.0" layoutY="351.0" onAction="#loginLinkClicked" styleClass="login-link" stylesheets="@../../../style.css" text="Already have an account" />
+                  <Button fx:id="signUpButton" layoutX="84.0" layoutY="305.0" mnemonicParsing="false" onAction="#SignUpClicked" prefHeight="30.0" prefWidth="131.0" styleClass="signUpBtn" stylesheets="@../../../style.css" text="Sign-up" textFill="WHITE" />
+                  <TextField fx:id="companyLocationField" layoutX="40.0" layoutY="186.0" prefHeight="30.0" prefWidth="220.0" promptText="Company Location" styleClass="input" />
+                  <TextField fx:id="contactPhoneField" layoutX="40.0" layoutY="217.0" prefHeight="30.0" prefWidth="220.0" promptText="Contact Phone" styleClass="input" />
+                  <Hyperlink fx:id="companyLoginLink" layoutX="81.0" layoutY="351.0" onAction="#loginLinkClicked" styleClass="login-link" stylesheets="@../../../style.css" text="Already have an account" />
                   <PasswordField fx:id="passwordField" layoutX="40.0" layoutY="155.0" prefHeight="30.0" prefWidth="220.0" promptText="password" styleClass="input" stylesheets="@../../../style.css" />
-                  <TextField fx:id="locationField" layoutX="40.0" layoutY="248.0" prefHeight="30.0" prefWidth="220.0" promptText="Location" styleClass="input" />
                </children>
             </AnchorPane>
          </children>

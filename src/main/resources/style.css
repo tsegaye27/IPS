@@ -2,19 +2,7 @@
 -fx-background-color: #53D7A8;
 }
 
-.username-input{
--fx-background-color: white;
--fx-background-radius: 15px;
--fx-border-color: transparent;
-}
-
-.email-input{
--fx-background-color: white;
--fx-background-radius: 15px;
--fx-border-color: transparent;
-}
-
-.password-input{
+.input{
 -fx-background-color: white;
 -fx-background-radius: 15px;
 -fx-border-color: transparent;
@@ -39,12 +27,40 @@
 
 .sidebar-Btn{
 -fx-background-color:transparent;
--fx-text-fill: #323543;
+-fx-font-family: 'Arial';
 -fx-font-size: 11px;
+-fx-text-fill: black;
+/*-fx-font-weight: semi-bold;*/
 }
 
 .sidebar-Btn:hover{
 -fx-text-fill: white;
 -fx-background-color: transparent;
+-fx-font-size: 13px;
+-fx-cursor: hand;
+}
+
+.searchInternBtn{
+-fx-background-color: #6C69F0;
+-fx-background-radius: 15px;
 -fx-font-size: 12px;
+}
+
+.searchInternBtn:hover{
+-fx-background-color: #6C69F9;
+-fx-cursor: hand;
+}
+
+.featured-card{
+-fx-background-color: #53D7A8;
+-fx-background-radius: 15px;
+}
+
+.featured-card:hover{
+-fx-border-color: #6C69F0;
+-fx-border-radius: 15px;
+}
+
+.featured-card-details{
+-fx-text-fill: white;
 }
