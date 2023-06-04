@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class HomePageInternController {
+public class InternHomePageController {
 
     @FXML
     private Button appliedInternshipsBtn;
