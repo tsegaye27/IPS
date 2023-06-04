@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,19 +9,18 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.WelcomeController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="300.0" stylesheets="@../../../style.css">
                <children>
-                  <ImageView fitHeight="421.0" fitWidth="300.0" layoutY="1.0" pickOnBounds="true" styleClass="sign-up-img">
+                  <ImageView fitHeight="421.0" fitWidth="300.0" layoutY="1.0" pickOnBounds="true" styleClass="signUpImg">
                      <image>
                         <Image url="@../../../img/signUp.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="14.0" layoutY="124.0" prefHeight="137.0" prefWidth="176.0" text="WELCOME TO INTERNXYZ" textFill="#1f6e6c" wrapText="true">
+                  <Label layoutX="22.0" layoutY="-9.0" prefHeight="137.0" prefWidth="278.0" text="WELCOME TO INTERNXYZ" textAlignment="CENTER" textFill="#1f6e6c" wrapText="true">
                      <font>
                         <Font name="System Bold" size="27.0" />
                      </font>
@@ -40,22 +39,16 @@
                         <Font name="Roboto" size="12.0" />
                      </font>
                   </Label>
-                  <Hyperlink layoutX="87.0" layoutY="211.0" prefHeight="38.0" prefWidth="149.0" styleClass="login-link" text=" an Intern">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
+                  <Button fx:id="internBtn" layoutX="92.0" layoutY="193.0" mnemonicParsing="false" onAction="#internBtnClicked" prefHeight="35.0" prefWidth="140.0" styleClass="sidebar-Btn" text=" an INTERN">
                      <graphic>
-                        <FontAwesomeIcon glyphName="USER" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
                      </graphic>
-                  </Hyperlink>
-                  <Hyperlink layoutX="88.0" layoutY="266.0" styleClass="login-link" text=" a Company">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
+                  </Button>
+                  <Button fx:id="companyBtn" layoutX="92.0" layoutY="250.0" mnemonicParsing="false" onAction="#companyBtnClicked" prefHeight="35.0" prefWidth="140.0" styleClass="sidebar-Btn" text=" a COMPANY">
                      <graphic>
-                        <FontAwesomeIcon glyphName="DESKTOP" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="DESKTOP" size="2em" />
                      </graphic>
-                  </Hyperlink>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

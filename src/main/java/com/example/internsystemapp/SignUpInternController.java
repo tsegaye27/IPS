@@ -32,11 +32,30 @@ public class SignUpInternController {
 
     @FXML
     void signUpClicked(ActionEvent event) throws IOException {
-        InternApp.showHomePage();
+        String fullName = fullNameField.getText();
+        String email = emailField.getText();
+        String password = passwordField.getText();
+        String fieldOfStudy = fieldOfStudyField.getText();
+        String graduationYear = graduationYearField.getText();
+        String location = locationField.getText();
+
+        if((fullName.isEmpty())||(email.isEmpty())||(password.isEmpty())||(fieldOfStudy.isEmpty())||(graduationYear.isEmpty())||(location.isEmpty())){
+            showError("Please fill in every field");
+        }else {
+            InternApp.showInternHomePage();
+        }
     }
     @FXML
     void loginLinkClicked(ActionEvent event) throws IOException {
-        InternApp.showLoginPage();
+        InternApp.showInternLoginPage();
+    }
+
+    private void showError(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

@@ -19,6 +19,7 @@
 
 .login-link{
 -fx-text-fill: white;
+-fx-font-weight: Bold;
 }
 
 .sidebar{
@@ -63,4 +64,8 @@
 
 .featured-card-details{
 -fx-text-fill: white;
+}
+
+.signUpImg{
+-fx-opacity: 0.6;
 }

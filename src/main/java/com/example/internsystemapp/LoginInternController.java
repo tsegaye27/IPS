@@ -27,11 +27,11 @@ public class LoginInternController {
 
         @FXML
         void loginBtnClicked(ActionEvent event) throws IOException {
-            InternApp.showHomePage();
+            InternApp.showInternHomePage();
         }
         @FXML
         void signUplinkClicked(ActionEvent event) throws IOException {
-            InternApp.showSignUpPage();
+            InternApp.showInternSignUpPage();
         }
 
     }

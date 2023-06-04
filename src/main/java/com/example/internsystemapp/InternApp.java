@@ -11,7 +11,7 @@ import java.io.IOException;
 public class InternApp extends Application {
     private static Stage primaryStage;
 
-    public static void showSignUpPage() throws IOException{
+    public static void showInternSignUpPage() throws IOException{
         Parent root = FXMLLoader.load(InternApp.class.getResource("SignUpIntern.fxml"));
         Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
@@ -19,7 +19,16 @@ public class InternApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    public static void showLoginPage() throws IOException {
+
+    public static void showCmpSignUpPage() throws IOException{
+        Parent root = FXMLLoader.load(InternApp.class.getResource("CmpSignUpPage.fxml"));
+        Scene scene = new Scene(root, 600, 400);
+        scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
+        primaryStage.setTitle("Sign-up");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    public static void showInternLoginPage() throws IOException {
         Parent root = FXMLLoader.load(InternApp.class.getResource("LoginIntern.fxml"));
         Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
@@ -28,8 +37,8 @@ public class InternApp extends Application {
         primaryStage.show();
     }
 
-    public static void showHomePage() throws IOException{
-        Parent root = FXMLLoader.load(InternApp.class.getResource("HomePageIntern.fxml"));
+    public static void showInternHomePage() throws IOException{
+        Parent root = FXMLLoader.load(InternApp.class.getResource("InternHomePage.fxml"));
         Scene scene = new Scene(root, 820, 600);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
         primaryStage.setTitle("Home");
@@ -55,11 +64,29 @@ public class InternApp extends Application {
         primaryStage.show();
     }
 
+    public static void showCmpHomePage() throws IOException{
+        Parent root = FXMLLoader.load(InternApp.class.getResource("CmpHomePage.fxml"));
+        Scene scene = new Scene(root, 820, 600);
+        scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
+        primaryStage.setTitle("Home Page");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void showWelcomePage() throws IOException{
+        Parent root = FXMLLoader.load(InternApp.class.getResource("Welcome.fxml"));
+        Scene scene = new Scene(root, 600, 421);
+        scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
+        primaryStage.setTitle("Welcome");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException{
         InternApp.primaryStage = primaryStage;
-        InternApp.primaryStage.setTitle("Internship App");
-        InternApp.showSignUpPage();
+        primaryStage.setTitle("Internship App");
+        InternApp.showWelcomePage();
     }
     public static void main(String[] args) {
         launch(args);

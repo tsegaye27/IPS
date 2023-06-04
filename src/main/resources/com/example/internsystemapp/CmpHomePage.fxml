@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
-</AnchorPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.CmpHomePageController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane prefHeight="600.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@../../../style.css">
+               <children>
+                  <Label layoutX="52.0" layoutY="98.0" text="InternXYZ" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="homeBtn" layoutX="1.0" layoutY="232.0" mnemonicParsing="false" onAction="#homeBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Home">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="2em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="postInternshipsBtn" layoutX="1.0" layoutY="266.0" mnemonicParsing="false" onAction="#postInternshipsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Post Internships">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="UPLOAD" size="2em" text="" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="manageInternshipsBtn" layoutX="1.0" layoutY="300.0" mnemonicParsing="false" onAction="#manageInternshipsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Manage Internships">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="GEAR" size="2em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="logoutBtn" layoutX="1.0" layoutY="534.0" mnemonicParsing="false" onAction="#logoutBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Log out">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
