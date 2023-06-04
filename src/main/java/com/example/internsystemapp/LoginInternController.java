@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class LoginController {
+public class LoginInternController {
         @FXML
         private TextField email;
 

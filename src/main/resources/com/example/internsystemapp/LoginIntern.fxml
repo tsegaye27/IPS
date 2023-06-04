@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.LoginController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="300.0">
+               <children>
+                  <ImageView fitHeight="421.0" fitWidth="300.0" layoutY="1.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../img/loginIMG.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="300.0" layoutY="1.0" prefHeight="421.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
+               <children>
+                  <TextField fx:id="fullName" layoutX="43.0" layoutY="124.0" prefHeight="30.0" prefWidth="220.0" promptText="Full Name" styleClass="input" stylesheets="@../../../style.css" />
+                  <TextField fx:id="email" layoutX="42.0" layoutY="155.0" prefHeight="30.0" prefWidth="220.0" promptText="Email" styleClass="input" stylesheets="@../../../style.css" />
+                  <Label layoutX="109.0" layoutY="78.0" text="LOGIN" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="password" layoutX="43.0" layoutY="186.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="input" stylesheets="@../../../style.css" />
+                  <Button fx:id="loginBtn" layoutX="113.0" layoutY="231.0" mnemonicParsing="false" onAction="#loginBtnClicked" prefHeight="30.0" prefWidth="74.0" styleClass="signUpBtn" stylesheets="@../../../style.css" text="Login" textFill="WHITE" />
+                  <Hyperlink fx:id="signUplink" layoutX="88.0" layoutY="268.0" onAction="#signUplinkClicked" styleClass="login-link" stylesheets="@../../../style.css" text="Create a new Account" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

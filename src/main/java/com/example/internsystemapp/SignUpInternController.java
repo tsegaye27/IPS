@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SignUpController {
-    @FXML
-    private Button closeButton;
 
     @FXML
     private TextField emailField;
@@ -32,12 +30,8 @@ public class SignUpController {
 
     @FXML
     private Button signUpButton;
-
     @FXML
-    private AnchorPane signUpPane;
-
-    @FXML
-    private TextField skillsField;
+    private TextField locationField;
 
     @FXML
     void signUpClicked(ActionEvent event) throws IOException {
