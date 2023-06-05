@@ -29,7 +29,7 @@ public class InternApp extends Application {
         primaryStage.show();
     }
     public static void showInternLoginPage() throws IOException {
-        Parent root = FXMLLoader.load(InternApp.class.getResource("LoginIntern.fxml"));
+        Parent root = FXMLLoader.load(InternApp.class.getResource("InternLogin.fxml"));
         Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
         primaryStage.setTitle("Login");
@@ -75,7 +75,7 @@ public class InternApp extends Application {
 
     public static void showWelcomePage() throws IOException{
         Parent root = FXMLLoader.load(InternApp.class.getResource("Welcome.fxml"));
-        Scene scene = new Scene(root, 600, 421);
+        Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
         primaryStage.setTitle("Welcome");
         primaryStage.setScene(scene);

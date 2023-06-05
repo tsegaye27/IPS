@@ -6,44 +6,36 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 
-public class CmpSignUpController {
-
-    @FXML
-    private TextField companyEmailField;
-
-    @FXML
-    private Hyperlink companyLoginLink;
+public class CmpLoginController {
 
     @FXML
     private TextField companyNameField;
 
     @FXML
-    private TextField contactPhoneField;
-
+    private TextField companyEmailField;
     @FXML
-    private TextField locationField;
+    private Button loginBtn;
 
     @FXML
     private PasswordField passwordField;
 
     @FXML
-    private Button signUpButton;
+    private Hyperlink signUplink;
 
     @FXML
-    void SignUpClicked(ActionEvent event) throws IOException {
+    void loginBtnClicked(ActionEvent event) throws IOException {
         String companyName = companyNameField.getText();
         String companyEmail = companyEmailField.getText();
         String password = passwordField.getText();
-        String contactPhone = contactPhoneField.getText();
-        String location = locationField.getText();
 
-        if(companyName.isEmpty()||companyEmail.isEmpty()||password.isEmpty()||location.isEmpty()||contactPhone.isEmpty()){
+        if (companyName.isEmpty()||companyEmail.isEmpty()||password.isEmpty()){
             showError("Please fill every field");
         }else{
-            showInfo("Successfully signed-up");
+            showInfo("Successfully Logged-in");
             InternApp.showCmpHomePage();
         }
     }
+
     private void showError(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -59,9 +51,11 @@ public class CmpSignUpController {
         alert.setContentText(message);
         alert.show();
     }
+
     @FXML
-    void loginLinkClicked(ActionEvent event) throws IOException {
-        InternApp.showInternLoginPage();
+    void signUplinkClicked(ActionEvent event) throws IOException{
+        InternApp.showCmpSignUpPage();
     }
 
 }
+
