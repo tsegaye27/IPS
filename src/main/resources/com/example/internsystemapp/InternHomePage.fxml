@@ -54,10 +54,10 @@
             </Label>
             <AnchorPane layoutX="261.0" layoutY="222.0" prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css">
                <children>
-                  <Label layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
-                  <Label layoutX="48.0" layoutY="71.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
-                  <Label layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
-                  <Hyperlink layoutX="96.0" layoutY="124.0" text="Read More" textFill="#0900ff" />
+                  <Label fx:id="companyTitleLabel" layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" wrapText="true" />
+                  <Label fx:id="internshipDurationLabel" layoutX="48.0" layoutY="71.0" styleClass="featured-card-details" textFill="WHITE" />
+                  <Label fx:id="internshipLocationLabel" layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" textFill="WHITE" />
+                  <Hyperlink fx:id="internshipDetailsLink" layoutX="96.0" layoutY="124.0" onAction="#internshipDetailsLinkClicked" text="Read More" textFill="#0900ff" />
                </children>
             </AnchorPane>
             <Button fx:id="findYourProgramsBtn" layoutX="445.0" layoutY="120.0" mnemonicParsing="false" onAction="#findYourProgramsBtnClicked" prefHeight="31.0" prefWidth="175.0" styleClass="searchInternBtn" stylesheets="@../../../style.css" text="Find your Programs" textFill="WHITE">

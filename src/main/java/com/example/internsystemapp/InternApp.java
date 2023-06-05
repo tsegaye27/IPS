@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,6 +44,11 @@ public class InternApp extends Application {
         Parent root = FXMLLoader.load(InternApp.class.getResource("InternHomePage.fxml"));
         Scene scene = new Scene(root, 820, 600);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
+        StackPane sp = (StackPane) root;
+        AnchorPane ap = (AnchorPane) sp.getChildren().get(0);
+        InternHomePageController internHome = new InternHomePageController();
+        internHome.initialize(ap);
+        internHome.displayFeaturedCard();
         primaryStage.setTitle("Home");
         primaryStage.setScene(scene);
         primaryStage.show();
