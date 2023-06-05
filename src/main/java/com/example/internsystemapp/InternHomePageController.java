@@ -19,6 +19,14 @@ public class InternHomePageController {
         private Label companyTitleLabel;
 
         @FXML
+        private Label companyTitleLabel1;
+
+        @FXML
+        private Label companyTitleLabel2;
+        @FXML
+        private Label companyTitleLabel3;
+
+        @FXML
         private Button findYourProgramsBtn;
 
         @FXML
@@ -31,7 +39,25 @@ public class InternHomePageController {
         private Label internshipDurationLabel;
 
         @FXML
+        private Label internshipDurationLabel1;
+
+        @FXML
+        private Label internshipDurationLabel2;
+
+        @FXML
+        private Label internshipDurationLabel3;
+
+        @FXML
         private Label internshipLocationLabel;
+
+        @FXML
+        private Label internshipLocationLabel1;
+
+        @FXML
+        private Label internshipLocationLabel2;
+
+        @FXML
+        private Label internshipLocationLabel3;
 
         @FXML
         private Button logoutBtn;
@@ -43,8 +69,20 @@ public class InternHomePageController {
         private FontAwesomeIcon searchInternshipsIcon;
         public void displayFeaturedCard(){
             companyTitleLabel.setText("FaceBook");;
-            internshipDurationLabel.setText("3 month");
-            internshipLocationLabel.setText("New York");
+            internshipDurationLabel.setText("Duration : 3 month");
+            internshipLocationLabel.setText("Location : New York");
+
+            companyTitleLabel1.setText("Telegram");
+            internshipDurationLabel1.setText("Duration : 2 month");
+            internshipLocationLabel1.setText("Location : Addis Ababa");
+
+            companyTitleLabel2.setText("Amazon");
+            internshipDurationLabel2.setText("Duration : 2 month");
+            internshipLocationLabel2.setText("Location : Addis Ababa");
+
+            companyTitleLabel3.setText("Instagram");
+            internshipDurationLabel3.setText("Duration : 2 month");
+            internshipLocationLabel3.setText("Location : Addis Ababa");
         }
 
     @FXML
@@ -82,5 +120,20 @@ public class InternHomePageController {
             companyTitleLabel = (Label) ap1.getChildren().get(0);
             internshipDurationLabel = (Label) ap1.getChildren().get(1);
             internshipLocationLabel = (Label) ap1.getChildren().get(2);
+
+            AnchorPane ap2 = (AnchorPane) anchorPane.getChildren().get(6);
+            companyTitleLabel1 = (Label) ap2.getChildren().get(0);
+            internshipDurationLabel1 = (Label) ap2.getChildren().get(1);
+            internshipLocationLabel1 = (Label) ap2. getChildren().get(2);
+
+            AnchorPane ap3 = (AnchorPane) anchorPane.getChildren().get(7);
+            companyTitleLabel2 = (Label) ap3.getChildren().get(0);
+            internshipDurationLabel2 = (Label) ap3.getChildren().get(1);
+            internshipLocationLabel2 = (Label) ap3.getChildren().get(2);
+
+            AnchorPane ap4 = (AnchorPane) anchorPane.getChildren().get(8);
+            companyTitleLabel3 = (Label) ap4.getChildren().get(0);
+            internshipDurationLabel3 = (Label) ap4.getChildren().get(1);
+            internshipLocationLabel3 = (Label) ap4.getChildren().get(2);
         }
 }
