@@ -45,7 +45,7 @@ public class SignUpInternController{
             showError("Please fill in every field");
         }else {
             DBUtills.signUpIntern(event, fullName, email, password, 0, fieldOfStudy, null, null, location);
-//            InternApp.showInternHomePage();
+            InternApp.showInternHomePage();
         }
     }
     @FXML

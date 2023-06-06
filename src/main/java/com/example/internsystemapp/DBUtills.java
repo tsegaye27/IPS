@@ -2,6 +2,7 @@ package com.example.internsystemapp;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
+import java.io.IOException;
 import java.sql.*;
 public class DBUtills {
     public static void signUpIntern(ActionEvent e,String fullName, String email, String password,int phoneNumber ,String field,String DOB, String gradYear, String location){
@@ -60,6 +61,61 @@ public class DBUtills {
                 try{
                     conn.close();
                 }catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+    public static void loginIntern(ActionEvent e, String fullName, String email, String password){
+        Connection conn=null;
+        PreparedStatement psInternLogin = null;
+        ResultSet rst = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psInternLogin= conn.prepareStatement("select email, pass from stud where email = ?");
+            psInternLogin.setString(1, email);
+            rst=psInternLogin.executeQuery();
+           if(!rst.isBeforeFirst()){
+               Alert alert = new Alert(Alert.AlertType.ERROR);
+               alert.setContentText("User Does Not Exist");
+               alert.show();
+           }else{
+               while(rst.next()){
+                   String userPass = rst.getString("pass");
+                   if(userPass.equals(password)){
+                       InternApp.showInternHomePage();
+                   }
+                   else{
+                       Alert alert = new Alert(Alert.AlertType.ERROR);
+                       alert.setContentText("Incorrect Credentials");
+                       alert.show();
+                   }
+               }
+           }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        } finally{
+            if (rst != null) {
+                try {
+                    rst.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (psInternLogin != null) {
+                try {
+                    psInternLogin.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
             }
