@@ -90,8 +90,8 @@ public class InternHomePageController {
         void logoutBtnClicked(ActionEvent event) throws IOException{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Logout Confirmation");
-            alert.setHeaderText("Are you sure you want to logout?");
-            alert.setContentText("Any unsaved date will be lost.");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure you want to Logout?");
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK){

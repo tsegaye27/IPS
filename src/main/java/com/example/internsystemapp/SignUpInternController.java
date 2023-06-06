@@ -41,7 +41,7 @@ public class SignUpInternController {
     void signUpClicked(ActionEvent event) throws IOException {
 
         if(validateInputs()){
-            InternApp.showInternHomePage();
+            InternApp.showInternLoginPage();
         }else {
             showError("Please fill in every field");
         }
