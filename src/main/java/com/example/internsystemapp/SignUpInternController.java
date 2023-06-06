@@ -1,11 +1,13 @@
 package com.example.internsystemapp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.*;
 
 import java.io.IOException;
 
-public class SignUpInternController {
+
+public class SignUpInternController{
 
     @FXML
     private TextField emailField;
@@ -36,13 +38,14 @@ public class SignUpInternController {
         String email = emailField.getText();
         String password = passwordField.getText();
         String fieldOfStudy = fieldOfStudyField.getText();
-        String graduationYear = graduationYearField.getText();
+        String graduationYear =graduationYearField.getText();
         String location = locationField.getText();
 
-        if((fullName.isEmpty())||(email.isEmpty())||(password.isEmpty())||(fieldOfStudy.isEmpty())||(graduationYear.isEmpty())||(location.isEmpty())){
+        if((fullName.trim().isEmpty())||(email.trim().isEmpty())||(password.trim().isEmpty())||(graduationYear.trim().isEmpty())||(fieldOfStudy.trim().isEmpty())||(location.trim().isEmpty())){
             showError("Please fill in every field");
         }else {
-            InternApp.showInternHomePage();
+            DBUtills.signUpIntern(event, fullName, email, password, 0, fieldOfStudy, null, null, location);
+//            InternApp.showInternHomePage();
         }
     }
     @FXML
@@ -57,5 +60,6 @@ public class SignUpInternController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 
 }
