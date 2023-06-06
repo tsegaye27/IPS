@@ -3,12 +3,16 @@ package com.example.internsystemapp;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class InternHomePageController {
 
@@ -17,14 +21,6 @@ public class InternHomePageController {
 
         @FXML
         private Label companyTitleLabel;
-
-        @FXML
-        private Label companyTitleLabel1;
-
-        @FXML
-        private Label companyTitleLabel2;
-        @FXML
-        private Label companyTitleLabel3;
 
         @FXML
         private Button findYourProgramsBtn;
@@ -39,25 +35,7 @@ public class InternHomePageController {
         private Label internshipDurationLabel;
 
         @FXML
-        private Label internshipDurationLabel1;
-
-        @FXML
-        private Label internshipDurationLabel2;
-
-        @FXML
-        private Label internshipDurationLabel3;
-
-        @FXML
         private Label internshipLocationLabel;
-
-        @FXML
-        private Label internshipLocationLabel1;
-
-        @FXML
-        private Label internshipLocationLabel2;
-
-        @FXML
-        private Label internshipLocationLabel3;
 
         @FXML
         private Button logoutBtn;
@@ -66,38 +44,41 @@ public class InternHomePageController {
         private Button searchInternshipsBtn;
 
         @FXML
+        private GridPane gridPane;
+        @FXML
         private FontAwesomeIcon searchInternshipsIcon;
-        public void displayFeaturedCard(){
-            companyTitleLabel.setText("FaceBook");;
-            internshipDurationLabel.setText("Duration : 3 month");
-            internshipLocationLabel.setText("Location : New York");
-
-            companyTitleLabel1.setText("Telegram");
-            internshipDurationLabel1.setText("Duration : 2 month");
-            internshipLocationLabel1.setText("Location : Addis Ababa");
-
-            companyTitleLabel2.setText("Amazon");
-            internshipDurationLabel2.setText("Duration : 2 month");
-            internshipLocationLabel2.setText("Location : Addis Ababa");
-
-            companyTitleLabel3.setText("Instagram");
-            internshipDurationLabel3.setText("Duration : 2 month");
-            internshipLocationLabel3.setText("Location : Addis Ababa");
-        }
 
     @FXML
         void appliedInternshipsBtnClicked(ActionEvent event) throws IOException{
-            InternApp.showAppliedInternships();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AppliedInternships.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) appliedInternshipsBtn.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
         }
 
         @FXML
         void findYourProgramsBtnClicked(ActionEvent event) throws IOException {
-            InternApp.showSearchInternships();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SearchInternships.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) findYourProgramsBtn.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
 
         @FXML
         void homeBtnClicked(ActionEvent event) throws IOException {
-            InternApp.showInternHomePage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InternHomePage.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) homeBtn.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
 
         @FXML
@@ -107,33 +88,51 @@ public class InternHomePageController {
 
         @FXML
         void logoutBtnClicked(ActionEvent event) throws IOException{
-            InternApp.showInternLoginPage();
-        }
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Logout Confirmation");
+            alert.setHeaderText("Are you sure you want to logout?");
+            alert.setContentText("Any unsaved date will be lost.");
 
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("InternLogin.fxml"));
+                Parent root = loader.load();
+
+                Stage stage = (Stage) logoutBtn.getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
         @FXML
         void searchInternshipsBtnClicked(ActionEvent event) throws IOException{
-            InternApp.showSearchInternships();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SearchInternships.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) searchInternshipsBtn.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
 
-        public void initialize(AnchorPane anchorPane){
-            AnchorPane ap1 = (AnchorPane) anchorPane.getChildren().get(4);
-            companyTitleLabel = (Label) ap1.getChildren().get(0);
-            internshipDurationLabel = (Label) ap1.getChildren().get(1);
-            internshipLocationLabel = (Label) ap1.getChildren().get(2);
+        void loadFeaturedInternships(AnchorPane anchorPane){
 
-            AnchorPane ap2 = (AnchorPane) anchorPane.getChildren().get(6);
-            companyTitleLabel1 = (Label) ap2.getChildren().get(0);
-            internshipDurationLabel1 = (Label) ap2.getChildren().get(1);
-            internshipLocationLabel1 = (Label) ap2. getChildren().get(2);
+            //Dummy data for featured internships
+            String[] titles = {"Internship 1", "Internship 2", "Internship 3", "Internship 4"};
+            String[] locations = {"Location 1", "Location 2", "Location 3", "Location 4"};
+            String[] durations = {"Duration 1", "Duration 2", "Duration 3", "Duration 4"};
 
-            AnchorPane ap3 = (AnchorPane) anchorPane.getChildren().get(7);
-            companyTitleLabel2 = (Label) ap3.getChildren().get(0);
-            internshipDurationLabel2 = (Label) ap3.getChildren().get(1);
-            internshipLocationLabel2 = (Label) ap3.getChildren().get(2);
+            for(int i=0; i < titles.length; i++){
 
-            AnchorPane ap4 = (AnchorPane) anchorPane.getChildren().get(8);
-            companyTitleLabel3 = (Label) ap4.getChildren().get(0);
-            internshipDurationLabel3 = (Label) ap4.getChildren().get(1);
-            internshipLocationLabel3 = (Label) ap4.getChildren().get(2);
+            GridPane gp = (GridPane) anchorPane.getChildren().get(4);
+            AnchorPane ap = (AnchorPane) gp.getChildren().get(i);
+            companyTitleLabel = (Label) ap.getChildren().get(0);
+            internshipDurationLabel = (Label) ap.getChildren().get(1);
+            internshipLocationLabel = (Label) ap.getChildren().get(2);
+
+            companyTitleLabel.setText(titles[i]);
+            internshipLocationLabel.setText(locations[i]);
+            internshipDurationLabel.setText(durations[i]);
+            }
         }
 }

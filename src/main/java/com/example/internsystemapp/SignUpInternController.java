@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class SignUpInternController {
 
@@ -17,7 +18,13 @@ public class SignUpInternController {
     private TextField fullNameField;
 
     @FXML
-    private TextField graduationYearField;
+    private TextField phoneNumberField;
+
+    @FXML
+    private DatePicker dateOfBirthField;
+
+    @FXML
+    private DatePicker graduationYearField;
 
     @FXML
     private Hyperlink loginLink;
@@ -32,18 +39,28 @@ public class SignUpInternController {
 
     @FXML
     void signUpClicked(ActionEvent event) throws IOException {
+
+        if(validateInputs()){
+            InternApp.showInternHomePage();
+        }else {
+            showError("Please fill in every field");
+        }
+    }
+
+    private boolean validateInputs(){
         String fullName = fullNameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
         String fieldOfStudy = fieldOfStudyField.getText();
-        String graduationYear = graduationYearField.getText();
+        String phoneNumber = phoneNumberField.getText();
+        LocalDate graduationYear = graduationYearField.getValue();
+        LocalDate dateOfBirth = dateOfBirthField.getValue();
         String location = locationField.getText();
 
-        if((fullName.isEmpty())||(email.isEmpty())||(password.isEmpty())||(fieldOfStudy.isEmpty())||(graduationYear.isEmpty())||(location.isEmpty())){
-            showError("Please fill in every field");
-        }else {
-            InternApp.showInternHomePage();
+        if(fullName.isEmpty()||email.isEmpty()||password.isEmpty()||fieldOfStudy.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||graduationYear==null||dateOfBirth==null){
+            return false;
         }
+            return true;
     }
     @FXML
     void loginLinkClicked(ActionEvent event) throws IOException {

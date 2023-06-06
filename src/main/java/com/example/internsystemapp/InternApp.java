@@ -47,8 +47,7 @@ public class InternApp extends Application {
         StackPane sp = (StackPane) root;
         AnchorPane ap = (AnchorPane) sp.getChildren().get(0);
         InternHomePageController internHome = new InternHomePageController();
-        internHome.initialize(ap);
-        internHome.displayFeaturedCard();
+        internHome.loadFeaturedInternships(ap);
         primaryStage.setTitle("Home");
         primaryStage.setScene(scene);
         primaryStage.show();

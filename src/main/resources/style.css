@@ -66,6 +66,34 @@
 -fx-text-fill: white;
 }
 
-.signUpImg{
+/*.signUpImg{
 -fx-opacity: 0.6;
+}*/
+
+.searchBar{
+-fx-background-radius: 12px;
+-fx-border-radius: 12px;
+-fx-border-color: #53D7A8;
+-fx-background-color: transparent;
+}
+
+.filterBtn{
+-fx-background-color: transparent;
+-fx-text-fill: white;
+-fx-background-radius: 12px;
+}
+
+.filterBar{
+-fx-background-color: #53D7A8;
+-fx-background-radius: 12px;
+}
+
+.searchBtn{
+-fx-background-color: transparent;
+}
+
+.datePicker{
+-fx-background-radius: 30 10 10 30;
+-fx-background-insets: 0;
+-fx-border-radius: transparent;
 }
