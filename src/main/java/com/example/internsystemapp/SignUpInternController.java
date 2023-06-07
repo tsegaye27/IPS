@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 
 public class SignUpInternController{
@@ -19,7 +20,13 @@ public class SignUpInternController{
     private TextField fullNameField;
 
     @FXML
-    private TextField graduationYearField;
+    private TextField phoneNumberField;
+
+    @FXML
+    private DatePicker dateOfBirthField;
+
+    @FXML
+    private DatePicker graduationYearField;
 
     @FXML
     private Hyperlink loginLink;
@@ -34,19 +41,29 @@ public class SignUpInternController{
 
     @FXML
     void signUpClicked(ActionEvent event) throws IOException {
+
+        if(validateInputs()){
+            DBUtills.signUpIntern(event, fullName, email, password, 0, fieldOfStudy, null, null, location);
+            InternApp.showInternHomePage();
+        }else {
+            showError("Please fill in every field");
+        }
+    }
+
+    private boolean validateInputs(){
         String fullName = fullNameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
         String fieldOfStudy = fieldOfStudyField.getText();
-        String graduationYear =graduationYearField.getText();
+        String phoneNumber = phoneNumberField.getText();
+        LocalDate graduationYear = graduationYearField.getValue();
+        LocalDate dateOfBirth = dateOfBirthField.getValue();
         String location = locationField.getText();
 
-        if((fullName.trim().isEmpty())||(email.trim().isEmpty())||(password.trim().isEmpty())||(graduationYear.trim().isEmpty())||(fieldOfStudy.trim().isEmpty())||(location.trim().isEmpty())){
-            showError("Please fill in every field");
-        }else {
-            DBUtills.signUpIntern(event, fullName, email, password, 0, fieldOfStudy, null, null, location);
-            InternApp.showInternHomePage();
+        if((fullName.trim().isEmpty())||(email.trim().isEmpty())||(password.trim().isEmpty())||(phoneNumber.trim().isEmpty())||(graduationYear==null)||(fieldOfStudy.trim().isEmpty())||(location.trim().isEmpty())||dateOfBirth==null){
+            return false;
         }
+            return true;
     }
     @FXML
     void loginLinkClicked(ActionEvent event) throws IOException {
