@@ -32,8 +32,9 @@ public class CmpSignUpController {
     @FXML
     void SignUpClicked(ActionEvent event) throws IOException {
         if(validateInputs()){
+            DBUtills.signUpCmp(event, companyNameField.getText(), companyEmailField.getText(), passwordField.getText(),Integer.parseInt(contactPhoneField.getText()), locationField.getText());
             showInfo("Successfully signed-up");
-            InternApp.showCmpHomePage();
+            InternApp.showCmpLoginPage();
         }else{
             showError("Please fill every field");
         }
@@ -46,7 +47,7 @@ public class CmpSignUpController {
         String contactPhone = contactPhoneField.getText();
         String location = locationField.getText();
 
-        if(companyName.isEmpty()||companyEmail.isEmpty()||password.isEmpty()||location.isEmpty()||contactPhone.isEmpty()){
+        if(companyName.trim().isEmpty()||companyEmail.trim().isEmpty()||password.trim().isEmpty()||location.trim().isEmpty()||contactPhone.trim().isEmpty()){
             return false;
         }
         
@@ -69,7 +70,7 @@ public class CmpSignUpController {
     }
     @FXML
     void loginLinkClicked(ActionEvent event) throws IOException {
-        InternApp.showInternLoginPage();
+        InternApp.showCmpLoginPage();
     }
 
 }

@@ -83,7 +83,7 @@ public class DBUtills {
                while(rst.next()){
                    String userPass = rst.getString("pass");
                    if(userPass.equals(password)){
-                       InternApp.showInternHomePage();
+                       InternApp.showInternLoginPage();
                    }
                    else{
                        Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -121,5 +121,62 @@ public class DBUtills {
             }
         }
     }
-
+    public static void signUpCmp(ActionEvent e,String name, String email, String password,int phoneNumber ,String location){
+        Connection conn = null;
+        PreparedStatement psCheckCmp = null;
+        PreparedStatement psInsertCmp = null;
+        ResultSet rst = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psCheckCmp = conn.prepareStatement("select * from stud where email = ?");
+            psCheckCmp.setString(1, email);
+            rst=psCheckCmp.executeQuery();
+            if(rst.isBeforeFirst()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Email is already registered");
+                alert.show();
+            }else{
+                psInsertCmp = conn.prepareStatement("insert into company(name, email, pass, phone, location) values (?, ?, ?, ?, ?)");
+                System.out.println(name+" "+email+" "+password+" "+phoneNumber+" "+location);
+                psInsertCmp.setString(1, name);
+                psInsertCmp.setString(2, email);
+                psInsertCmp.setString(3, password);
+                psInsertCmp.setInt(4, phoneNumber);
+                psInsertCmp.setString(5, location);
+                psInsertCmp.executeUpdate();
+                System.out.println("db updated");
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }finally{
+            if(rst!= null){
+                try{
+                    rst.close();
+                }catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+            if(psCheckCmp!= null){
+                try{
+                    psCheckCmp.close();
+                }catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+            if(psInsertCmp!= null){
+                try{
+                    psInsertCmp.close();
+                }catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+            if(conn!= null){
+                try{
+                    conn.close();
+                }catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
 }
