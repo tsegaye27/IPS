@@ -44,7 +44,7 @@ public class InternHomePageController {
 
     @FXML
     void logoutBtnClicked(ActionEvent event) throws IOException {
-
+        InternApp.showWelcomePage();
     }
 
     @FXML
