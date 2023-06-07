@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
@@ -52,43 +56,67 @@
                   <Font name="Roboto Bold" size="23.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="261.0" layoutY="222.0" prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css">
+            <GridPane fx:id="gridPane" layoutX="242.0" layoutY="215.0" prefHeight="364.0" prefWidth="551.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0000406901042" minWidth="10.0" prefWidth="275.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="276.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="178.66667683919272" minHeight="10.0" prefHeight="168.66667683919272" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="190.66665649414065" minHeight="3.666656494140625" prefHeight="190.66665649414065" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Label layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
-                  <Label layoutX="48.0" layoutY="71.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
-                  <Label layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
-                  <Hyperlink layoutX="96.0" layoutY="124.0" text="Read More" textFill="#0900ff" />
+                  <AnchorPane prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css">
+                     <children>
+                        <Label fx:id="companyTitleLabel" layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
+                        <Label fx:id="internshipDurationLabel" layoutX="48.0" layoutY="71.0" prefHeight="17.0" prefWidth="113.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
+                        <Label fx:id="internshipLocationLabel" layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
+                        <Hyperlink fx:id="internshipDetailsLink" layoutX="96.0" layoutY="124.0" onAction="#internshipDetailsLinkClicked" text="Read More" textFill="#0900ff" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="2.5" right="2.5" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css" GridPane.columnIndex="1">
+                     <children>
+                        <Label fx:id="companyTitleLabel1" layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
+                        <Label fx:id="internshipDurationLabel1" layoutX="48.0" layoutY="71.0" prefHeight="17.0" prefWidth="113.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
+                        <Label fx:id="internshipLocationLabel1" layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
+                        <Hyperlink fx:id="internshipDetailsLink1" layoutX="96.0" layoutY="124.0" onAction="#internshipDetailsLinkClicked" text="Read More" textFill="#0900ff" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="2.5" left="2.5" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="companyTitleLabel2" layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
+                        <Label fx:id="internshipDurationLabel2" layoutX="48.0" layoutY="71.0" prefHeight="17.0" prefWidth="113.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
+                        <Label fx:id="internshipLocationLabel2" layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
+                        <Hyperlink fx:id="internshipDetailsLink2" layoutX="96.0" layoutY="124.0" onAction="#internshipDetailsLinkClicked" text="Read More" textFill="#0900ff" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets right="2.5" top="2.5" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="companyTitleLabel22" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
+                        <Label fx:id="internshipDurationLabel22" layoutX="48.0" layoutY="71.0" prefHeight="17.0" prefWidth="113.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
+                        <Label fx:id="internshipLocationLabel22" layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
+                        <Hyperlink fx:id="internshipDetailsLink22" layoutX="96.0" layoutY="124.0" onAction="#internshipDetailsLinkClicked" text="Read More" textFill="#0900ff" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets left="2.5" top="2.5" />
+                     </GridPane.margin>
+                  </AnchorPane>
                </children>
-            </AnchorPane>
-            <Button fx:id="findYourProgramsBtn" layoutX="445.0" layoutY="120.0" mnemonicParsing="false" onAction="#findYourProgramsBtnClicked" prefHeight="31.0" prefWidth="175.0" styleClass="searchInternBtn" stylesheets="@../../../style.css" text="Find your Programs" textFill="WHITE">
+            </GridPane>
+            <Button fx:id="findYourProgramsBtn" layoutX="445.0" layoutY="135.0" mnemonicParsing="false" onAction="#findYourProgramsBtnClicked" prefHeight="31.0" prefWidth="175.0" styleClass="searchInternBtn" stylesheets="@../../../style.css" text="Find your Programs" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fx:id="searchInternshipsIcon" glyphName="SEARCH" text=" " />
                </graphic>
             </Button>
-            <AnchorPane layoutX="533.0" layoutY="222.0" prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css">
-               <children>
-                  <Label layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
-                  <Label layoutX="48.0" layoutY="71.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
-                  <Label layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
-                  <Hyperlink layoutX="96.0" layoutY="124.0" text="Read More" textFill="#0900ff" />
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="261.0" layoutY="391.0" prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css">
-               <children>
-                  <Label layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
-                  <Label layoutX="48.0" layoutY="71.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
-                  <Label layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
-                  <Hyperlink layoutX="96.0" layoutY="124.0" text="Read More" textFill="#0900ff" />
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="533.0" layoutY="391.0" prefHeight="163.0" prefWidth="265.0" styleClass="featured-card" stylesheets="@../../../style.css">
-               <children>
-                  <Label layoutX="19.0" layoutY="14.0" prefHeight="45.0" prefWidth="228.0" text="Software Engineering Internship at ABC Tech Solutions" wrapText="true" />
-                  <Label layoutX="48.0" layoutY="71.0" styleClass="featured-card-details" text="Duration: 3 month" textFill="WHITE" />
-                  <Label layoutX="48.0" layoutY="95.0" styleClass="featured-card-details" text="Location: Welkite" textFill="WHITE" />
-                  <Hyperlink layoutX="96.0" layoutY="124.0" text="Read More" textFill="#0900ff" />
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

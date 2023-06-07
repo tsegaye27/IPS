@@ -31,6 +31,15 @@ public class CmpSignUpController {
 
     @FXML
     void SignUpClicked(ActionEvent event) throws IOException {
+        if(validateInputs()){
+            showInfo("Successfully signed-up");
+            InternApp.showCmpHomePage();
+        }else{
+            showError("Please fill every field");
+        }
+    }
+
+    private boolean validateInputs(){
         String companyName = companyNameField.getText();
         String companyEmail = companyEmailField.getText();
         String password = passwordField.getText();
@@ -38,11 +47,10 @@ public class CmpSignUpController {
         String location = locationField.getText();
 
         if(companyName.isEmpty()||companyEmail.isEmpty()||password.isEmpty()||location.isEmpty()||contactPhone.isEmpty()){
-            showError("Please fill every field");
-        }else{
-            showInfo("Successfully signed-up");
-            InternApp.showCmpHomePage();
+            return false;
         }
+        
+        return true;
     }
     private void showError(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
