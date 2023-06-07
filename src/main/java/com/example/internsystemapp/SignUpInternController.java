@@ -6,10 +6,12 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class SignUpInternController{
-
+    DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("yyyy");
+    DateTimeFormatter dOBFormatter = DateTimeFormatter.ofPattern("MMM dd, yyyy");
     @FXML
     private TextField emailField;
 
@@ -41,9 +43,12 @@ public class SignUpInternController{
 
     @FXML
     void signUpClicked(ActionEvent event) throws IOException {
-
+        LocalDate graduationYearDate = graduationYearField.getValue();
+        LocalDate dateOfBirthDate = dateOfBirthField.getValue();
+        String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
+        String graduationYear = graduationYearDate.format(formatDate);
         if(validateInputs()){
-            DBUtills.signUpIntern(event, fullName, email, password, 0, fieldOfStudy, null, null, location);
+            DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
             InternApp.showInternHomePage();
         }else {
             showError("Please fill in every field");
