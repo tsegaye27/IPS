@@ -1,12 +1,14 @@
 package com.example.internsystemapp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class SignUpInternController {
+
+public class SignUpInternController{
 
     @FXML
     private TextField emailField;
@@ -41,7 +43,8 @@ public class SignUpInternController {
     void signUpClicked(ActionEvent event) throws IOException {
 
         if(validateInputs()){
-            InternApp.showInternLoginPage();
+            DBUtills.signUpIntern(event, fullName, email, password, 0, fieldOfStudy, null, null, location);
+            InternApp.showInternHomePage();
         }else {
             showError("Please fill in every field");
         }
@@ -57,7 +60,7 @@ public class SignUpInternController {
         LocalDate dateOfBirth = dateOfBirthField.getValue();
         String location = locationField.getText();
 
-        if(fullName.isEmpty()||email.isEmpty()||password.isEmpty()||fieldOfStudy.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||graduationYear==null||dateOfBirth==null){
+        if((fullName.trim().isEmpty())||(email.trim().isEmpty())||(password.trim().isEmpty())||(phoneNumber.trim().isEmpty())||(graduationYear==null)||(fieldOfStudy.trim().isEmpty())||(location.trim().isEmpty())||dateOfBirth==null){
             return false;
         }
             return true;
@@ -74,5 +77,6 @@ public class SignUpInternController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 
 }

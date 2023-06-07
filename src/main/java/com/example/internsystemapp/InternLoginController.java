@@ -29,11 +29,10 @@ public class InternLoginController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        if(fullName.isEmpty()||email.isEmpty()||password.isEmpty()){
+        if(fullName.trim().isEmpty()||email.trim().isEmpty()||password.trim().isEmpty()){
                 showError("Please fill every field");
         } else{
-                showInfo("Successfully Logged-in");
-                InternApp.showInternHomePage();
+                DBUtills.loginIntern(event, fullName,email, password);
         }
         }
 
