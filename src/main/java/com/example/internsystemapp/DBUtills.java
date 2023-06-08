@@ -83,7 +83,7 @@ public class DBUtills {
                while(rst.next()){
                    String userPass = rst.getString("pass");
                    if(userPass.equals(password)){
-                       InternApp.showInternLoginPage();
+                       InternApp.showInternHomePage();
                    }
                    else{
                        Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -174,6 +174,61 @@ public class DBUtills {
                 try{
                     conn.close();
                 }catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+    public static void loginCmp(ActionEvent e, String name, String email, String password){
+        Connection conn=null;
+        PreparedStatement psCmpLogin = null;
+        ResultSet rst = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psCmpLogin= conn.prepareStatement("select email, pass from company where email = ?");
+            psCmpLogin.setString(1, email);
+            rst=psCmpLogin.executeQuery();
+            if(!rst.isBeforeFirst()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Company Does Not Exist");
+                alert.show();
+            }else{
+                while(rst.next()){
+                    String userPass = rst.getString("pass");
+                    if(userPass.equals(password)){
+                        InternApp.showCmpHomePage();
+                    }
+                    else{
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Incorrect Credentials");
+                        alert.show();
+                    }
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        } finally{
+            if (rst != null) {
+                try {
+                    rst.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (psCmpLogin != null) {
+                try {
+                    psCmpLogin.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
             }
