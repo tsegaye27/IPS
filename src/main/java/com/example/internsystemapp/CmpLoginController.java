@@ -28,11 +28,12 @@ public class CmpLoginController {
         String companyEmail = companyEmailField.getText();
         String password = passwordField.getText();
 
-        if (companyName.isEmpty()||companyEmail.isEmpty()||password.isEmpty()){
+        if (companyName.trim().isEmpty()||companyEmail.trim().isEmpty()||password.trim().isEmpty()){
             showError("Please fill every field");
         }else{
+            DBUtills.loginCmp(event, companyName, companyEmail, password);
             showInfo("Successfully Logged-in");
-            InternApp.showCmpHomePage();
+
         }
     }
 

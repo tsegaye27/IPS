@@ -92,10 +92,9 @@ public class InternHomePageController {
             alert.setTitle("Logout Confirmation");
             alert.setHeaderText(null);
             alert.setContentText("Are you sure you want to Logout?");
-
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK){
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("InternLogin.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Welcome.fxml"));
                 Parent root = loader.load();
 
                 Stage stage = (Stage) logoutBtn.getScene().getWindow();
@@ -108,7 +107,6 @@ public class InternHomePageController {
         void searchInternshipsBtnClicked(ActionEvent event) throws IOException{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SearchInternships.fxml"));
             Parent root = loader.load();
-
             Stage stage = (Stage) searchInternshipsBtn.getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
