@@ -29,7 +29,7 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" size="2em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="appliedInternshipsBtn" layoutX="1.0" layoutY="300.0" mnemonicParsing="false" onAction="#appliedInternshipsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Applied Internships">
+                  <Button fx:id="appliedInternshipsBtn" layoutX="1.0" layoutY="300.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Applied Internships">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="FILE" size="1.8em" />
                      </graphic>

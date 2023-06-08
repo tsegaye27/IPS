@@ -41,6 +41,13 @@
 -fx-cursor: hand;
 }
 
+.focused-Btn{
+-fx-text-fill: white;
+-fx-background-color: transparent;
+-fx-font-size: 13px;
+-fx-cursor: hand;
+}
+
 .searchInternBtn{
 -fx-background-color: #6C69F0;
 -fx-background-radius: 15px;
@@ -96,4 +103,50 @@
 -fx-background-radius: 30 10 10 30;
 -fx-background-insets: 0;
 -fx-border-radius: transparent;
+}
+
+.applyBtn{
+-fx-background-radius: 12px;
+-fx-background-color: #00FFA3;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+}
+
+.applyBtn:hover{
+-fx-border-color: #6C69F0;
+-fx-border-radius: 12px;
+}
+
+.returnBtn{
+-fx-background-color: transparent;
+-fx-background-radius: 15px;
+-fx-border-radius: 15px;
+}
+
+.returnBtn:hover{
+-fx-background-color: #6C69F0;
+}
+
+.submitBtn{
+-fx-background-radius: 15px;
+-fx-border-radius: 15px;
+-fx-background-color: #00FFA3;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+}
+
+.submitBtn:hover{
+-fx-border-color: #6C69F0;
+}
+
+.cancelBtn{
+-fx-background-radius: 12px;
+-fx-border-radius: 12px;
+-fx-background-color: red;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+}
+
+.cancelBtn:hover{
+-fx-font-size: 13px;
 }
