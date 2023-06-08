@@ -39,6 +39,14 @@ public class InternApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    public static void showCmpLoginPage() throws IOException {
+        Parent root = FXMLLoader.load(InternApp.class.getResource("CmpLogin.fxml"));
+        Scene scene = new Scene(root, 600, 400);
+        scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
+        primaryStage.setTitle("Login");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
     public static void showInternHomePage() throws IOException{
         Parent root = FXMLLoader.load(InternApp.class.getResource("InternHomePage.fxml"));

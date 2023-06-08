@@ -148,10 +148,15 @@ public class InternHomePageController {
             alert.setTitle("Logout Confirmation");
             alert.setHeaderText(null);
             alert.setContentText("Are you sure you want to Logout?");
-
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK){
-                InternApp.showInternLoginPage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Welcome.fxml"));
+                Parent root = loader.load();
+
+                Stage stage = (Stage) logoutBtn.getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             }
         }
         @FXML
