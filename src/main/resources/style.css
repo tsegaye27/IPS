@@ -90,6 +90,20 @@
 -fx-background-radius: 12px;
 }
 
+.filterBtn:hover{
+-fx-background-color: red;
+}
+
+.filterBtn-focused{
+-fx-background-color: red;
+}
+
+.comboBox{
+-fx-background-color: transparent;
+-fx-text-fill: white;
+-fx-background-radius: 12px;
+}
+
 .filterBar{
 -fx-background-color: #53D7A8;
 -fx-background-radius: 12px;
@@ -110,6 +124,15 @@
 -fx-background-color: #00FFA3;
 -fx-text-fill: white;
 -fx-font-weight: bold;
+}
+
+.internship-title{
+-fx-font-weight: bold;
+-fx-font-size: 13px;
+}
+
+.internship-details{
+-fx-text-fill: white;
 }
 
 .applyBtn:hover{

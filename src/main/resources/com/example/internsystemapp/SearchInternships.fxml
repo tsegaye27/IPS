@@ -2,9 +2,11 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,7 +16,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane prefHeight="600.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@../../../style.css">
+            <AnchorPane layoutY="-2.0" prefHeight="602.0" prefWidth="221.0" styleClass="sidebar" stylesheets="@../../../style.css">
                <children>
                   <Label layoutX="52.0" layoutY="98.0" text="InternXYZ" textFill="WHITE">
                      <font>
@@ -26,7 +28,7 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="2em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="searchInternshipsBtn" layoutX="1.0" layoutY="266.0" mnemonicParsing="false" onAction="#searchInternshipsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Search Internships">
+                  <Button fx:id="searchInternshipsBtn" layoutX="1.0" layoutY="266.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Search Internships">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" size="2em" />
                      </graphic>
@@ -44,54 +46,32 @@
                </children>
             </AnchorPane>
             <TextField fx:id="searchField" layoutX="348.0" layoutY="70.0" prefHeight="28.0" prefWidth="297.0" promptText="Enter a keyword here, Eg. Software Engineering" styleClass="searchBar" stylesheets="@../../../style.css" />
-            <Label layoutX="470.0" layoutY="125.0" text="Filter By">
+            <Label layoutX="455.0" layoutY="115.0" text="Filter By">
                <font>
                   <Font name="Cambria Bold" size="20.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="348.0" layoutY="157.0" prefHeight="26.0" prefWidth="343.0" styleClass="filterBar" stylesheets="@../../../style.css">
+            <AnchorPane layoutX="329.0" layoutY="143.0" prefHeight="26.0" prefWidth="343.0" styleClass="filterBar" stylesheets="@../../../style.css">
                <children>
-                  <Button fx:id="locationFilterBtn" layoutX="-2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" styleClass="filterBtn" stylesheets="@../../../style.css" text="Location" />
-                  <Button fx:id="durationFilterBtn" layoutX="78.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" styleClass="filterBtn" stylesheets="@../../../style.css" text="Duration" />
-                  <Button fx:id="fieldsFilterBtn" layoutX="157.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="filterBtn" stylesheets="@../../../style.css" text="Fields" />
-                  <Button fx:id="paidUnpaidBtn" layoutX="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" styleClass="filterBtn" stylesheets="@../../../style.css" text="paid/unpaid" />
+                  <ComboBox fx:id="paymentStatusFilterBtn" layoutX="255.0" onAction="#comboBoxFilterClicked" prefHeight="26.0" prefWidth="89.0" promptText="Choose" styleClass="comboBox" />
+                  <ToggleButton fx:id="locationFilterBtn" layoutY="-1.0" mnemonicParsing="false" onAction="#locationFilterBtnClicked" prefHeight="28.0" prefWidth="79.0" styleClass="filterBtn" text="Location" />
+                  <ToggleButton fx:id="durationFilterBtn" layoutX="80.0" mnemonicParsing="false" onAction="#durationFilterBtnClicked" prefHeight="25.0" prefWidth="79.0" styleClass="filterBtn" text="Duration" />
+                  <ToggleButton fx:id="fieldsFilterBtn" layoutX="161.0" layoutY="1.0" mnemonicParsing="false" onAction="#fieldsFilterBtnClicked" prefHeight="25.0" prefWidth="79.0" styleClass="filterBtn" text="Field" />
                </children>
             </AnchorPane>
-            <Button layoutX="648.0" layoutY="71.0" mnemonicParsing="false" styleClass="searchBtn" stylesheets="@../../../style.css">
+            <Button fx:id="searchBtn" layoutX="648.0" layoutY="71.0" mnemonicParsing="false" onAction="#searchBtnClicked" styleClass="searchBtn" stylesheets="@../../../style.css">
                <graphic>
-                  <FontAwesomeIcon fx:id="searchBtn" fill="#a3a3a3" glyphName="SEARCH" size="1.5em" />
+                  <FontAwesomeIcon fill="#a3a3a3" glyphName="SEARCH" size="1.5em" />
                </graphic>
             </Button>
-            <ScrollPane layoutX="380.0" layoutY="204.0" prefHeight="345.0" prefWidth="285.0">
+            <Label layoutX="444.0" layoutY="179.0" text="Search Results">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <ScrollPane layoutX="225.0" layoutY="205.0" prefHeight="393.0" prefWidth="562.0">
                <content>
-                  <VBox prefHeight="343.0" prefWidth="269.0">
-                     <children>
-                        <AnchorPane prefHeight="279.0" prefWidth="262.0" styleClass="featured-card" stylesheets="@../../../style.css">
-                           <children>
-                              <Label layoutX="81.0" layoutY="22.0" text="InternshipTitle/Field">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="34.0" layoutY="58.0" text="companyName : " textFill="WHITE" />
-                              <Label layoutX="34.0" layoutY="80.0" text="Location : " textFill="WHITE" />
-                              <Label layoutX="34.0" layoutY="103.0" text="Duration : " textFill="WHITE" />
-                              <Label layoutX="34.0" layoutY="126.0" text="Contact : " textFill="WHITE" />
-                              <Label layoutX="34.0" layoutY="149.0" text="Paid/Unpaid : " textFill="WHITE" />
-                              <Label layoutX="34.0" layoutY="173.0" text="Requirements : " textFill="WHITE" />
-                              <Label layoutX="34.0" layoutY="198.0" text="Description : " textFill="WHITE" />
-                              <Label fx:id="companyNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="58.0" prefHeight="17.0" prefWidth="142.0" text="Label" />
-                              <Label fx:id="locatioinLabel" alignment="CENTER" layoutX="90.0" layoutY="80.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
-                              <Label fx:id="durationLabel" alignment="CENTER" layoutX="90.0" layoutY="103.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
-                              <Label fx:id="contactLabel" alignment="CENTER" layoutX="85.0" layoutY="126.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
-                              <Label fx:id="paidUnpaidLabel" alignment="CENTER" layoutX="109.0" layoutY="149.0" prefHeight="17.0" prefWidth="155.0" text="Label" />
-                              <Label fx:id="requirementsLabel" alignment="CENTER" layoutX="116.0" layoutY="173.0" prefHeight="17.0" prefWidth="151.0" text="Label" />
-                              <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="104.0" layoutY="198.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
-                              <Button layoutX="97.0" layoutY="230.0" mnemonicParsing="false" styleClass="applyBtn" text="Apply now" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
+                  <VBox fx:id="searchResultContainer" />
                </content>
             </ScrollPane>
          </children>
