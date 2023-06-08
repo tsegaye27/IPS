@@ -49,7 +49,7 @@ public class SignUpInternController{
         String graduationYear = graduationYearDate.format(formatDate);
         if(validateInputs()){
             DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
-            InternApp.showInternHomePage();
+            InternApp.showInternLoginPage();
         }else {
             showError("Please fill in every field");
         }
@@ -65,10 +65,7 @@ public class SignUpInternController{
         LocalDate dateOfBirth = dateOfBirthField.getValue();
         String location = locationField.getText();
 
-        if((fullName.trim().isEmpty())||(email.trim().isEmpty())||(password.trim().isEmpty())||(phoneNumber.trim().isEmpty())||(graduationYear==null)||(fieldOfStudy.trim().isEmpty())||(location.trim().isEmpty())||dateOfBirth==null){
-            return false;
-        }
-            return true;
+        return (!fullName.trim().isEmpty()) && (!email.trim().isEmpty()) && (!password.trim().isEmpty()) && (!phoneNumber.trim().isEmpty()) && (graduationYear != null) && (!fieldOfStudy.trim().isEmpty()) && (!location.trim().isEmpty()) && dateOfBirth != null;
     }
     @FXML
     void loginLinkClicked(ActionEvent event) throws IOException {

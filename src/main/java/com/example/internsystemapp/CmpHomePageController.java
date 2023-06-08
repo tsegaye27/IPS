@@ -31,7 +31,7 @@ public class CmpHomePageController {
     void homeBtnClicked(ActionEvent event) {
 
     }
-    
+
 
     @FXML
     void manageInternshipsBtnClicked(ActionEvent event) {
