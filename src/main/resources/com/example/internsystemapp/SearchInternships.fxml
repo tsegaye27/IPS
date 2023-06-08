@@ -56,7 +56,7 @@
             </Label>
             <AnchorPane layoutX="329.0" layoutY="143.0" prefHeight="26.0" prefWidth="343.0" styleClass="filterBar" stylesheets="@../../../style.css">
                <children>
-                  <ComboBox fx:id="paymentStatusFilterBtn" layoutX="255.0" prefHeight="26.0" prefWidth="89.0" promptText="Choose" styleClass="comboBox" />
+                  <ComboBox fx:id="paymentStatusFilterBtn" layoutX="255.0" onAction="#comboBoxFilterClicked" prefHeight="26.0" prefWidth="89.0" promptText="Choose" styleClass="comboBox" />
                   <ToggleButton fx:id="locationFilterBtn" layoutY="-1.0" mnemonicParsing="false" onAction="#locationFilterBtnClicked" prefHeight="28.0" prefWidth="79.0" styleClass="filterBtn" text="Location" />
                   <ToggleButton fx:id="durationFilterBtn" layoutX="80.0" mnemonicParsing="false" onAction="#durationFilterBtnClicked" prefHeight="25.0" prefWidth="79.0" styleClass="filterBtn" text="Duration" />
                   <ToggleButton fx:id="fieldsFilterBtn" layoutX="161.0" layoutY="1.0" mnemonicParsing="false" onAction="#fieldsFilterBtnClicked" prefHeight="25.0" prefWidth="79.0" styleClass="filterBtn" text="Field" />
