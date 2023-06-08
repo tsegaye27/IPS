@@ -16,6 +16,39 @@ public class SearchInternshipsController {
     private Button appliedInternshipsBtn;
 
     @FXML
+    private AnchorPane applicationForm;
+
+    @FXML
+    private Button cancelBtn;
+
+    @FXML
+    private TextField degreeField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField fullNameField;
+
+    @FXML
+    private TextField locationField;
+
+    @FXML
+    private TextField phoneNumberField;
+
+    @FXML
+    private TextField skillsField;
+
+    @FXML
+    private Button submitBtn;
+
+    @FXML
+    private TextField universityNameField;
+
+    @FXML
+    private TextField yearOfStudyField;
+
+    @FXML
     private ToggleButton durationFilterBtn;
 
     @FXML
@@ -43,6 +76,39 @@ public class SearchInternshipsController {
 
     @FXML
     private Button searchInternshipsBtn;
+
+    @FXML
+    private ScrollPane scrollPane;
+
+    @FXML
+    private Button applyNowBtn;
+
+    @FXML
+    private Label companyNameLabel;
+
+    @FXML
+    private Label contactLabel;
+
+    @FXML
+    private Label description;
+
+    @FXML
+    private Label durationLabel;
+
+    @FXML
+    private AnchorPane internshipDetailsPane;
+
+    @FXML
+    private Label locationLabel;
+
+    @FXML
+    private Label paidUnpaidLabel;
+
+    @FXML
+    private Label requirementsLabel;
+
+    @FXML
+    private Button returnToFeaturedBtn;
 
 
 
@@ -95,9 +161,10 @@ public class SearchInternshipsController {
 
         Hyperlink readMoreLink = new Hyperlink("Read More");
         readMoreLink.setOnAction(event -> {
-            AnchorPane clickedAnchorPane = (AnchorPane) event.getSource();
-            String internshipId = (String) clickedAnchorPane.getUserData();
-            showDetails(internshipId);
+//            AnchorPane clickedAnchorPane = (AnchorPane) event.getSource();
+//            String internshipId = (String) clickedAnchorPane.getUserData();
+
+            showDetails();
         });
 
         anchorPane.getChildren().addAll(internshipTitleLabel, locationLabel, durationLabel, readMoreLink);
@@ -123,12 +190,64 @@ public class SearchInternshipsController {
         searchResultContainer.getChildren().add(hBox);
     }
 
-    void showDetails(String internshipId){
-
+    void showDetails(){
+        scrollPane.setVisible(false);
+        internshipDetailsPane.setVisible(true);
     }
 
     void createHBoxPaid(){
 
+    }
+
+    @FXML
+    void applyNowBtnClicked(ActionEvent event){
+        internshipDetailsPane.setVisible(false);
+        applicationForm.setVisible(true);
+    }
+
+    @FXML
+    void submitBtnClicked(ActionEvent event){
+        if(validateInputs()){
+            //save into database
+        }else{
+            showError("Please fill every field");
+        }
+    }
+
+    private boolean validateInputs(){
+        String fullName = fullNameField.getText();
+        String email = emailField.getText();
+        String phoneNumber = phoneNumberField.getText();
+        String location = locationField.getText();
+        String universityName = universityNameField.getText();
+        String degree = degreeField.getText();
+        String yearOfStudy = yearOfStudyField.getText();
+        String skills = skillsField.getText();
+
+        if(fullName.isEmpty()||email.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||universityName.isEmpty()||degree.isEmpty()||yearOfStudy.isEmpty()||skills.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    private void showError(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    void cancelBtnClicked(ActionEvent event){
+        applicationForm.setVisible(false);
+        internshipDetailsPane.setVisible(true);
+    }
+
+    @FXML
+    void returnToFeaturedBtnClicked(ActionEvent event){
+        internshipDetailsPane.setVisible(false);
+        scrollPane.setVisible(true);
     }
     @FXML
     void appliedInternshipsBtnClicked(ActionEvent event) throws IOException {
