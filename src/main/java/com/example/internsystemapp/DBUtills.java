@@ -209,4 +209,19 @@ public class DBUtills {
             closeConnection(conn);
         }
     }
+    public static ResultSet getFeaturedInternships(){
+        Connection conn = null;
+        PreparedStatement psSelectInternships = null;
+        ResultSet rst = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psSelectInternships = conn.prepareStatement("SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id order by RAND() limit 4");
+            rst = psSelectInternships.executeQuery();
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return rst;
+    }
+
 }

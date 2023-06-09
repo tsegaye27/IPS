@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import java.sql.*;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -216,7 +217,7 @@ public class InternHomePageController {
             internshipDetailsPane.setVisible(true);
         }
 
-        void loadFeaturedInternships(AnchorPane anchorPane){
+        void loadFeaturedInternships(AnchorPane anchorPane) throws SQLException {
 
             //Dummy data for featured internships
             String[] titles = {"Internship 1", "Internship 2", "Internship 3", "Internship 4"};
@@ -235,5 +236,35 @@ public class InternHomePageController {
             internshipLocationLabel.setText(locations[i]);
             internshipDurationLabel.setText(durations[i]);
             }
+            ResultSet rst = DBUtills.getFeaturedInternships();
+            int i = 0;
+                while (rst.next()) {
+                    GridPane gp = (GridPane) anchorPane.getChildren().get(4);
+                    AnchorPane ap = (AnchorPane) gp.getChildren().get(i);
+                    companyTitleLabel = (Label) ap.getChildren().get(0);
+                    internshipDurationLabel = (Label) ap.getChildren().get(1);
+                    internshipLocationLabel = (Label) ap.getChildren().get(2);
+
+                    companyTitleLabel.setText(rst.getString("title"));
+                    internshipLocationLabel.setText(rst.getString("location"));
+                    internshipDurationLabel.setText(rst.getString("duration"));
+
+                    i++;
+
+//                    int id = rst.getInt("id");
+//                    String Title = rst.getString("title");
+//                    String duration = rst.getString("duration");
+//                    String requirements = rst.getString("requirements");
+//                    String description = rst.getString("description");
+//                    String type = rst.getString("type");
+//                    String noOfOpenings = rst.getString("numberOfApplicantsNeeded");
+//                    String companyName = rst.getString("name");
+//                    String companyLocation = rst.getString("location");
+//                    String companyContact = rst.getString("email");
+//                    System.out.println("Internship Details:\nID: "+id+" Title: "+Title+" duration: "+ duration+" requirements: "+ requirements+" description: "+ description+" type: "+ type+" number of openings: "+ noOfOpenings+" company name: "+ companyName+" company location: "+ companyLocation+" company contact: "+ companyContact);
+
+                }
+
+
         }
 }

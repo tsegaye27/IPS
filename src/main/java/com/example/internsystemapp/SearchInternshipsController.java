@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class SearchInternshipsController {
@@ -32,7 +33,7 @@ public class SearchInternshipsController {
     }
 
     @FXML
-    void homeBtnClicked(ActionEvent event) throws IOException{
+    void homeBtnClicked(ActionEvent event) throws IOException, SQLException {
         searchInternshipsBtn.setDisable(false);
         InternApp.showInternHomePage();
     }
