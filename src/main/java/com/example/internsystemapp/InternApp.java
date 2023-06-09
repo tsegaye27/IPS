@@ -99,11 +99,11 @@ public class InternApp extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException{
+    public void start(Stage primaryStage) throws IOException, SQLException {
         InternApp.primaryStage = primaryStage;
         primaryStage.setTitle("Internship App");
 
-        InternApp.showWelcomePage();
+        InternApp.showInternHomePage();
 
     }
     public static void main(String[] args) {

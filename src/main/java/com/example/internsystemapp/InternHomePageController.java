@@ -82,7 +82,12 @@ public class InternHomePageController {
 
         @FXML
         private Label requirementsLabel;
-
+        @FXML
+        private Label durationLabel;
+        @FXML
+        private Label contactLabel;
+        @FXML
+        private Label descriptionLabel;
         @FXML
         private Hyperlink internshipDetailsLink1;
 
@@ -94,6 +99,8 @@ public class InternHomePageController {
 
         @FXML
         private Label internshipDurationLabel1;
+        @FXML
+        private Label internshipTitle;
 
         @FXML
         private Label internshipDurationLabel2;
@@ -119,6 +126,8 @@ public class InternHomePageController {
 
         @FXML
         private GridPane gridPane;
+
+
 
         @FXML
         private AnchorPane internshipDetailsPane;
@@ -152,25 +161,56 @@ public class InternHomePageController {
             if(Objects.equals(id, internshipDetailsLink.getId())){
                 if (rst.next()) {
                     // Read the values of the columns in the first row
+                    internshipTitle.setText(rst.getString("title"));
                     requirementsLabel.setText(rst.getString("requirements"));
+                    companyNameLabel.setText(rst.getString("name"));
+                    paidUnpaidLabel.setText(rst.getString("type"));
+                    locationLabel.setText(rst.getString("location"));
+                    durationLabel.setText(rst.getString("duration"));
+                    contactLabel.setText(rst.getString("email"));
+                    descriptionLabel.setText(rst.getString("description"));
                     rst.previous();
                 }
             }else if(Objects.equals(id, internshipDetailsLink1.getId())){
                 if (rst.next() && rst.next()) {
+                    internshipTitle.setText(rst.getString("title"));
                     requirementsLabel.setText(rst.getString("requirements"));
+                    companyNameLabel.setText(rst.getString("name"));
+                    paidUnpaidLabel.setText(rst.getString("type"));
+                    locationLabel.setText(rst.getString("location"));
+                    durationLabel.setText(rst.getString("duration"));
+                    contactLabel.setText(rst.getString("email"));
+                    descriptionLabel.setText(rst.getString("description"));
+
                     rst.previous();
                     rst.previous();
                 }
             }else if(Objects.equals(id, internshipDetailsLink2.getId())){
                 if (rst.next() && rst.next()&& rst.next()) {
+                    internshipTitle.setText(rst.getString("title"));
                     requirementsLabel.setText(rst.getString("requirements"));
+                    companyNameLabel.setText(rst.getString("name"));
+                    paidUnpaidLabel.setText(rst.getString("type"));
+                    locationLabel.setText(rst.getString("location"));
+                    durationLabel.setText(rst.getString("duration"));
+                    contactLabel.setText(rst.getString("email"));
+                    descriptionLabel.setText(rst.getString("description"));
+
                     rst.previous();
                     rst.previous();
                     rst.previous();
                 }
             }else if(Objects.equals(id, internshipDetailsLink22.getId())){
                 if (rst.next() && rst.next()&& rst.next() && rst.next()) {
+                    internshipTitle.setText(rst.getString("title"));
                     requirementsLabel.setText(rst.getString("requirements"));
+                    companyNameLabel.setText(rst.getString("name"));
+                    paidUnpaidLabel.setText(rst.getString("type"));
+                    locationLabel.setText(rst.getString("location"));
+                    durationLabel.setText(rst.getString("duration"));
+                    contactLabel.setText(rst.getString("email"));
+                    descriptionLabel.setText(rst.getString("description"));
+
                     rst.previous();
                     rst.previous();
                     rst.previous();
