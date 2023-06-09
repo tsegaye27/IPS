@@ -103,7 +103,7 @@ public class InternApp extends Application {
         InternApp.primaryStage = primaryStage;
         primaryStage.setTitle("Internship App");
 
-        InternApp.showSearchInternships();
+        InternApp.showAppliedInternships();
 
     }
     public static void main(String[] args) {
