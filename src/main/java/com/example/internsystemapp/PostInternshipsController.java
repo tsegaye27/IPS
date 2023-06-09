@@ -1,2 +1,4 @@
-package com.example.internsystemapp;public class PostInternshipsController {
+package com.example.internsystemapp;
+
+public class PostInternshipsController {
 }
