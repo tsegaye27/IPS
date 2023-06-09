@@ -113,28 +113,28 @@
                   </AnchorPane>
                </children>
             </GridPane>
-            <AnchorPane fx:id="internshipDetailsPane" layoutX="398.0" layoutY="228.0" prefHeight="279.0" prefWidth="269.0" styleClass="featured-card" stylesheets="@../../../style.css" visible="false">
+            <AnchorPane fx:id="internshipDetailsPane" layoutX="302.0" layoutY="228.0" prefHeight="318.0" prefWidth="409.0" styleClass="featured-card" stylesheets="@../../../style.css" visible="false">
                <children>
-                  <Label layoutX="64.0" layoutY="20.0" text="InternshipTitle/Field">
+                  <Label layoutX="133.0" layoutY="20.0" text="InternshipTitle/Field">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="34.0" layoutY="58.0" text="companyName : " textFill="WHITE" />
+                  <Label layoutX="34.0" layoutY="58.0" text="Company Name : " textFill="WHITE" />
                   <Label layoutX="34.0" layoutY="80.0" text="Location : " textFill="WHITE" />
                   <Label layoutX="34.0" layoutY="103.0" text="Duration : " textFill="WHITE" />
                   <Label layoutX="34.0" layoutY="126.0" text="Contact : " textFill="WHITE" />
                   <Label layoutX="34.0" layoutY="149.0" text="Paid/Unpaid : " textFill="WHITE" />
                   <Label layoutX="34.0" layoutY="173.0" text="Requirements : " textFill="WHITE" />
-                  <Label layoutX="34.0" layoutY="198.0" text="Description : " textFill="WHITE" />
-                  <Label fx:id="companyNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="58.0" prefHeight="17.0" prefWidth="142.0" text="Label" />
-                  <Label fx:id="locationLabel" alignment="CENTER" layoutX="90.0" layoutY="80.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
-                  <Label fx:id="durationLabel" alignment="CENTER" layoutX="90.0" layoutY="103.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
-                  <Label fx:id="contactLabel" alignment="CENTER" layoutX="85.0" layoutY="126.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
-                  <Label fx:id="paidUnpaidLabel" alignment="CENTER" layoutX="109.0" layoutY="149.0" prefHeight="17.0" prefWidth="155.0" text="Label" />
-                  <Label fx:id="requirementsLabel" alignment="CENTER" layoutX="116.0" layoutY="173.0" prefHeight="17.0" prefWidth="151.0" text="Label" />
-                  <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="104.0" layoutY="198.0" prefHeight="17.0" prefWidth="160.0" text="Label" />
-                  <Button fx:id="applyNowBtn" layoutX="96.0" layoutY="230.0" mnemonicParsing="false" onAction="#applyNowBtnClicked" styleClass="applyBtn" stylesheets="@../../../style.css" text="Apply now" />
+                  <Label layoutX="34.0" layoutY="210.0" text="Description : " textFill="WHITE" />
+                  <Label fx:id="companyNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="58.0" prefHeight="17.0" prefWidth="255.0" text="Label" wrapText="true" />
+                  <Label fx:id="locationLabel" alignment="CENTER" layoutX="90.0" layoutY="80.0" prefHeight="17.0" prefWidth="273.0" text="Label" wrapText="true" />
+                  <Label fx:id="durationLabel" alignment="CENTER" layoutX="90.0" layoutY="103.0" prefHeight="17.0" prefWidth="273.0" text="Label" wrapText="true" />
+                  <Label fx:id="contactLabel" alignment="CENTER" layoutX="85.0" layoutY="126.0" prefHeight="17.0" prefWidth="282.0" text="Label" wrapText="true" />
+                  <Label fx:id="paidUnpaidLabel" alignment="CENTER" layoutX="109.0" layoutY="149.0" prefHeight="17.0" prefWidth="273.0" text="Label" wrapText="true" />
+                  <Label fx:id="requirementsLabel" alignment="CENTER" layoutX="116.0" layoutY="173.0" prefHeight="17.0" prefWidth="273.0" text="Label" wrapText="true" />
+                  <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="104.0" layoutY="198.0" prefHeight="45.0" prefWidth="282.0" text="Label" wrapText="true" />
+                  <Button fx:id="applyNowBtn" layoutX="165.0" layoutY="257.0" mnemonicParsing="false" onAction="#applyNowBtnClicked" styleClass="applyBtn" stylesheets="@../../../style.css" text="Apply now" />
                   <Button fx:id="returnToFeaturedBtn" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#returnToFeaturedBtnClicked" styleClass="returnBtn" stylesheets="@../../../style.css">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" styleClass="returnArrow" />
