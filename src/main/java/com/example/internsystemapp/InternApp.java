@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class InternApp extends Application {
     private static Stage primaryStage;
@@ -48,7 +49,7 @@ public class InternApp extends Application {
         primaryStage.show();
     }
 
-    public static void showInternHomePage() throws IOException{
+    public static void showInternHomePage() throws IOException, SQLException {
         Parent root = FXMLLoader.load(InternApp.class.getResource("InternHomePage.fxml"));
         Scene scene = new Scene(root, 820, 600);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
@@ -101,10 +102,13 @@ public class InternApp extends Application {
     public void start(Stage primaryStage) throws IOException{
         InternApp.primaryStage = primaryStage;
         primaryStage.setTitle("Internship App");
-        InternApp.showSearchInternships();
+
+        InternApp.showWelcomePage();
+
     }
     public static void main(String[] args) {
         launch(args);
+
     }
 }
 

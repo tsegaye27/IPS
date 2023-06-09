@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class SearchInternshipsController {
@@ -310,6 +311,7 @@ public class SearchInternshipsController {
     }
 
     @FXML
+
     void locationFilterBtnClicked(ActionEvent event){
         if(locationFilterBtn.isSelected()){
             durationFilterBtn.getStyleClass().remove("filterBtn-focused");

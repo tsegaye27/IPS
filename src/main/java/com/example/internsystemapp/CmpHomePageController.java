@@ -57,6 +57,7 @@ public class CmpHomePageController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            DBUtills.setCurrentCmpId(0);
         }
     }
 
