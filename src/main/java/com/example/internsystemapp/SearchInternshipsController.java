@@ -141,6 +141,7 @@ public class SearchInternshipsController {
                    createHBox();
         } else if(selectedValue.equals("Paid")){
                    createHBoxPaid();
+
         } else{
                 //brute force search
                    //if found
@@ -318,6 +319,9 @@ public class SearchInternshipsController {
             durationFilterBtn.getStyleClass().remove("filterBtn-focused");
             fieldsFilterBtn.getStyleClass().remove("filterBtn-focused");
             locationFilterBtn.getStyleClass().add("filterBtn-focused");
+//            paymentStatusFilterBtn.setValue(null);
+//            paymentStatusFilterBtn.getSelectionModel().clearSelection();
+//            paymentStatusFilterBtn.setPromptText("Choose");
         }else{
             locationFilterBtn.getStyleClass().remove("filterBtn-focused");
         }
@@ -327,7 +331,7 @@ public class SearchInternshipsController {
     void comboBoxFilterClicked(ActionEvent event){
         String selectedValue = paymentStatusFilterBtn.getSelectionModel().getSelectedItem();
 
-        if(!selectedValue.isEmpty()){
+        if(selectedValue!=null){
             durationFilterBtn.getStyleClass().remove("filterBtn-focused");
             durationFilterBtn.setSelected(false);
             fieldsFilterBtn.getStyleClass().remove("filterBtn-focused");
