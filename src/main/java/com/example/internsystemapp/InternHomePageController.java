@@ -157,6 +157,7 @@ public class InternHomePageController {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+                DBUtills.setCurrentInternId(0);
             }
         }
         @FXML

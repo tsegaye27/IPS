@@ -6,6 +6,28 @@ import java.io.IOException;
 import java.sql.*;
 public class DBUtills {
 
+    private static int currentInternId;
+    // Getter method
+    public static int getCurrentInternId() {
+        return currentInternId;
+    }
+
+    // Setter method
+    public static void setCurrentInternId(int id) {
+        currentInternId = id;
+    }
+    private static int currentCmpId;
+    // Getter method
+    public static int getCurrentCmpId() {
+        return currentCmpId;
+    }
+
+    // Setter method
+    public static void setCurrentCmpId(int id) {
+        currentCmpId = id;
+    }
+
+
     public static void closeConnection(Connection conn) {
         if (conn != null) {
             try {
@@ -80,7 +102,7 @@ public class DBUtills {
         ResultSet rst = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
-            psInternLogin = conn.prepareStatement("select email, pass from stud where email = ?");
+            psInternLogin = conn.prepareStatement("select id email, pass from stud where email = ?");
             psInternLogin.setString(1, email);
             rst = psInternLogin.executeQuery();
             if (!rst.isBeforeFirst()) {
@@ -92,6 +114,8 @@ public class DBUtills {
                     String userPass = rst.getString("pass");
                     if (userPass.equals(password)) {
                         InternApp.showInternHomePage();
+                        setCurrentInternId(Integer.parseInt(rst.getString(1)));
+                        System.out.println(getCurrentInternId());
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Incorrect Credentials");
@@ -153,7 +177,7 @@ public class DBUtills {
         ResultSet rst = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
-            psCmpLogin = conn.prepareStatement("select email, pass from company where email = ?");
+            psCmpLogin = conn.prepareStatement("select id, email, pass from company where email = ?");
             psCmpLogin.setString(1, email);
             rst = psCmpLogin.executeQuery();
             if (!rst.isBeforeFirst()) {
@@ -165,6 +189,8 @@ public class DBUtills {
                     String userPass = rst.getString("pass");
                     if (userPass.equals(password)) {
                         InternApp.showCmpHomePage();
+                        setCurrentCmpId(Integer.parseInt(rst.getString(1)));
+                        System.out.println(getCurrentCmpId());
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Incorrect Credentials");
