@@ -27,20 +27,19 @@ public class CmpHomePageController {
     @FXML
     private Button postInternshipsBtn;
 
+    public void initialize(){
+        homeBtn.setDisable(true);
+    }
     @FXML
-    void homeBtnClicked(ActionEvent event) {
-
+    void manageInternshipsBtnClicked(ActionEvent event) throws IOException {
+        homeBtn.setDisable(false);
+        InternApp.showManageInternships();
     }
 
-
     @FXML
-    void manageInternshipsBtnClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void postInternshipsBtnClicked(ActionEvent event) {
-
+    void postInternshipsBtnClicked(ActionEvent event) throws IOException {
+        homeBtn.setDisable(false);
+        InternApp.showPostInternships();
     }
     @FXML
     void logoutBtnClicked(ActionEvent event) throws IOException {
