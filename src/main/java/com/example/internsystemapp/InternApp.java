@@ -40,6 +40,24 @@ public class InternApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    public static void showPostInternships() throws IOException{
+        Parent root = FXMLLoader.load(InternApp.class.getResource("PostInternships.fxml"));
+        Scene scene = new Scene(root, 820,600);
+        scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
+        primaryStage.setTitle("Post Internships");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void showManageInternships() throws IOException{
+        Parent root = FXMLLoader.load(InternApp.class.getResource("ManageInternships.fxml"));
+        Scene scene = new Scene(root, 820, 600);
+        scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
+        primaryStage.setTitle("Manage Internships");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
     public static void showCmpLoginPage() throws IOException {
         Parent root = FXMLLoader.load(InternApp.class.getResource("CmpLogin.fxml"));
         Scene scene = new Scene(root, 600, 400);
