@@ -127,6 +127,7 @@ public class SearchInternshipsController {
         boolean filterByDuration = durationFilterBtn.isSelected();
         boolean filterByField = fieldsFilterBtn.isSelected();
         String selectedValue = paymentStatusFilterBtn.getSelectionModel().getSelectedItem();
+        searchResultContainer.getChildren().clear();
 
                if(filterByLocation){
                    //compare searchedText with location values in DB
@@ -364,7 +365,7 @@ public class SearchInternshipsController {
         }
     }
     @FXML
-    void homeBtnClicked(ActionEvent event) throws IOException{
+    void homeBtnClicked(ActionEvent event) throws IOException, SQLException {
         searchInternshipsBtn.setDisable(false);
         InternApp.showInternHomePage();
     }
