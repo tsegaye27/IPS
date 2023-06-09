@@ -52,6 +52,7 @@
                   <VBox fx:id="appliedInternshipsContainer" />
                </content>
             </ScrollPane>
+            <Label fx:id="noAppliedInternships" layoutX="451.0" layoutY="139.0" prefHeight="31.0" prefWidth="175.0" text="There are no applied Intenships!" textFill="RED" visible="false" />
          </children>
       </AnchorPane>
    </children>

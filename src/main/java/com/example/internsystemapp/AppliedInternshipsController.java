@@ -22,6 +22,9 @@ public class AppliedInternshipsController {
     private Button logoutBtn;
 
     @FXML
+    private Label noAppliedInternships;
+
+    @FXML
     private Button searchInternshipsBtn;
 
     @FXML
@@ -34,20 +37,25 @@ public class AppliedInternshipsController {
 
         appliedInternshipsBtn.setDisable(true);
         appliedInternshipsContainer.setSpacing(10);
+        displayAppliedInternships();
+    }
+
+    void displayAppliedInternships(){
+        //if the current user have applied to internships
         createHBox();
+        //else{
+        //scrollPane.setVisible(false);
+       // noAppliedInternships.setVisible(true);}
     }
 
     void createHBox() {
-        // Create the anchor pane
         AnchorPane anchorPane = new AnchorPane();
 
         anchorPane.getStyleClass().add("featured-card");
 
-        // Set width and height of the anchor pane
         anchorPane.setPrefWidth(400);
-        anchorPane.setPrefHeight(200);
+        anchorPane.setPrefHeight(220);
 
-        // Create labels
         Label titleLabel = new Label("Title");
         Label companyLabel = new Label("Company");
         Label locationLabel = new Label("Location");
@@ -65,22 +73,22 @@ public class AppliedInternshipsController {
             //handle the actionButton
         });
 
-        AnchorPane.setTopAnchor(titleLabel, 10.0);
-        AnchorPane.setLeftAnchor(titleLabel, 10.0);
+        AnchorPane.setTopAnchor(titleLabel, 20.0);
+        AnchorPane.setLeftAnchor(titleLabel, 50.0);
 
-        AnchorPane.setTopAnchor(companyLabel, 40.0);
-        AnchorPane.setLeftAnchor(companyLabel, 10.0);
+        AnchorPane.setTopAnchor(companyLabel, 50.0);
+        AnchorPane.setLeftAnchor(companyLabel, 50.0);
 
-        AnchorPane.setTopAnchor(locationLabel, 70.0);
-        AnchorPane.setLeftAnchor(locationLabel, 10.0);
+        AnchorPane.setTopAnchor(locationLabel, 80.0);
+        AnchorPane.setLeftAnchor(locationLabel, 50.0);
 
-        AnchorPane.setTopAnchor(durationLabel, 100.0);
-        AnchorPane.setLeftAnchor(durationLabel, 10.0);
+        AnchorPane.setTopAnchor(durationLabel, 110.0);
+        AnchorPane.setLeftAnchor(durationLabel, 50.0);
 
-        AnchorPane.setTopAnchor(statusLabel, 130.0);
-        AnchorPane.setLeftAnchor(statusLabel, 10.0);
+        AnchorPane.setTopAnchor(statusLabel, 140.0);
+        AnchorPane.setLeftAnchor(statusLabel, 50.0);
 
-        AnchorPane.setTopAnchor(actionButton, 160.0);
+        AnchorPane.setTopAnchor(actionButton, 170.0);
         AnchorPane.setLeftAnchor(actionButton, 160.0);
 
         anchorPane.getChildren().addAll(titleLabel, companyLabel, locationLabel, durationLabel, statusLabel, actionButton);
