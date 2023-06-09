@@ -20,7 +20,7 @@
                         <Font name="Roboto Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Button fx:id="homeBtn" layoutX="1.0" layoutY="232.0" mnemonicParsing="false" onAction="#homeBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Home">
+                  <Button fx:id="homeBtn" layoutX="1.0" layoutY="232.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" stylesheets="@../../../style.css" text="Home">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="2em" />
                      </graphic>
