@@ -364,7 +364,7 @@ public class SearchInternshipsController {
         }
     }
     @FXML
-    void homeBtnClicked(ActionEvent event) throws IOException{
+    void homeBtnClicked(ActionEvent event) throws IOException, SQLException {
         searchInternshipsBtn.setDisable(false);
         InternApp.showInternHomePage();
     }
