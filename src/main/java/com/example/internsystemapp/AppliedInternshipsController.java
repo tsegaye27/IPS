@@ -63,15 +63,19 @@ public class AppliedInternshipsController {
         Label statusLabel = new Label("Status");
 
         Button actionButton;
-        if (statusLabel.equals("Pending")) {
+        if (statusLabel.getText().equals("Pending")) {
             actionButton = new Button("Cancel Application");
+            actionButton.getStyleClass().add("cancelAppBtn");
+            actionButton.setOnAction(event -> {
+
+            });
         } else {
             actionButton = new Button("View Details");
-        }
+            actionButton.getStyleClass().add("applyBtn");
+            actionButton.setOnAction(event -> {
 
-        actionButton.setOnAction(event -> {
-            //handle the actionButton
-        });
+            });
+        }
 
         AnchorPane.setTopAnchor(titleLabel, 20.0);
         AnchorPane.setLeftAnchor(titleLabel, 50.0);
@@ -98,8 +102,6 @@ public class AppliedInternshipsController {
         locationLabel.getStyleClass().add("internship-details");
         durationLabel.getStyleClass().add("internship-details");
         statusLabel.getStyleClass().add("internship-details");
-        actionButton.getStyleClass().add("applyBtn");
-
         HBox hBox = new HBox(anchorPane);
         hBox.setSpacing(10);
         appliedInternshipsContainer.getChildren().add(hBox);
