@@ -13,11 +13,14 @@ import javafx.stage.Stage;
 import java.sql.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Optional;
 
 public class InternHomePageController {
 
+        DateTimeFormatter fr = DateTimeFormatter.ofPattern("yyyy");
         @FXML
         private AnchorPane applicationForm;
         @FXML
@@ -31,6 +34,14 @@ public class InternHomePageController {
         @FXML
         private TextField emailField;
 
+        @FXML
+        private TextArea statementOfInterestArea;
+
+        @FXML
+        private TextArea experienceArea;
+
+        @FXML
+        private TextField gitHubURLField;
         @FXML
         private Button submitBtn;
 
@@ -50,7 +61,7 @@ public class InternHomePageController {
         private TextField degreeField;
 
         @FXML
-        private TextField yearOfStudyField;
+        private DatePicker yearOfStudyField;
 
         @FXML
         private TextField skillsField;
@@ -254,7 +265,8 @@ public class InternHomePageController {
             String location = locationField.getText();
             String universityName = universityNameField.getText();
             String degree = degreeField.getText();
-            String yearOfStudy = yearOfStudyField.getText();
+            LocalDate year = yearOfStudyField.getValue();
+            String yearOfStudy = year.format(fr);
             String skills = skillsField.getText();
 
             if(fullName.isEmpty()||email.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||universityName.isEmpty()||degree.isEmpty()||yearOfStudy.isEmpty()||skills.isEmpty()){
