@@ -12,6 +12,8 @@ import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ArrayList;
 
@@ -48,9 +50,6 @@ public class SearchInternshipsController {
 
     @FXML
     private TextField universityNameField;
-
-    @FXML
-    private TextField yearOfStudyField;
 
     @FXML
     private ToggleButton durationFilterBtn;
@@ -103,6 +102,8 @@ public class SearchInternshipsController {
     private AnchorPane internshipDetailsPane;
 
     @FXML
+    private DatePicker yearOfStudyField;
+    @FXML
     private Label locationLabel;
 
     @FXML
@@ -113,9 +114,13 @@ public class SearchInternshipsController {
 
     @FXML
     private Button returnToFeaturedBtn;
+    @FXML
+    private Label searchInternshipTitle;
+    @FXML
+    private Label descriptionLabel;
 
 
-
+    DateTimeFormatter fr = DateTimeFormatter.ofPattern("yyyy");
     public void initialize() {
         searchInternshipsBtn.setDisable(true);
         paymentStatusFilterBtn.getItems().add("Paid");
@@ -171,7 +176,6 @@ public class SearchInternshipsController {
         anchorPane.setPrefHeight(120);
         anchorPane.getStyleClass().add("featured-card");
         SQL ="SELECT internshipposts.title,internshipposts.duration, company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.id ="+id;
-        System.out.println(SQL);
         ResultSet rst = DBUtills.searchInternships(SQL);
 
         Label internshipTitleLabel = null;
@@ -181,7 +185,7 @@ public class SearchInternshipsController {
             //fetch from DB
             internshipTitleLabel = new Label(rst.getString("title"));
             internshipLocationLabel = new Label(rst.getString("location"));
-            internshipDurationLabel = new Label("duration");
+            internshipDurationLabel = new Label(rst.getString("duration"));
         }
 
 
@@ -190,7 +194,11 @@ public class SearchInternshipsController {
 //            AnchorPane clickedAnchorPane = (AnchorPane) event.getSource();
 //            String internshipId = (String) clickedAnchorPane.getUserData();
 
-            showDetails();
+            try {
+                showDetails(id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         anchorPane.getChildren().addAll(internshipTitleLabel, internshipLocationLabel, internshipDurationLabel, readMoreLink);
@@ -218,6 +226,22 @@ public class SearchInternshipsController {
 
     void showDetails(){
         scrollPane.setVisible(false);
+        internshipDetailsPane.setVisible(true);
+    }
+    void showDetails(int id) throws SQLException {
+        scrollPane.setVisible(false);
+        SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.id ="+id;
+        System.out.println(SQL);
+        ResultSet rst = DBUtills.searchInternships(SQL);
+        while(rst.next()){
+            searchInternshipTitle.setText(rst.getString("title"));
+            companyNameLabel.setText(rst.getString("name"));
+            locationLabel.setText(rst.getString("location"));
+            durationLabel.setText(rst.getString("duration"));
+            contactLabel.setText(rst.getString("email"));
+            requirementsLabel.setText(rst.getString("requirements"));
+            descriptionLabel.setText(rst.getString("description"));
+        }
         internshipDetailsPane.setVisible(true);
     }
 
@@ -299,7 +323,8 @@ public class SearchInternshipsController {
         String location = locationField.getText();
         String universityName = universityNameField.getText();
         String degree = degreeField.getText();
-        String yearOfStudy = yearOfStudyField.getText();
+        LocalDate year = yearOfStudyField.getValue();
+        String yearOfStudy = year.format(fr);
         String skills = skillsField.getText();
 
         if(fullName.isEmpty()||email.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||universityName.isEmpty()||degree.isEmpty()||yearOfStudy.isEmpty()||skills.isEmpty()){
