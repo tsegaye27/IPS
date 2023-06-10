@@ -4,6 +4,9 @@ import javafx.scene.control.Alert;
 
 import java.io.IOException;
 import java.sql.*;
+
+import static java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE;
+
 public class DBUtills {
 
     private static int currentInternId;
@@ -209,14 +212,17 @@ public class DBUtills {
             closeConnection(conn);
         }
     }
-    public static ResultSet getFeaturedInternships(){
+    public static ResultSet getFeaturedInternships() throws SQLException {
         Connection conn = null;
-        PreparedStatement psSelectInternships = null;
+        Statement stSelectInternships = null;
+
+//                PreparedStatement psSelectInternships = null;
         ResultSet rst = null;
         try{
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
-            psSelectInternships = conn.prepareStatement("SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id order by RAND() limit 4");
-            rst = psSelectInternships.executeQuery();
+            stSelectInternships = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+//            psSelectInternships = conn.prepareStatement("SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id limit 4");
+            rst = stSelectInternships.executeQuery("SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id limit 4");
 
         }catch(SQLException ex){
             ex.printStackTrace();

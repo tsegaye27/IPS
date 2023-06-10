@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.sql.*;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 public class InternHomePageController {
@@ -66,7 +67,7 @@ public class InternHomePageController {
         private Button homeBtn;
 
         @FXML
-        private Hyperlink internshipDetailsLink;
+        public Hyperlink internshipDetailsLink;
 
         @FXML
         private Label internshipDurationLabel;
@@ -81,7 +82,12 @@ public class InternHomePageController {
 
         @FXML
         private Label requirementsLabel;
-
+        @FXML
+        private Label durationLabel;
+        @FXML
+        private Label contactLabel;
+        @FXML
+        private Label descriptionLabel;
         @FXML
         private Hyperlink internshipDetailsLink1;
 
@@ -93,6 +99,8 @@ public class InternHomePageController {
 
         @FXML
         private Label internshipDurationLabel1;
+        @FXML
+        private Label internshipTitle;
 
         @FXML
         private Label internshipDurationLabel2;
@@ -119,12 +127,17 @@ public class InternHomePageController {
         @FXML
         private GridPane gridPane;
 
+
+
         @FXML
         private AnchorPane internshipDetailsPane;
         @FXML
         private FontAwesomeIcon searchInternshipsIcon;
 
-        public void initialize(){
+    public InternHomePageController() throws SQLException {
+    }
+
+    public void initialize(){
             homeBtn.setDisable(true);
         }
         @FXML
@@ -136,9 +149,56 @@ public class InternHomePageController {
         void findYourProgramsBtnClicked(ActionEvent event) throws IOException {
             InternApp.showSearchInternships();
         }
+        void setDetails() throws SQLException {
+            internshipTitle.setText(rst.getString("title"));
+            requirementsLabel.setText(rst.getString("requirements"));
+            companyNameLabel.setText(rst.getString("name"));
+            paidUnpaidLabel.setText(rst.getString("type"));
+            locationLabel.setText(rst.getString("location"));
+            durationLabel.setText(rst.getString("duration"));
+            contactLabel.setText(rst.getString("email"));
+            descriptionLabel.setText(rst.getString("description"));
+        }
+        ResultSet rst = DBUtills.getFeaturedInternships();
 
         @FXML
-        void internshipDetailsLinkClicked(ActionEvent event) {
+        void internshipDetailsLinkClicked(ActionEvent event) throws SQLException {
+            System.out.println(event.getSource());
+            Hyperlink hyperlink = (Hyperlink) event.getSource();
+            String id = hyperlink.getId();
+            System.out.println(id);
+            System.out.println(internshipDetailsLink.getId());
+            if(Objects.equals(id, internshipDetailsLink.getId())){
+                if (rst.next()) {
+                    // Read the values of the columns in the first row
+                    setDetails();
+                    rst.previous();
+                }
+            }else if(Objects.equals(id, internshipDetailsLink1.getId())){
+                if (rst.next() && rst.next()) {
+                    setDetails();
+
+                    rst.previous();
+                    rst.previous();
+                }
+            }else if(Objects.equals(id, internshipDetailsLink2.getId())){
+                if (rst.next() && rst.next()&& rst.next()) {
+                    setDetails();
+
+                    rst.previous();
+                    rst.previous();
+                    rst.previous();
+                }
+            }else if(Objects.equals(id, internshipDetailsLink22.getId())){
+                if (rst.next() && rst.next()&& rst.next() && rst.next()) {
+                    setDetails();
+
+                    rst.previous();
+                    rst.previous();
+                    rst.previous();
+                    rst.previous();
+                }
+            }
             gridPane.setVisible(false);
             internshipDetailsPane.setVisible(true);
         }
@@ -218,27 +278,8 @@ public class InternHomePageController {
         }
 
         void loadFeaturedInternships(AnchorPane anchorPane) throws SQLException {
-
-            //Dummy data for featured internships
-            String[] titles = {"Internship 1", "Internship 2", "Internship 3", "Internship 4"};
-            String[] locations = {"Location 1", "Location 2", "Location 3", "Location 4"};
-            String[] durations = {"Duration 1", "Duration 2", "Duration 3", "Duration 4"};
-
-            for(int i=0; i < titles.length; i++){
-
-            GridPane gp = (GridPane) anchorPane.getChildren().get(4);
-            AnchorPane ap = (AnchorPane) gp.getChildren().get(i);
-            companyTitleLabel = (Label) ap.getChildren().get(0);
-            internshipDurationLabel = (Label) ap.getChildren().get(1);
-            internshipLocationLabel = (Label) ap.getChildren().get(2);
-
-            companyTitleLabel.setText(titles[i]);
-            internshipLocationLabel.setText(locations[i]);
-            internshipDurationLabel.setText(durations[i]);
-            }
-            ResultSet rst = DBUtills.getFeaturedInternships();
             int i = 0;
-                while (rst.next()) {
+            while (rst.next()) {
                     GridPane gp = (GridPane) anchorPane.getChildren().get(4);
                     AnchorPane ap = (AnchorPane) gp.getChildren().get(i);
                     companyTitleLabel = (Label) ap.getChildren().get(0);
