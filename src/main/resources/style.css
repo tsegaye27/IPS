@@ -20,6 +20,12 @@
 -fx-font-weight: bold;
 }
 
+.grid-details{
+-fx-padding: 10px;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+}
+
 .cancelAppBtn:hover{
 -fx-border-radius: 15px;
 -fx-border-color: white;
