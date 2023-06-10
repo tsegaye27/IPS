@@ -8,9 +8,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.w3c.dom.Text;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.ArrayList;
 
 public class SearchInternshipsController {
     @FXML
@@ -113,15 +116,15 @@ public class SearchInternshipsController {
 
 
 
-    public void initialize(){
+    public void initialize() {
         searchInternshipsBtn.setDisable(true);
         paymentStatusFilterBtn.getItems().add("Paid");
         paymentStatusFilterBtn.getItems().add("Unpaid");
         searchResultContainer.setSpacing(10);
     }
-
+    String SQL;
     @FXML
-    void searchBtnClicked(ActionEvent event){
+    void searchBtnClicked(ActionEvent event) throws SQLException {
         String searchedText = searchField.getText();
         boolean filterByLocation = locationFilterBtn.isSelected();
         boolean filterByDuration = durationFilterBtn.isSelected();
@@ -129,29 +132,37 @@ public class SearchInternshipsController {
         String selectedValue = paymentStatusFilterBtn.getSelectionModel().getSelectedItem();
         searchResultContainer.getChildren().clear();
 
-               if(filterByLocation){
+        if(filterByLocation){
                    //compare searchedText with location values in DB
-                   //if found
-                   createHBox();
+            SQL="SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where company.location like '%"+searchedText+"%'";
         } else if (filterByDuration) {
 
-                   createHBox();
+            SQL="SELECT id FROM internshipposts where duration like '%"+searchedText+"%'";
         } else if (filterByField) {
 
-                   createHBox();
-        } else if(selectedValue.equals("Paid")){
-                   createHBoxPaid();
+            SQL="SELECT id,requirements FROM internshipposts where requirements like '%"+searchedText+"%'";
+//            SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.requirements like '%"+searchedText+"%'";
 
-        } else{
-                //brute force search
-                   //if found
-//                   createHBox();
-                   //if not found
-                   noResultFound();
+        }
+//        else if(selectedValue.equals("Paid")){
+//                   createHBoxPaid();
+//
+//        }
+        else{
+            SQL="SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.title like'%"+searchedText+"%' or company.name like '%"+searchedText+"%' or internshipposts.requirements like'%"+searchedText+"%' or internshipposts.duration like '%"+searchedText+"%' or company.location like '%"+searchedText+"%'";
+        }
+
+        ResultSet rst = DBUtills.searchInternships(SQL);
+        if(rst.next()){
+            rst.previous();
+            while(rst.next()){
+                createHBox(rst.getInt("id"));
+            }
+        }else {
+            noResultFound();
         }
     }
-
-    void createHBox(){
+    void createHBox( int id) throws SQLException {
         HBox hBox = new HBox();
         hBox.setSpacing(10);
 
@@ -159,10 +170,20 @@ public class SearchInternshipsController {
         anchorPane.setPrefWidth(540);
         anchorPane.setPrefHeight(120);
         anchorPane.getStyleClass().add("featured-card");
+        SQL ="SELECT internshipposts.title,internshipposts.duration, company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.id ="+id;
+        System.out.println(SQL);
+        ResultSet rst = DBUtills.searchInternships(SQL);
 
-        Label internshipTitleLabel = new Label("Internship Title");//fetch from DB
-        Label locationLabel = new Label("Location");
-        Label durationLabel = new Label("Duration");
+        Label internshipTitleLabel = null;
+        Label internshipLocationLabel = null;
+        Label internshipDurationLabel = null;
+        while(rst.next()){
+            //fetch from DB
+            internshipTitleLabel = new Label(rst.getString("title"));
+            internshipLocationLabel = new Label(rst.getString("location"));
+            internshipDurationLabel = new Label("duration");
+        }
+
 
         Hyperlink readMoreLink = new Hyperlink("Read More");
         readMoreLink.setOnAction(event -> {
@@ -172,21 +193,21 @@ public class SearchInternshipsController {
             showDetails();
         });
 
-        anchorPane.getChildren().addAll(internshipTitleLabel, locationLabel, durationLabel, readMoreLink);
+        anchorPane.getChildren().addAll(internshipTitleLabel, internshipLocationLabel, internshipDurationLabel, readMoreLink);
 
         AnchorPane.setTopAnchor(internshipTitleLabel, 10.0);
-        AnchorPane.setTopAnchor(locationLabel, 40.0);
-        AnchorPane.setTopAnchor(durationLabel, 60.0);
+        AnchorPane.setTopAnchor(internshipLocationLabel, 40.0);
+        AnchorPane.setTopAnchor(internshipDurationLabel, 60.0);
         AnchorPane.setTopAnchor(readMoreLink,80.0);
 
         AnchorPane.setLeftAnchor(internshipTitleLabel, 230.0);
-        AnchorPane.setLeftAnchor(locationLabel, 250.0);
-        AnchorPane.setLeftAnchor(durationLabel, 250.0);
+        AnchorPane.setLeftAnchor(internshipLocationLabel, 250.0);
+        AnchorPane.setLeftAnchor(internshipDurationLabel, 250.0);
         AnchorPane.setLeftAnchor(readMoreLink, 240.0);
 
         internshipTitleLabel.getStyleClass().add("internship-title");
-        locationLabel.getStyleClass().add("internship-details");
-        durationLabel.getStyleClass().add("internship-details");
+        internshipLocationLabel.getStyleClass().add("internship-details");
+        internshipDurationLabel.getStyleClass().add("internship-details");
         readMoreLink.getStyleClass().add("login-link");
 
 
