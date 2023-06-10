@@ -212,7 +212,7 @@ public class DBUtills {
             closeConnection(conn);
         }
     }
-    public static ResultSet getFeaturedInternships() throws SQLException {
+    public static ResultSet getFeaturedInternships() {
         Connection conn = null;
         Statement stSelectInternships = null;
 
@@ -225,6 +225,20 @@ public class DBUtills {
             rst = stSelectInternships.executeQuery("SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id limit 4");
 
         }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return rst;
+    }
+    public static ResultSet searchInternships(String SQL){
+        Connection conn = null;
+        Statement stSearchInternships = null;
+        ResultSet rst = null;
+
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            stSearchInternships = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rst = stSearchInternships.executeQuery(SQL);
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return rst;

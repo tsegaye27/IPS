@@ -8,7 +8,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.w3c.dom.Text;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -119,9 +121,10 @@ public class SearchInternshipsController {
         paymentStatusFilterBtn.getItems().add("Unpaid");
         searchResultContainer.setSpacing(10);
     }
-
+    ResultSet rst = null;
+    String SQL;
     @FXML
-    void searchBtnClicked(ActionEvent event){
+    void searchBtnClicked(ActionEvent event) throws SQLException {
         String searchedText = searchField.getText();
         boolean filterByLocation = locationFilterBtn.isSelected();
         boolean filterByDuration = durationFilterBtn.isSelected();
@@ -129,25 +132,31 @@ public class SearchInternshipsController {
         String selectedValue = paymentStatusFilterBtn.getSelectionModel().getSelectedItem();
         searchResultContainer.getChildren().clear();
 
-               if(filterByLocation){
+        if(filterByLocation){
                    //compare searchedText with location values in DB
-                   //if found
-                   createHBox();
+            SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where company.location like '%"+searchedText+"%'";
         } else if (filterByDuration) {
 
-                   createHBox();
+            SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.duration like '%"+searchedText+"%'";
         } else if (filterByField) {
 
-                   createHBox();
-        } else if(selectedValue.equals("Paid")){
-                   createHBoxPaid();
-
-        } else{
-                //brute force search
-                   //if found
-//                   createHBox();
-                   //if not found
-                   noResultFound();
+            SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.requirements like '%"+searchedText+"%'";
+        }
+//        else if(selectedValue.equals("Paid")){
+//                   createHBoxPaid();
+//
+//        }
+        else{
+            SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.title like'%"+searchedText+"%' or company.name like '%"+searchedText+"%' or internshipposts.requirements like'%"+searchedText+"%' or internshipposts.duration like '%"+searchedText+"%' or company.location like '%"+searchedText+"%'";
+        }
+        rst = DBUtills.searchInternships(SQL);
+        if(rst.next()){
+            rst.previous();
+            while(rst.next()){
+                createHBox();
+            }
+        }else {
+            noResultFound();
         }
     }
 
