@@ -97,7 +97,7 @@
                   <Label fx:id="paidUnpaidLabel" alignment="CENTER" layoutX="118.0" layoutY="160.0" prefHeight="17.0" prefWidth="155.0" text="Label" />
                   <Label fx:id="requirementsLabel" alignment="CENTER" layoutX="121.0" layoutY="184.0" prefHeight="17.0" prefWidth="151.0" text="Label" />
                   <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="116.0" layoutY="206.0" prefHeight="46.0" prefWidth="261.0" text="Label" wrapText="true" />
-                  <Button fx:id="editPostBtn" layoutX="95.0" layoutY="260.0" mnemonicParsing="false"  styleClass="applyBtn" stylesheets="@../../../style.css" text="Edit Post" />
+                  <Button fx:id="editPostBtn" layoutX="95.0" layoutY="260.0" mnemonicParsing="false" styleClass="applyBtn" stylesheets="@../../../style.css" text="Edit Post" />
                   <Button fx:id="returnToPostedBtn" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#returnToPostedBtnClicked" styleClass="returnBtn" stylesheets="@../../../style.css">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" styleClass="returnArrow" />
