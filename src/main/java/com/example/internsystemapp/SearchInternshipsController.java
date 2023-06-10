@@ -113,7 +113,10 @@ public class SearchInternshipsController {
 
     @FXML
     private Button returnToFeaturedBtn;
-
+    @FXML
+    private Label searchInternshipTitle;
+    @FXML
+    private Label descriptionLabel;
 
 
     public void initialize() {
@@ -171,7 +174,6 @@ public class SearchInternshipsController {
         anchorPane.setPrefHeight(120);
         anchorPane.getStyleClass().add("featured-card");
         SQL ="SELECT internshipposts.title,internshipposts.duration, company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.id ="+id;
-        System.out.println(SQL);
         ResultSet rst = DBUtills.searchInternships(SQL);
 
         Label internshipTitleLabel = null;
@@ -181,7 +183,7 @@ public class SearchInternshipsController {
             //fetch from DB
             internshipTitleLabel = new Label(rst.getString("title"));
             internshipLocationLabel = new Label(rst.getString("location"));
-            internshipDurationLabel = new Label("duration");
+            internshipDurationLabel = new Label(rst.getString("duration"));
         }
 
 
@@ -190,7 +192,11 @@ public class SearchInternshipsController {
 //            AnchorPane clickedAnchorPane = (AnchorPane) event.getSource();
 //            String internshipId = (String) clickedAnchorPane.getUserData();
 
-            showDetails();
+            try {
+                showDetails(id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         anchorPane.getChildren().addAll(internshipTitleLabel, internshipLocationLabel, internshipDurationLabel, readMoreLink);
@@ -218,6 +224,22 @@ public class SearchInternshipsController {
 
     void showDetails(){
         scrollPane.setVisible(false);
+        internshipDetailsPane.setVisible(true);
+    }
+    void showDetails(int id) throws SQLException {
+        scrollPane.setVisible(false);
+        SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.id ="+id;
+        System.out.println(SQL);
+        ResultSet rst = DBUtills.searchInternships(SQL);
+        while(rst.next()){
+            searchInternshipTitle.setText(rst.getString("title"));
+            companyNameLabel.setText(rst.getString("name"));
+            locationLabel.setText(rst.getString("location"));
+            durationLabel.setText(rst.getString("duration"));
+            contactLabel.setText(rst.getString("email"));
+            requirementsLabel.setText(rst.getString("requirements"));
+            descriptionLabel.setText(rst.getString("description"));
+        }
         internshipDetailsPane.setVisible(true);
     }
 
