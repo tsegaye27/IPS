@@ -243,6 +243,7 @@ public class SearchInternshipsController {
             descriptionLabel.setText(rst.getString("description"));
         }
         internshipDetailsPane.setVisible(true);
+
     }
 
     void createHBoxPaid(){
@@ -302,8 +303,16 @@ public class SearchInternshipsController {
     }
 
     @FXML
-    void applyNowBtnClicked(ActionEvent event){
+    void applyNowBtnClicked(ActionEvent event) throws SQLException {
         internshipDetailsPane.setVisible(false);
+
+
+        SQL = "select fullName, email from stud where id ="+DBUtills.getCurrentInternId();
+        ResultSet rst = DBUtills.getInternData(SQL);
+        while(rst.next()){
+            fullNameField.setText(rst.getString("fullName"));
+            emailField.setText(rst.getString("email"));
+        }
         applicationForm.setVisible(true);
     }
 

@@ -243,5 +243,20 @@ public class DBUtills {
         }
         return rst;
     }
+    public static ResultSet getInternData(String SQL){
+        Connection conn = null;
+        Statement stGetData = null;
+        ResultSet rst = null;
+
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            stGetData = conn.createStatement();
+            rst = stGetData.executeQuery(SQL);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return rst;
+
+    }
 
 }
