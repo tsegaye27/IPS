@@ -38,6 +38,10 @@ public class SearchInternshipsController {
 
     @FXML
     private TextField locationField;
+    @FXML
+    private TextArea statementOfInterestArea;
+    @FXML
+    private TextArea experienceArea;
 
     @FXML
     private TextField phoneNumberField;
@@ -50,6 +54,8 @@ public class SearchInternshipsController {
 
     @FXML
     private TextField universityNameField;
+    @FXML
+    private TextField gitHubURLField;
 
     @FXML
     private ToggleButton durationFilterBtn;
@@ -119,6 +125,15 @@ public class SearchInternshipsController {
     @FXML
     private Label descriptionLabel;
 
+    private int currCompId;
+
+    public int getCurrCompId() {
+        return currCompId;
+    }
+
+    public void setCurrCompId(int currCompId) {
+        this.currCompId = currCompId;
+    }
 
     public void initialize() {
         searchInternshipsBtn.setDisable(true);
@@ -239,7 +254,7 @@ public class SearchInternshipsController {
     }
     void showDetails(int id) throws SQLException {
         scrollPane.setVisible(false);
-        SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.id ="+id;
+        SQL="SELECT internshipposts.id,internshipposts.company_id,internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.id ="+id;
         System.out.println(SQL);
         ResultSet rst = DBUtills.searchInternships(SQL);
         while(rst.next()){
@@ -250,8 +265,12 @@ public class SearchInternshipsController {
             contactLabel.setText(rst.getString("email"));
             requirementsLabel.setText(rst.getString("requirements"));
             descriptionLabel.setText(rst.getString("description"));
+            setCurrCompId(rst.getInt("company_id"));
+            System.out.println(getCurrCompId());
         }
         internshipDetailsPane.setVisible(true);
+
+
     }
 
     void createHBoxPaid(){
@@ -311,15 +330,30 @@ public class SearchInternshipsController {
     }
 
     @FXML
-    void applyNowBtnClicked(ActionEvent event){
+    void applyNowBtnClicked(ActionEvent event) throws SQLException {
         internshipDetailsPane.setVisible(false);
+
+
+        SQL = "select fullName, email, dept from stud where id ="+DBUtills.getCurrentInternId();
+        ResultSet rst = DBUtills.getInternData(SQL);
+        while(rst.next()){
+            fullNameField.setText(rst.getString("fullName"));
+            emailField.setText(rst.getString("email"));
+//            degreeField.setText(rst.getString("dept"));
+        }
+
         applicationForm.setVisible(true);
     }
 
     @FXML
     void submitBtnClicked(ActionEvent event){
         if(validateInputs()){
-            //save into database
+            DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrCompId(), 3, universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Your Application Has Been Sent");
+            alert.show();
         }else{
             showError("Please fill every field");
         }
@@ -328,14 +362,17 @@ public class SearchInternshipsController {
     private boolean validateInputs(){
         String fullName = fullNameField.getText();
         String email = emailField.getText();
-        String phoneNumber = phoneNumberField.getText();
-        String location = locationField.getText();
         String universityName = universityNameField.getText();
+
         String degree = degreeField.getText();
         String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
-        String skills = skillsField.getText();
 
-        if(fullName.isEmpty()||email.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||universityName.isEmpty()||degree.isEmpty()||yearOfStudy.isEmpty()||skills.isEmpty()){
+        String skills = skillsField.getText();
+        String gitLink = gitHubURLField.getText();
+        String interest = statementOfInterestArea.getText();
+        String exp = experienceArea.getText();
+
+        if(fullName.trim().isEmpty()||interest.trim().isEmpty()||exp.trim().isEmpty()||email.trim().isEmpty()||gitLink.trim().isEmpty()||universityName.isEmpty()||yearOfStudy.isEmpty()||skills.isEmpty()){
             return false;
         }
         return true;

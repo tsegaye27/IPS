@@ -243,5 +243,60 @@ public class DBUtills {
         }
         return rst;
     }
+    public static ResultSet getInternData(String SQL){
+        Connection conn = null;
+        Statement stGetData = null;
+        ResultSet rst = null;
+
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            stGetData = conn.createStatement();
+            rst = stGetData.executeQuery(SQL);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return rst;
+
+    }
+    public static void addApplication(ActionEvent e, int internId, int cmpId, int yearOfStudy, String university, String skill, String gitUrl, String interests, String experience) {
+        Connection conn = null;
+        PreparedStatement psCheckApp = null;
+        PreparedStatement psAddApp = null;
+        ResultSet rst = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psCheckApp = conn.prepareStatement("select * from application where internId = ? and companyID = ?");
+            psCheckApp.setInt(1, internId);
+            psCheckApp.setInt(2, cmpId);
+            rst = psCheckApp.executeQuery();
+            if (rst.isBeforeFirst()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Application Already Exists. please wait for the results");
+                alert.show();
+            } else {
+                psAddApp = conn.prepareStatement("insert into application(internId, companyId, yearOfStudy, universityName, skills, gitURL, interests, experience) values (?, ?, ?, ?, ?, ?, ?, ?)");
+//                System.out.println(name + " " + email + " " + password + " " + phoneNumber + " " + location);
+                psAddApp.setInt(1, internId);
+                psAddApp.setInt(2, cmpId);
+                psAddApp.setInt(3, yearOfStudy);
+                psAddApp.setString(4, university);
+                psAddApp.setString(5, skill);
+                psAddApp.setString(6, gitUrl);
+                psAddApp.setString(7, interests);
+                psAddApp.setString(8, experience);
+
+                psAddApp.executeUpdate();
+                System.out.println("db updated, application Added");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            closeResultSet(rst);
+            closePreparedStatement(psCheckApp);
+            closePreparedStatement(psAddApp);
+            closeConnection(conn);
+
+        }
+    }
 
 }
