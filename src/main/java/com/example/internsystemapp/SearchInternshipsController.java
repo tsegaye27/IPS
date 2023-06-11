@@ -108,7 +108,7 @@ public class SearchInternshipsController {
     private AnchorPane internshipDetailsPane;
 
     @FXML
-    private DatePicker yearOfStudyField;
+    private ComboBox yearOfStudyBox;
     @FXML
     private Label locationLabel;
 
@@ -135,12 +135,16 @@ public class SearchInternshipsController {
         this.currCompId = currCompId;
     }
 
-    DateTimeFormatter fr = DateTimeFormatter.ofPattern("yyyy");
     public void initialize() {
         searchInternshipsBtn.setDisable(true);
         paymentStatusFilterBtn.getItems().add("Paid");
         paymentStatusFilterBtn.getItems().add("Unpaid");
         searchResultContainer.setSpacing(10);
+        yearOfStudyBox.getItems().add(1);
+        yearOfStudyBox.getItems().add(2);
+        yearOfStudyBox.getItems().add(3);
+        yearOfStudyBox.getItems().add(4);
+        yearOfStudyBox.getItems().add(5);
     }
     String SQL;
     @FXML
@@ -152,34 +156,39 @@ public class SearchInternshipsController {
         String selectedValue = paymentStatusFilterBtn.getSelectionModel().getSelectedItem();
         searchResultContainer.getChildren().clear();
 
-        if(filterByLocation){
-                   //compare searchedText with location values in DB
-            SQL="SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where company.location like '%"+searchedText+"%'";
-        } else if (filterByDuration) {
+        if (searchedText != "") {
 
-            SQL="SELECT id FROM internshipposts where duration like '%"+searchedText+"%'";
-        } else if (filterByField) {
+            if (filterByLocation) {
+                //compare searchedText with location values in DB
+                SQL = "SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where company.location like '%" + searchedText + "%'";
+            } else if (filterByDuration) {
 
-            SQL="SELECT id,requirements FROM internshipposts where requirements like '%"+searchedText+"%'";
+                SQL = "SELECT id FROM internshipposts where duration like '%" + searchedText + "%'";
+            } else if (filterByField) {
+
+                SQL = "SELECT id,requirements FROM internshipposts where requirements like '%" + searchedText + "%'";
 //            SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.requirements like '%"+searchedText+"%'";
 
-        }
+            }
 //        else if(selectedValue.equals("Paid")){
 //                   createHBoxPaid();
 //
 //        }
-        else{
-            SQL="SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.title like'%"+searchedText+"%' or company.name like '%"+searchedText+"%' or internshipposts.requirements like'%"+searchedText+"%' or internshipposts.duration like '%"+searchedText+"%' or company.location like '%"+searchedText+"%'";
-        }
-
-        ResultSet rst = DBUtills.searchInternships(SQL);
-        if(rst.next()){
-            rst.previous();
-            while(rst.next()){
-                createHBox(rst.getInt("id"));
+            else {
+                SQL = "SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.title like'%" + searchedText + "%' or company.name like '%" + searchedText + "%' or internshipposts.requirements like'%" + searchedText + "%' or internshipposts.duration like '%" + searchedText + "%' or company.location like '%" + searchedText + "%'";
             }
-        }else {
-            noResultFound();
+
+            ResultSet rst = DBUtills.searchInternships(SQL);
+            if (rst.next()) {
+                rst.previous();
+                while (rst.next()) {
+                    createHBox(rst.getInt("id"));
+                }
+            } else {
+                noResultFound();
+            }
+        }else{
+            showError("No keyword inserted");
         }
     }
     void createHBox( int id) throws SQLException {
@@ -354,8 +363,10 @@ public class SearchInternshipsController {
         String fullName = fullNameField.getText();
         String email = emailField.getText();
         String universityName = universityNameField.getText();
-        LocalDate year = yearOfStudyField.getValue();
-        String yearOfStudy = year.format(fr);
+
+        String degree = degreeField.getText();
+        String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
+
         String skills = skillsField.getText();
         String gitLink = gitHubURLField.getText();
         String interest = statementOfInterestArea.getText();
