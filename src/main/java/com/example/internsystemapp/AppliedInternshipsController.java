@@ -122,7 +122,7 @@ public class AppliedInternshipsController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK){
-            InternApp.showInternLoginPage();
+            InternApp.showWelcomePage();
         }
     }
 
