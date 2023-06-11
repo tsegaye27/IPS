@@ -3,10 +3,10 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.AppliedInternshipsController">
@@ -47,12 +47,15 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="scrollPane" layoutX="243.0" layoutY="115.0" prefHeight="470.0" prefWidth="550.0">
-               <content>
-                  <VBox fx:id="appliedInternshipsContainer" />
-               </content>
-            </ScrollPane>
-            <Label fx:id="noAppliedInternships" layoutX="451.0" layoutY="139.0" prefHeight="31.0" prefWidth="175.0" text="There are no applied Intenships!!" textFill="RED" visible="false" />
+            <TableView layoutX="224.0" layoutY="108.0" prefHeight="200.0" prefWidth="590.0">
+              <columns>
+                <TableColumn fx:id="titleColumn" prefWidth="182.00001525878906" text="Title" />
+                <TableColumn fx:id="companyColumn" prefWidth="147.99996948242188" text="Company" />
+                  <TableColumn fx:id="locationColumn" prefWidth="94.0" text="Location" />
+                  <TableColumn fx:id="durationColumn" prefWidth="81.33331298828125" text="Duration" />
+                  <TableColumn fx:id="statusColumn" prefWidth="84.6666259765625" text="Status" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>
