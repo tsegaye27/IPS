@@ -258,26 +258,26 @@ public class DBUtills {
         return rst;
 
     }
-    public static void addApplication(ActionEvent e, int internId, int cmpId, int yearOfStudy, String university, String skill, String gitUrl, String interests, String experience) {
+    public static void addApplication(ActionEvent e, int internId, int internshipId, int yearOfStudy, String university, String skill, String gitUrl, String interests, String experience) {
         Connection conn = null;
         PreparedStatement psCheckApp = null;
         PreparedStatement psAddApp = null;
         ResultSet rst = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
-            psCheckApp = conn.prepareStatement("select * from application where internId = ? and companyID = ?");
+            psCheckApp = conn.prepareStatement("select * from application where internId = ? and internshipID = ?");
             psCheckApp.setInt(1, internId);
-            psCheckApp.setInt(2, cmpId);
+            psCheckApp.setInt(2, internshipId);
             rst = psCheckApp.executeQuery();
             if (rst.isBeforeFirst()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Application Already Exists. please wait for the results");
                 alert.show();
             } else {
-                psAddApp = conn.prepareStatement("insert into application(internId, companyId, yearOfStudy, universityName, skills, gitURL, interests, experience) values (?, ?, ?, ?, ?, ?, ?, ?)");
+                psAddApp = conn.prepareStatement("insert into application(internId, internshipId, yearOfStudy, universityName, skills, gitURL, interests, experience) values (?, ?, ?, ?, ?, ?, ?, ?)");
 //                System.out.println(name + " " + email + " " + password + " " + phoneNumber + " " + location);
                 psAddApp.setInt(1, internId);
-                psAddApp.setInt(2, cmpId);
+                psAddApp.setInt(2, internshipId);
                 psAddApp.setInt(3, yearOfStudy);
                 psAddApp.setString(4, university);
                 psAddApp.setString(5, skill);
@@ -286,7 +286,11 @@ public class DBUtills {
                 psAddApp.setString(8, experience);
 
                 psAddApp.executeUpdate();
-                System.out.println("db updated, application Added");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Your Application Has Been Sent");
+                alert.show();
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
