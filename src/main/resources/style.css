@@ -16,6 +16,10 @@
 -fx-alignment: center;
 }
 
+.scrollPanes{
+-fx-background-radius: 12px;
+-fx-border-radius: 12px;
+}
 .column-header{
 -fx-background-color: #93ea76;
 -fx-text-fill: white;

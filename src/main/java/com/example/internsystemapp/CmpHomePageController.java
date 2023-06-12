@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -85,6 +82,8 @@ public class CmpHomePageController {
     private Label acceptedLabel;
 
     @FXML
+    private Label noPostLabel;
+    @FXML
     private Label pendingLabel;
 
     @FXML
@@ -95,6 +94,9 @@ public class CmpHomePageController {
     @FXML
     private VBox postedInternshipsContainer;
 
+    @FXML
+    private ScrollPane postsPane;
+
     public void initialize(){
         homeBtn.setDisable(true);
         postedInternshipsContainer.setSpacing(10);
@@ -104,6 +106,13 @@ public class CmpHomePageController {
     void displayPostedInternships(){
         //if the company have posted an internship
         createHBox();
+        //else there are no posted internships
+//        noPost();
+    }
+
+    void noPost(){
+        postsPane.setVisible(false);
+        noPostLabel.setVisible(true);
     }
 
     void createHBox(){

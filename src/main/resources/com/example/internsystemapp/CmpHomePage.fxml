@@ -66,7 +66,7 @@
                   <Label fx:id="rejectedLabel" layoutX="353.0" layoutY="82.0" text="Label" />
                </children>
             </AnchorPane>
-            <ScrollPane layoutX="330.0" layoutY="276.0" prefHeight="286.0" prefWidth="387.0" stylesheets="@../../../style.css">
+            <ScrollPane fx:id="postsPane" layoutX="292.0" layoutY="276.0" prefHeight="313.0" prefWidth="453.0" styleClass="scrollPanes" stylesheets="@../../../style.css">
                <content>
                   <VBox fx:id="postedInternshipsContainer" stylesheets="@../../../style.css" />
                </content>
@@ -134,6 +134,11 @@
                   </Button>
                </children>
             </AnchorPane>
+            <Label fx:id="noPostLabel" layoutX="395.0" layoutY="309.0" text="No posted internships" textFill="#f20000" visible="false">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
