@@ -9,6 +9,18 @@
 -fx-border-radius: 15px;
 }
 
+.table-view-columns{
+-fx-background-color: #f9e9d6;
+-fx-background-radius: 10px;
+-fx-border-radius: 10px;
+-fx-alignment: center;
+}
+
+.column-header{
+-fx-background-color: #93ea76;
+-fx-text-fill: white;
+}
+
 .signUpBtn{
 -fx-background-color: #332FEC;
 -fx-background-radius: 20px;
