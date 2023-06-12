@@ -7,6 +7,15 @@ public class AppliedInternshipsLists {
     private String duration;
     private String location;
     private String status;
+
+    public AppliedInternshipsLists(String title, String companyName, String location, String duration, String status) {
+        this.title = title;
+        this.companyName = companyName;
+        this.location = location;
+        this.duration = duration;
+        this.status = status;
+    }
+
     public String getTitle() {
         return title;
     }

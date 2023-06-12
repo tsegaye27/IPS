@@ -1,8 +1,12 @@
 package com.example.internsystemapp;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -21,22 +25,43 @@ public class AppliedInternshipsController {
     private Button searchInternshipsBtn;
 
     @FXML
-    private TableColumn titleColumn;
+    private TableColumn<AppliedInternshipsLists,String> titleColumn;
 
     @FXML
-    private TableColumn companyColumn;
+    private TableColumn<AppliedInternshipsLists,String> companyColumn;
 
     @FXML
-    private TableColumn locationColumn;
+    private TableColumn<AppliedInternshipsLists,String> locationColumn;
 
     @FXML
-    private TableColumn durationColumn;
+    private TableColumn<AppliedInternshipsLists,String> durationColumn;
 
     @FXML
-    private TableColumn statusColumn;
+    private TableColumn<AppliedInternshipsLists,String> statusColumn;
+
+    @FXML
+    private TableView<AppliedInternshipsLists> tableView;
     public void initialize(){
-
+        tableViewInfo();
         appliedInternshipsBtn.setDisable(true);
+    }
+
+    void tableViewInfo(){
+        ObservableList<AppliedInternshipsLists> internships = FXCollections.observableArrayList(
+                //adding dummy data to the list
+                new AppliedInternshipsLists("Title 1", "Company 1", "Location 1", "Duration 1", "Status 1"),
+                new AppliedInternshipsLists("Title 2", "Company 2", "Location 2", "Duration 2", "Status 2")
+        );
+
+        //binding the table view to the observable list
+        tableView.setItems(internships);
+
+        //setting the values of the table columns
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        companyColumn.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+        locationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
+        durationColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
 //    void createHBox() {

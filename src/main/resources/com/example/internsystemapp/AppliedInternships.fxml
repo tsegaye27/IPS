@@ -47,7 +47,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TableView layoutX="224.0" layoutY="108.0" prefHeight="200.0" prefWidth="590.0" stylesheets="@../../../style.css">
+            <TableView fx:id="tableView" layoutX="224.0" layoutY="108.0" prefHeight="200.0" prefWidth="590.0" stylesheets="@../../../style.css">
               <columns>
                 <TableColumn fx:id="titleColumn" prefWidth="176.6667022705078" text="Title" />
                 <TableColumn fx:id="companyColumn" prefWidth="153.99996948242188" text="Company" />
