@@ -85,7 +85,7 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="postDetailsPane" layoutX="269.0" layoutY="82.0" prefHeight="496.0" prefWidth="503.0" styleClass="featured-card" stylesheets="@../../../style.css">
+            <AnchorPane fx:id="postDetailsPane" layoutX="269.0" layoutY="82.0" prefHeight="496.0" prefWidth="503.0" styleClass="featured-card" stylesheets="@../../../style.css" visible="false">
                <children>
                   <Label fx:id="searchInternshipTitle" layoutX="177.0" layoutY="25.0" text="InternshipTitle/Field">
                      <font>
@@ -171,6 +171,122 @@
                   </GridPane>
                   <Button fx:id="deleteBtn" layoutX="278.0" layoutY="453.0" mnemonicParsing="false" styleClass="cancelBtn" stylesheets="@../../../style.css" text="Delete" />
                   <Button fx:id="editPostBtn" layoutX="128.0" layoutY="454.0" mnemonicParsing="false" styleClass="applyBtn" stylesheets="@../../../style.css" text="Edit Post" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="applicationRequest" layoutX="256.0" layoutY="27.0" prefHeight="564.0" prefWidth="526.0" styleClass="featured-card" stylesheets="@../../../style.css" visible="false">
+               <children>
+                  <GridPane layoutX="58.0" layoutY="76.0" minWidth="200.0" prefHeight="390.0" prefWidth="409.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.3333740234375" minWidth="10.0" prefWidth="132.00002034505206" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="277.9999796549479" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="85.33331298828125" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="88.66668701171875" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label styleClass="login-link" text="Full Name : " />
+                        <Label styleClass="login-link" text="Email : " GridPane.rowIndex="1" />
+                        <Label styleClass="login-link" text="University Name : " GridPane.rowIndex="2" />
+                        <Label styleClass="login-link" text="Degree/Program : " GridPane.rowIndex="3" />
+                        <Label styleClass="login-link" text="Year of study : " GridPane.rowIndex="4" />
+                        <Label styleClass="login-link" text="Skills : " GridPane.rowIndex="5" />
+                        <Label styleClass="login-link" text="Experience : " GridPane.rowIndex="8" />
+                        <Label styleClass="login-link" text="GitHub URL : " GridPane.rowIndex="6" />
+                        <Label styleClass="login-link" text="Statement of Interest : " GridPane.rowIndex="7" />
+                        <Label fx:id="fullNameLabel" text="Label" GridPane.columnIndex="1">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="EmailLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="universityNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="degreeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="yearOfStudyLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="skillsLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="gitHubURLLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="statementOfInteresetLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="experienceLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Button fx:id="acceptBtn" layoutX="147.0" layoutY="514.0" mnemonicParsing="false" onAction="#acceptBtnClicked" styleClass="submitBtn" text="Accept" />
+                  <Button fx:id="rejectBtn" layoutX="320.0" layoutY="514.0" mnemonicParsing="false" onAction="#rejectBtnClicked" styleClass="cancelBtn" text="Reject" />
+                  <Label layoutX="177.0" layoutY="20.0" text="Application Request">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="returnToPostedBtn1" layoutX="26.0" layoutY="22.0" mnemonicParsing="false" onAction="#returnToPostedBtnClicked" styleClass="returnBtn" stylesheets="@../../../style.css">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" styleClass="returnArrow" />
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

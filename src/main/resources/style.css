@@ -16,6 +16,10 @@
 -fx-alignment: center;
 }
 
+.nextBtn{
+
+}
+
 .scrollPanes{
 -fx-background-radius: 12px;
 -fx-border-radius: 12px;

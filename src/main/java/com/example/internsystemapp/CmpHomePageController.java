@@ -135,7 +135,7 @@ public class CmpHomePageController {
                 showPostEditor();
             });
 
-            Button viewDetails = new Button("View Details");
+            Button viewDetails = new Button("View Applicants");
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
                 showPostEditor();
