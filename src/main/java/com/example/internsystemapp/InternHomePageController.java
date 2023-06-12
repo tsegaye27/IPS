@@ -144,11 +144,15 @@ public class InternHomePageController {
         private AnchorPane internshipDetailsPane;
         @FXML
         private FontAwesomeIcon searchInternshipsIcon;
+        @FXML
+        private ComboBox yearOfStudyBox;
 
         private int currInternshipId;
 
         public int getCurrInternshipId(){
+
             return currInternshipId;
+
         }
         public void setCurrInternshipId(int intId){
             this.currInternshipId = intId;
@@ -159,7 +163,8 @@ public class InternHomePageController {
 
     public void initialize(){
             homeBtn.setDisable(true);
-        }
+
+            }
     String SQL;
         @FXML
         void appliedInternshipsBtnClicked(ActionEvent event) throws IOException{
@@ -281,22 +286,24 @@ public class InternHomePageController {
             }
         }
 
-        private boolean validateInputs(){
-            String fullName = fullNameField.getText();
-            String email = emailField.getText();
-            String phoneNumber = phoneNumberField.getText();
-            String location = locationField.getText();
-            String universityName = universityNameField.getText();
-            String degree = degreeField.getText();
-            LocalDate year = yearOfStudyField.getValue();
-            String yearOfStudy = year.format(fr);
-            String skills = skillsField.getText();
+    private boolean validateInputs(){
+        String fullName = fullNameField.getText();
+        String email = emailField.getText();
+        String universityName = universityNameField.getText();
 
-            if(fullName.isEmpty()||email.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||universityName.isEmpty()||degree.isEmpty()||yearOfStudy.isEmpty()||skills.isEmpty()){
-                return false;
-            }
-            return true;
+        String degree = degreeField.getText();
+//        String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
+        int yearOfStudy = 4;
+        String skills = skillsField.getText();
+        String gitLink = gitHubURLField.getText();
+        String interest = statementOfInterestArea.getText();
+        String exp = experienceArea.getText();
+
+        if(fullName.trim().isEmpty()||interest.trim().isEmpty()||exp.trim().isEmpty()||email.trim().isEmpty()||gitLink.trim().isEmpty()||universityName.isEmpty()||skills.isEmpty()){
+            return false;
         }
+        return true;
+    }
 
         private void showError(String message){
             Alert alert = new Alert(Alert.AlertType.ERROR);
