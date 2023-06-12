@@ -20,7 +20,6 @@ import java.util.Optional;
 
 public class InternHomePageController {
 
-        DateTimeFormatter fr = DateTimeFormatter.ofPattern("yyyy");
         @FXML
         private AnchorPane applicationForm;
         @FXML
@@ -61,7 +60,7 @@ public class InternHomePageController {
         private TextField degreeField;
 
         @FXML
-        private DatePicker yearOfStudyField;
+        private ComboBox yearOfStudyBox;
 
         @FXML
         private TextField skillsField;
@@ -149,7 +148,13 @@ public class InternHomePageController {
     }
 
     public void initialize(){
-            homeBtn.setDisable(true);
+
+        homeBtn.setDisable(true);
+        yearOfStudyBox.getItems().add(1);
+        yearOfStudyBox.getItems().add(2);
+        yearOfStudyBox.getItems().add(3);
+        yearOfStudyBox.getItems().add(4);
+        yearOfStudyBox.getItems().add(5);
         }
         @FXML
         void appliedInternshipsBtnClicked(ActionEvent event) throws IOException{
@@ -265,8 +270,7 @@ public class InternHomePageController {
             String location = locationField.getText();
             String universityName = universityNameField.getText();
             String degree = degreeField.getText();
-            LocalDate year = yearOfStudyField.getValue();
-            String yearOfStudy = year.format(fr);
+            String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
             String skills = skillsField.getText();
 
             if(fullName.isEmpty()||email.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||universityName.isEmpty()||degree.isEmpty()||yearOfStudy.isEmpty()||skills.isEmpty()){

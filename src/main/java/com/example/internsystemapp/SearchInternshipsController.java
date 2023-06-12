@@ -363,10 +363,8 @@ public class SearchInternshipsController {
         String fullName = fullNameField.getText();
         String email = emailField.getText();
         String universityName = universityNameField.getText();
-
         String degree = degreeField.getText();
         String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
-
         String skills = skillsField.getText();
         String gitLink = gitHubURLField.getText();
         String interest = statementOfInterestArea.getText();
