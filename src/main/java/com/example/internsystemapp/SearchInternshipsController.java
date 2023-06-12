@@ -339,7 +339,7 @@ public class SearchInternshipsController {
         while(rst.next()){
             fullNameField.setText(rst.getString("fullName"));
             emailField.setText(rst.getString("email"));
-//            degreeField.setText(rst.getString("dept"));
+            degreeField.setText(rst.getString("dept"));
         }
 
         applicationForm.setVisible(true);

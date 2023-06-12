@@ -145,12 +145,22 @@ public class InternHomePageController {
         @FXML
         private FontAwesomeIcon searchInternshipsIcon;
 
+        private int currInternshipId;
+
+        public int getCurrInternshipId(){
+            return currInternshipId;
+        }
+        public void setCurrInternshipId(int intId){
+            this.currInternshipId = intId;
+        }
+
     public InternHomePageController() throws SQLException {
     }
 
     public void initialize(){
             homeBtn.setDisable(true);
         }
+    String SQL;
         @FXML
         void appliedInternshipsBtnClicked(ActionEvent event) throws IOException{
             homeBtn.setDisable(false);
@@ -183,19 +193,20 @@ public class InternHomePageController {
                 if (rst.next()) {
                     // Read the values of the columns in the first row
                     setDetails();
+                    setCurrInternshipId(rst.getInt("id"));
                     rst.previous();
                 }
             }else if(Objects.equals(id, internshipDetailsLink1.getId())){
                 if (rst.next() && rst.next()) {
                     setDetails();
-
+                    setCurrInternshipId(rst.getInt("id"));
                     rst.previous();
                     rst.previous();
                 }
             }else if(Objects.equals(id, internshipDetailsLink2.getId())){
                 if (rst.next() && rst.next()&& rst.next()) {
                     setDetails();
-
+                    setCurrInternshipId(rst.getInt("id"));
                     rst.previous();
                     rst.previous();
                     rst.previous();
@@ -203,7 +214,7 @@ public class InternHomePageController {
             }else if(Objects.equals(id, internshipDetailsLink22.getId())){
                 if (rst.next() && rst.next()&& rst.next() && rst.next()) {
                     setDetails();
-
+                    setCurrInternshipId(rst.getInt("id"));
                     rst.previous();
                     rst.previous();
                     rst.previous();
@@ -244,15 +255,27 @@ public class InternHomePageController {
         }
 
         @FXML
-        void applyNowBtnClicked(ActionEvent event){
+        void applyNowBtnClicked(ActionEvent event) throws SQLException {
             internshipDetailsPane.setVisible(false);
+            SQL = "select fullName, email, dept from stud where id ="+DBUtills.getCurrentInternId();
+            ResultSet rst = DBUtills.getInternData(SQL);
+            while(rst.next()){
+                fullNameField.setText(rst.getString("fullName"));
+                emailField.setText(rst.getString("email"));
+                degreeField.setText(rst.getString("dept"));
+            }
             applicationForm.setVisible(true);
         }
 
         @FXML
         void submitBtnClicked(ActionEvent event){
             if(validateInputs()){
-                //save into database
+                DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), 3, universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
+                universityNameField.clear();
+                skillsField.clear();
+                gitHubURLField.clear();
+                statementOfInterestArea.clear();
+                experienceArea.clear();
             }else{
                 showError("Please fill every field");
             }
