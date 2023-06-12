@@ -23,34 +23,25 @@ public class CmpHomePageController {
     private Label companyNameLabel;
 
     @FXML
-    private Button returnToPostedBtn;
+    private Button nextBtn;
+
     @FXML
-    private Button returnToPostedBtnV;
+    private AnchorPane applicationRequest;
+
+    @FXML
+    private Button returnToPostedBtn;
     @FXML
     private Label locationLabel;
     @FXML
-    private Label locationLabelV;
-    @FXML
     private Label durationLabel;
-    @FXML
-    private Label durationLabelV;
-
     @FXML
     private Label contactLabel;
     @FXML
-    private Label contactLabelV;
-    @FXML
     private Label paidUnpaidLabel;
-    @FXML
-    private Label paidUnpaidLabelV;
     @FXML
     private Label requirementsLabel;
     @FXML
-    private Label requirementsLabelV;
-    @FXML
     private Label descriptionLabel;
-    @FXML
-    private Label descriptionLabelV;
     @FXML
     private Button editPostBtn;
 
@@ -59,8 +50,6 @@ public class CmpHomePageController {
 
     @FXML
     private Label internshipTitle;
-    @FXML
-    private Label internshipTitleV;
     @FXML
     private AnchorPane postDetailsPane;
     @FXML
@@ -138,7 +127,7 @@ public class CmpHomePageController {
             Button viewDetails = new Button("View Applicants");
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
-                showPostEditor();
+                showApplications();
             });
 
             AnchorPane.setTopAnchor(titleLabel, 20.0);
@@ -179,9 +168,30 @@ public class CmpHomePageController {
         postDetailsPane.setVisible(true);
     }
 
+    void showApplications(){
+        postedInternshipsContainer.setVisible(false);
+        applicationRequest.setVisible(true);
+    }
+
+    @FXML
+    void acceptBtnClicked(ActionEvent event){
+
+    }
+
+    @FXML
+    void rejectBtnClicked(ActionEvent event){
+
+    }
+
+    @FXML
+    void nextBtnClicked(ActionEvent event){
+
+    }
+
     @FXML
     void returnToPostedBtnClicked(ActionEvent event){
         postDetailsPane.setVisible(false);
+        applicationRequest.setVisible(false);
         postedInternshipsContainer.setVisible(true);
     }
     @FXML

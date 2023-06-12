@@ -287,6 +287,7 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" styleClass="returnArrow" />
                      </graphic>
                   </Button>
+                  <Button fx:id="nextBtn" layoutX="455.0" layoutY="22.0" mnemonicParsing="false" onAction="#nextBtnClicked" styleClass="nextBtn" text="Next" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

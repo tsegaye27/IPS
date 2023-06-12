@@ -17,7 +17,16 @@
 }
 
 .nextBtn{
+-fx-background-color: transparent;
+-fx-font-weight: bold;
+-fx-text-fill: white;
+-fx-border-radius: 8px;
+-fx-background-radius: 8px;
+}
 
+.nextBtn:hover{
+-fx-background-color: #Fa894e;
+/*-fx-text-fill: #0576b1;*/
 }
 
 .scrollPanes{
