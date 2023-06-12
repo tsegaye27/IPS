@@ -82,15 +82,15 @@ public class CmpHomePageController {
     private Label acceptedLabel;
 
     @FXML
+    private Label vacanciesLabel;
+
+    @FXML
     private Label noPostLabel;
     @FXML
     private Label pendingLabel;
 
     @FXML
     private Label rejectedLabel;
-
-    @FXML
-    private AnchorPane postDetailsViewPane;
     @FXML
     private VBox postedInternshipsContainer;
 
@@ -132,13 +132,13 @@ public class CmpHomePageController {
             Button manageButton = new Button("Manage Internship");
             manageButton.getStyleClass().add("cancelBtn");
             manageButton.setOnAction(event -> {
-                InternshipEditor();
+                showPostEditor();
             });
 
             Button viewDetails = new Button("View Details");
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
-                showDetails();
+                showPostEditor();
             });
 
             AnchorPane.setTopAnchor(titleLabel, 20.0);
@@ -174,19 +174,13 @@ public class CmpHomePageController {
             postedInternshipsContainer.getChildren().add(hBox);
     }
 
-    void InternshipEditor(){
+    void showPostEditor(){
         postedInternshipsContainer.setVisible(false);
         postDetailsPane.setVisible(true);
     }
 
-    void showDetails(){
-        postedInternshipsContainer.setVisible(false);
-        postDetailsViewPane.setVisible(true);
-    }
-
     @FXML
     void returnToPostedBtnClicked(ActionEvent event){
-        postDetailsViewPane.setVisible(false);
         postDetailsPane.setVisible(false);
         postedInternshipsContainer.setVisible(true);
     }
