@@ -116,8 +116,9 @@ public class DBUtills {
                 while (rst.next()) {
                     String userPass = rst.getString("pass");
                     if (userPass.equals(password)) {
-                        InternApp.showInternHomePage();
                         setCurrentInternId(Integer.parseInt(rst.getString(1)));
+                        InternApp.showInternHomePage();
+
                         System.out.println(getCurrentInternId());
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
