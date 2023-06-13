@@ -348,7 +348,7 @@ public class SearchInternshipsController {
     @FXML
     void submitBtnClicked(ActionEvent event){
         if(validateInputs()){
-            DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), 3, universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
+            DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), (Integer) yearOfStudyBox.getValue(), universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
             universityNameField.clear();
             skillsField.clear();
             gitHubURLField.clear();

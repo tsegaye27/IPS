@@ -43,7 +43,7 @@ public class InternApp extends Application {
     }
 
     public static void showPostInternships() throws IOException{
-        Parent root = FXMLLoader.load(InternApp.class.getResource("PostInternships.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(InternApp.class.getResource("PostInternships.fxml")));
         Scene scene = new Scene(root, 820,600);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
         primaryStage.setTitle("Post Internships");
@@ -121,7 +121,7 @@ public class InternApp extends Application {
     public void start(Stage primaryStage) throws IOException, SQLException {
         InternApp.primaryStage = primaryStage;
         primaryStage.setTitle("Internship App");
-        InternApp.showPostInternships();
+        InternApp.showWelcomePage();
     }
     public static void main(String[] args) {
         launch(args);

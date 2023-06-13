@@ -307,7 +307,7 @@
                         <TableColumn fx:id="statusColumn" prefWidth="99.3333740234375" text="Status" />
                      </columns>
                   </TableView>
-                  <Button fx:id="viewDetailsBtn" layoutX="267.0" layoutY="323.0" mnemonicParsing="false" onAction="#viewDetailsBtnClicked" styleClass="submitBtn" stylesheets="@../../../style.css" text="View Details" />
+                  <Button fx:id="viewDetailsBtn" layoutX="267.0" layoutY="323.0" mnemonicParsing="false" styleClass="submitBtn" stylesheets="@../../../style.css" text="View Details" />
                </children>
             </AnchorPane>
          </children>

@@ -336,18 +336,6 @@ public void initialize(){
 
                     i++;
 
-//                    int id = rst.getInt("id");
-//                    String Title = rst.getString("title");
-//                    String duration = rst.getString("duration");
-//                    String requirements = rst.getString("requirements");
-//                    String description = rst.getString("description");
-//                    String type = rst.getString("type");
-//                    String noOfOpenings = rst.getString("numberOfApplicantsNeeded");
-//                    String companyName = rst.getString("name");
-//                    String companyLocation = rst.getString("location");
-//                    String companyContact = rst.getString("email");
-//                    System.out.println("Internship Details:\nID: "+id+" Title: "+Title+" duration: "+ duration+" requirements: "+ requirements+" description: "+ description+" type: "+ type+" number of openings: "+ noOfOpenings+" company name: "+ companyName+" company location: "+ companyLocation+" company contact: "+ companyContact);
-
                 }
 
 
