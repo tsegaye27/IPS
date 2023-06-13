@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.PostInternshipsController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.PostInternshipsController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="820.0">
          <children>
@@ -129,47 +122,47 @@
                         <Label styleClass="login-link" text="Description : " textFill="WHITE" GridPane.rowIndex="8" />
                         <Label styleClass="login-link" text="Title :" />
                         <Label styleClass="login-link" text="Vacancies :" GridPane.rowIndex="6" />
-                        <Label text="Label" GridPane.columnIndex="1">
+                        <Label fx:id="titleFieldLabel" text="Label" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="companyNameFieldLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="locationFieldLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label fx:id="durationFieldLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label fx:id="contactFieldLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label fx:id="paidUnpaidFieldLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="vacanciesFieldLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Label fx:id="requirementsFieldLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <Label fx:id="descriptionFieldLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>

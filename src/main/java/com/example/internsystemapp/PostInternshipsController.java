@@ -65,6 +65,25 @@ public class PostInternshipsController {
     private TextArea descriptionArea;
     @FXML
     private Button postInternshipsBtn;
+    @FXML
+    private Label titleFieldLabel;
+    @FXML
+    private Label companyNameFieldLabel;
+    @FXML
+    private Label locationFieldLabel;
+    @FXML
+    private Label durationFieldLabel;
+    @FXML
+    private Label contactFieldLabel;
+    @FXML
+    private Label paidUnpaidFieldLabel;
+    @FXML
+    private Label vacanciesFieldLabel;
+    @FXML
+    private Label requirementsFieldLabel;
+    @FXML
+    private Label descriptionFieldLabel;
+
 
     public void initialize() throws SQLException {
         postInternshipsBtn.setDisable(true);
@@ -97,15 +116,36 @@ public class PostInternshipsController {
     }
 
     @FXML
-    void postBtnClicked(ActionEvent event){
-
+    void postBtnClicked(ActionEvent event) throws IOException {
+        DBUtills.postInternship(DBUtills.getCurrentCmpId(), titleFieldLabel.getText(), durationFieldLabel.getText(), requirementsFieldLabel.getText(),descriptionFieldLabel.getText(),paidUnpaidFieldLabel.getText(), Integer.parseInt(vacanciesFieldLabel.getText()));
+        titleField.clear();
+        durationField.clear();
+        paidUnpaidField.clear();
+        vacanciesField.clear();
+        requirementsArea.clear();
+        descriptionArea.clear();
+        InternApp.showPostInternships();
     }
 
 
     @FXML
     void nextBtnClicked(ActionEvent event){
-        postInternshipPane.setVisible(false);
-        viewPostPane.setVisible(true);
+        if(validateInputs()){
+            titleFieldLabel.setText(titleField.getText());
+            companyNameFieldLabel.setText(companyNameField.getText());
+            locationFieldLabel.setText(locationField.getText());
+            durationFieldLabel.setText(durationField.getText());
+            contactFieldLabel.setText(contactField.getText());
+            paidUnpaidFieldLabel.setText(paidUnpaidField.getText());
+            vacanciesFieldLabel.setText(vacanciesField.getText());
+            requirementsFieldLabel.setText(requirementsArea.getText());
+            descriptionFieldLabel.setText(descriptionArea.getText());
+            postInternshipPane.setVisible(false);
+            viewPostPane.setVisible(true);
+        }else{
+            showError("Please enter all the necessary information");
+        }
+
     }
 
     @FXML
@@ -147,5 +187,6 @@ public class PostInternshipsController {
             locationField.setText(rst.getString("location"));
         }
     }
+
 
 }

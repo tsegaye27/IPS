@@ -308,7 +308,7 @@ public class DBUtills {
         PreparedStatement psPostInternship = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
-            psPostInternship = conn.prepareStatement("insert into internshipposts(companyId, title, duration, requirements, description, type, noOfApplicantsNeeded) values (?, ?, ?, ?, ?, ?, ?)");
+            psPostInternship = conn.prepareStatement("insert into internshipposts(company_id, Title, duration, requirements, description, type, numberOfApplicantsNeeded) values (?, ?, ?, ?, ?, ?, ?)");
 //                System.out.println(name + " " + email + " " + password + " " + phoneNumber + " " + location);
             psPostInternship.setInt(1, companyId);
             psPostInternship.setString(2, title);
