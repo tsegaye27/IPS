@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.SearchInternshipsController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.SearchInternshipsController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -179,13 +168,13 @@
                      </rowConstraints>
                      <children>
                         <Label text="Full Name : " />
-                        <TextField fx:id="fullNameField" prefHeight="25.0" styleClass="input" GridPane.columnIndex="1" />
+                        <TextField fx:id="fullNameField" disable="true" prefHeight="25.0" styleClass="input" GridPane.columnIndex="1" />
                         <Label text="Email : " GridPane.rowIndex="1" />
-                        <TextField fx:id="emailField" prefHeight="25.0" prefWidth="269.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="emailField" disable="true" prefHeight="25.0" prefWidth="269.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="University Name : " GridPane.rowIndex="2" />
                         <TextField fx:id="universityNameField" prefHeight="25.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Degree/Program : " GridPane.rowIndex="3" />
-                        <TextField fx:id="degreeField" prefHeight="25.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="degreeField" disable="true" prefHeight="25.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Year of study : " GridPane.rowIndex="4" />
                         <TextField fx:id="skillsField" prefHeight="25.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Label text="Skills : " GridPane.rowIndex="5" />

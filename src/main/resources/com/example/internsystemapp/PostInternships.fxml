@@ -72,10 +72,10 @@
                         <Label styleClass="login-link" text="Description : " textFill="WHITE" GridPane.rowIndex="8" />
                         <Label styleClass="login-link" text="Title :" />
                         <TextField fx:id="titleField" styleClass="input" GridPane.columnIndex="1" />
-                        <TextField fx:id="companyNameField" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="locationField" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="companyNameField" disable="true" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="locationField" disable="true" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="durationField" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="contactField" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="contactField" disable="true" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="paidUnpaidField" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <TextArea fx:id="requirementsArea" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <GridPane.margin>
