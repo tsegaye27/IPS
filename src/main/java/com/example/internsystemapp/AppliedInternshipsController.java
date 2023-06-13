@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -41,17 +42,28 @@ public class AppliedInternshipsController {
 
     @FXML
     private TableView<AppliedInternshipsLists> tableView;
-    public void initialize(){
+
+    ObservableList<AppliedInternshipsLists> internships = FXCollections.observableArrayList();
+    String SQL;
+    public void initialize() throws SQLException {
         tableViewInfo();
         appliedInternshipsBtn.setDisable(true);
     }
 
-    void tableViewInfo(){
-        ObservableList<AppliedInternshipsLists> internships = FXCollections.observableArrayList(
-                //adding dummy data to the list
-                new AppliedInternshipsLists("Title 1", "Company 1", "Location 1", "Duration 1", "Status 1"),
-                new AppliedInternshipsLists("Title 2", "Company 2", "Location 2", "Duration 2", "Status 2")
-        );
+    void tableViewInfo() throws SQLException {
+        SQL = "select internshipposts.title, internshipposts.duration, company.name, company.location, application.status from internshipposts join application on internshipposts.id = application.internshipId join company on internshipposts.company_id = company.id where application.internId ="+DBUtills.getCurrentInternId();
+        System.out.println(SQL);
+        ResultSet rst = DBUtills.getData(SQL);
+        while(rst.next()){
+            String title = rst.getString("title");
+            String duration = rst.getString("duration");
+            String companyName = rst.getString("name");
+            String location = rst.getString("location");
+            String status = rst.getString("status");
+
+            internships.add(new AppliedInternshipsLists(title, companyName, location, duration, status));
+        }
+
 
         //binding the table view to the observable list
         tableView.setItems(internships);
