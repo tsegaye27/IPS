@@ -127,16 +127,14 @@ public class CmpHomePageController {
     void createHBox(){
             AnchorPane anchorPane = new AnchorPane();
 
-            anchorPane.getStyleClass().add("featured-card");
+            anchorPane.getStyleClass().add("post-cards");
 
-            anchorPane.setPrefWidth(380);
-            anchorPane.setPrefHeight(220);
+            anchorPane.setPrefWidth(440);
+            anchorPane.setPrefHeight(180);
 
             Label titleLabel = new Label("Title");
-            Label companyLabel = new Label("Company");
-            Label locationLabel = new Label("Location");
             Label durationLabel = new Label("Duration");
-            Label statusLabel = new Label("Status");
+            Label vacanciesLabel = new Label("Vacancies");
 
             Button manageButton = new Button("Manage Internship");
             manageButton.getStyleClass().add("cancelBtn");
@@ -150,34 +148,26 @@ public class CmpHomePageController {
                 showApplications();
             });
 
-            AnchorPane.setTopAnchor(titleLabel, 20.0);
-            AnchorPane.setLeftAnchor(titleLabel, 50.0);
+            AnchorPane.setTopAnchor(titleLabel, 15.0);
+            AnchorPane.setLeftAnchor(titleLabel, 190.0);
 
-            AnchorPane.setTopAnchor(companyLabel, 50.0);
-            AnchorPane.setLeftAnchor(companyLabel, 50.0);
+            AnchorPane.setTopAnchor(vacanciesLabel, 45.0);
+            AnchorPane.setLeftAnchor(vacanciesLabel, 190.0);
 
-            AnchorPane.setTopAnchor(locationLabel, 80.0);
-            AnchorPane.setLeftAnchor(locationLabel, 50.0);
+            AnchorPane.setTopAnchor(durationLabel, 75.0);
+            AnchorPane.setLeftAnchor(durationLabel, 190.0);
 
-            AnchorPane.setTopAnchor(durationLabel, 110.0);
-            AnchorPane.setLeftAnchor(durationLabel, 50.0);
-
-            AnchorPane.setTopAnchor(statusLabel, 140.0);
-            AnchorPane.setLeftAnchor(statusLabel, 50.0);
-
-            AnchorPane.setTopAnchor(manageButton, 180.0);
+            AnchorPane.setTopAnchor(manageButton, 120.0);
             AnchorPane.setLeftAnchor(manageButton, 70.0);
 
-            AnchorPane.setTopAnchor(viewDetails, 180.0);
+            AnchorPane.setTopAnchor(viewDetails, 120.0);
             AnchorPane.setLeftAnchor(viewDetails, 220.0);
 
-            anchorPane.getChildren().addAll(titleLabel, companyLabel, locationLabel, durationLabel, statusLabel, manageButton, viewDetails);
+            anchorPane.getChildren().addAll(titleLabel,durationLabel, vacanciesLabel, manageButton, viewDetails);
 
             titleLabel.getStyleClass().add("internship-title");
-            companyLabel.getStyleClass().add("internship-details");
-            locationLabel.getStyleClass().add("internship-details");
             durationLabel.getStyleClass().add("internship-details");
-            statusLabel.getStyleClass().add("internship-details");
+            vacanciesLabel.getStyleClass().add("internship-details");
             HBox hBox = new HBox(anchorPane);
             hBox.setSpacing(10);
             postedInternshipsContainer.getChildren().add(hBox);
