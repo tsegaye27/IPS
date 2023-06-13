@@ -33,6 +33,8 @@ public class PostInternshipsController {
 
     @FXML
     private TextField locationField;
+    @FXML
+    private Button returnToEditPostBtn;
 
     @FXML
     private TextField durationField;
@@ -47,14 +49,17 @@ public class PostInternshipsController {
     private TextField vacanciesField;
 
     @FXML
-    private TextArea requirementsArea;
+    private Button postBtn;
 
     @FXML
-    private TextArea descriptionArea;
+    private AnchorPane viewPostPane;
 
     @FXML
     private AnchorPane postInternshipPane;
-
+    @FXML
+    private TextArea requirementsArea;
+    @FXML
+    private TextArea descriptionArea;
     @FXML
     private Button postInternshipsBtn;
 
@@ -81,8 +86,21 @@ public class PostInternshipsController {
     }
 
     @FXML
-    void nextBtnClicked(){
+    void returnToEditPostBtnClicked(ActionEvent event){
+        viewPostPane.setVisible(false);
+        postInternshipPane.setVisible(true);
+    }
 
+    @FXML
+    void postBtnClicked(ActionEvent event){
+
+    }
+
+
+    @FXML
+    void nextBtnClicked(ActionEvent event){
+        postInternshipPane.setVisible(false);
+        viewPostPane.setVisible(true);
     }
 
     @FXML
