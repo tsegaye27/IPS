@@ -303,5 +303,34 @@ public class DBUtills {
 
         }
     }
+    public static void postInternship(int companyId, String title, String duration, String requirements, String description, String type, int vacancies){
+        Connection conn = null;
+        PreparedStatement psPostInternship = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psPostInternship = conn.prepareStatement("insert into internshipposts(companyId, title, duration, requirements, description, type, noOfApplicantsNeeded) values (?, ?, ?, ?, ?, ?, ?)");
+//                System.out.println(name + " " + email + " " + password + " " + phoneNumber + " " + location);
+            psPostInternship.setInt(1, companyId);
+            psPostInternship.setString(2, title);
+            psPostInternship.setString(3, duration);
+            psPostInternship.setString(4, requirements);
+            psPostInternship.setString(5, description);
+            psPostInternship.setString(6, type);
+            psPostInternship.setInt(7, vacancies);
+
+            psPostInternship.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Internship Posted");
+            alert.show();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closePreparedStatement(psPostInternship);
+            closeConnection(conn);
+
+        }
+    }
 
 }
