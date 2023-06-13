@@ -335,7 +335,7 @@ public class SearchInternshipsController {
 
 
         SQL = "select fullName, email, dept from stud where id ="+DBUtills.getCurrentInternId();
-        ResultSet rst = DBUtills.getInternData(SQL);
+        ResultSet rst = DBUtills.getData(SQL);
         while(rst.next()){
             fullNameField.setText(rst.getString("fullName"));
             emailField.setText(rst.getString("email"));

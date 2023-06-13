@@ -120,7 +120,7 @@ public class InternApp extends Application {
     public void start(Stage primaryStage) throws IOException, SQLException {
         InternApp.primaryStage = primaryStage;
         primaryStage.setTitle("Internship App");
-        InternApp.showWelcomePage();
+        InternApp.showCmpLoginPage();
 
     }
     public static void main(String[] args) {

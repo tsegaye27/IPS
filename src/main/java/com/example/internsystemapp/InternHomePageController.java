@@ -137,9 +137,6 @@ public class InternHomePageController {
 
         @FXML
         private GridPane gridPane;
-
-
-
         @FXML
         private AnchorPane internshipDetailsPane;
         @FXML
@@ -163,7 +160,6 @@ public class InternHomePageController {
 
     public void initialize(){
             homeBtn.setDisable(true);
-
             }
     String SQL;
         @FXML
@@ -258,12 +254,11 @@ public class InternHomePageController {
             internshipDetailsPane.setVisible(false);
             gridPane.setVisible(true);
         }
-
         @FXML
         void applyNowBtnClicked(ActionEvent event) throws SQLException {
             internshipDetailsPane.setVisible(false);
             SQL = "select fullName, email, dept from stud where id ="+DBUtills.getCurrentInternId();
-            ResultSet rst = DBUtills.getInternData(SQL);
+            ResultSet rst = DBUtills.getData(SQL);
             while(rst.next()){
                 fullNameField.setText(rst.getString("fullName"));
                 emailField.setText(rst.getString("email"));

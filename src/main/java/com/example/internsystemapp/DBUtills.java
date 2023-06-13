@@ -191,8 +191,8 @@ public class DBUtills {
                 while (rst.next()) {
                     String userPass = rst.getString("pass");
                     if (userPass.equals(password)) {
-                        InternApp.showCmpHomePage();
                         setCurrentCmpId(Integer.parseInt(rst.getString(1)));
+                        InternApp.showCmpHomePage();
                         System.out.println(getCurrentCmpId());
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -243,7 +243,7 @@ public class DBUtills {
         }
         return rst;
     }
-    public static ResultSet getInternData(String SQL){
+    public static ResultSet getData(String SQL){
         Connection conn = null;
         Statement stGetData = null;
         ResultSet rst = null;
