@@ -121,7 +121,7 @@ public class InternApp extends Application {
         InternApp.primaryStage = primaryStage;
         primaryStage.setTitle("Internship App");
 
-        InternApp.showCmpLoginPage();
+        InternApp.showPostInternships();
 
 
     }

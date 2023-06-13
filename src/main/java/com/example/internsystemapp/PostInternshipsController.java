@@ -22,6 +22,36 @@ public class PostInternshipsController {
     private Button manageInternshipsBtn;
 
     @FXML
+    private Button nextBtn;
+
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField companyNameField;
+
+    @FXML
+    private TextField locationField;
+
+    @FXML
+    private TextField durationField;
+
+    @FXML
+    private TextField contactField;
+
+    @FXML
+    private TextField paidUnpaidField;
+
+    @FXML
+    private TextField vacanciesField;
+
+    @FXML
+    private TextArea requirementsArea;
+
+    @FXML
+    private TextArea descriptionArea;
+
+    @FXML
     private Button postInternshipsBtn;
 
     public void initialize(){
@@ -44,6 +74,11 @@ public class PostInternshipsController {
             InternApp.showWelcomePage();
             DBUtills.setCurrentCmpId(0);
         }
+    }
+
+    @FXML
+    void nextBtnClicked(){
+
     }
 
     @FXML
