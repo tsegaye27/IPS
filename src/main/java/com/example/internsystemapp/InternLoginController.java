@@ -45,14 +45,6 @@ public class InternLoginController {
                 alert.showAndWait();
         }
 
-        private void showInfo(String message){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText(null);
-                alert.setContentText(message);
-                alert.show();
-        }
-
         @FXML
         void signUplinkClicked(ActionEvent event) throws IOException {
                 InternApp.showInternSignUpPage();
