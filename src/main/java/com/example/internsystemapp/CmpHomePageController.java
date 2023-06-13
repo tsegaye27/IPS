@@ -1,11 +1,14 @@
 package com.example.internsystemapp;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -34,26 +37,6 @@ public class CmpHomePageController {
 
     @FXML
     private Button returnToPostedBtn;
-    @FXML
-    private Label locationLabel;
-    @FXML
-    private Label durationLabel;
-    @FXML
-    private Label contactLabel;
-    @FXML
-    private Label paidUnpaidLabel;
-    @FXML
-    private Label requirementsLabel;
-    @FXML
-    private Label descriptionLabel;
-    @FXML
-    private Button editPostBtn;
-
-    @FXML
-    private Button deleteBtn;
-
-    @FXML
-    private Label internshipTitle;
     @FXML
     private Button logoutBtn;
 
@@ -88,7 +71,41 @@ public class CmpHomePageController {
     private VBox postedInternshipsContainer;
 
     @FXML
+    private Button acceptBtn;
+
+    @FXML
+    private Label degreeLabel;
+
+    @FXML
+    private TableView<ApplicantsList> applicantsView;
+
+    @FXML
+    private TableColumn <ApplicantsList, String> emailColumn;
+
+    @FXML
+    private TableColumn<ApplicantsList,String> fullNameColumn;
+
+    @FXML
+    private TableColumn<ApplicantsList,String> universityNameColumn;
+
+    @FXML
     private Button viewDetailsBtn;
+    @FXML
+    private Label emailLabel;
+
+    @FXML
+    private Label experienceLabel;
+    @FXML
+    private Label fullNameLabel;
+
+    @FXML
+    private Button backBtn;
+
+    @FXML
+    private Label gitHubURLLabel;
+
+    @FXML
+    private Button rejectBtn;
     @FXML
     private ScrollPane postsPane;
 
@@ -190,6 +207,25 @@ public class CmpHomePageController {
     void showApplications(){
         postedInternshipsContainer.setVisible(false);
         viewApplicantDetails.setVisible(true);
+        tableViewInfo();
+    }
+
+    void tableViewInfo(){
+        ObservableList<ApplicantsList> applicants= FXCollections.observableArrayList(
+                new ApplicantsList("John Doe","jd@doe.com", "BahirDar Institute of Technology")
+        );
+
+        applicantsView.setItems(applicants);
+
+        fullNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        universityNameColumn.setCellValueFactory(new PropertyValueFactory<>("universityName"));
+    }
+
+    @FXML
+    void backBtnClicked(ActionEvent event){
+        viewApplicantDetails.setVisible(false);
+        postedInternshipsContainer.setVisible(true);
     }
 
     @FXML
@@ -203,15 +239,9 @@ public class CmpHomePageController {
     }
 
     @FXML
-    void nextBtnClicked(ActionEvent event){
-
-    }
-
-    @FXML
     void returnToPostedBtnClicked(ActionEvent event){
-        viewApplicantDetails.setVisible(false);
+        viewApplicantDetails.setVisible(true);
         applicationRequest.setVisible(false);
-        postedInternshipsContainer.setVisible(true);
     }
     @FXML
     void manageInternshipsBtnClicked(ActionEvent event) throws IOException {
