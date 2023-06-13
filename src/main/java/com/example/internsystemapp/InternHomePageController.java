@@ -20,7 +20,6 @@ import java.util.Optional;
 
 public class InternHomePageController {
 
-        DateTimeFormatter fr = DateTimeFormatter.ofPattern("yyyy");
         @FXML
         private AnchorPane applicationForm;
         @FXML
@@ -61,7 +60,7 @@ public class InternHomePageController {
         private TextField degreeField;
 
         @FXML
-        private DatePicker yearOfStudyField;
+        private ComboBox yearOfStudyBox;
 
         @FXML
         private TextField skillsField;
@@ -158,10 +157,19 @@ public class InternHomePageController {
     public InternHomePageController() throws SQLException {
     }
 
-    public void initialize(){
-            homeBtn.setDisable(true);
-            }
+    
+
     String SQL;
+
+public void initialize(){
+        homeBtn.setDisable(true);
+        yearOfStudyBox.getItems().add(1);
+        yearOfStudyBox.getItems().add(2);
+        yearOfStudyBox.getItems().add(3);
+        yearOfStudyBox.getItems().add(4);
+        yearOfStudyBox.getItems().add(5);
+        }
+
         @FXML
         void appliedInternshipsBtnClicked(ActionEvent event) throws IOException{
             homeBtn.setDisable(false);
@@ -281,12 +289,14 @@ public class InternHomePageController {
             }
         }
 
+
     private boolean validateInputs(){
         String fullName = fullNameField.getText();
         String email = emailField.getText();
         String universityName = universityNameField.getText();
 
         String degree = degreeField.getText();
+   String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
 //        String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
         int yearOfStudy = 4;
         String skills = skillsField.getText();

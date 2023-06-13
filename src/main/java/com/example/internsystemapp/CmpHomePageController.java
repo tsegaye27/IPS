@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,34 +27,25 @@ public class CmpHomePageController {
     @FXML
     private Label greetingName;
     @FXML
-    private Button returnToPostedBtn;
+    private Button nextBtn;
+
     @FXML
-    private Button returnToPostedBtnV;
+    private AnchorPane applicationRequest;
+
+    @FXML
+    private Button returnToPostedBtn;
     @FXML
     private Label locationLabel;
     @FXML
-    private Label locationLabelV;
-    @FXML
     private Label durationLabel;
-    @FXML
-    private Label durationLabelV;
-
     @FXML
     private Label contactLabel;
     @FXML
-    private Label contactLabelV;
-    @FXML
     private Label paidUnpaidLabel;
-    @FXML
-    private Label paidUnpaidLabelV;
     @FXML
     private Label requirementsLabel;
     @FXML
-    private Label requirementsLabelV;
-    @FXML
     private Label descriptionLabel;
-    @FXML
-    private Label descriptionLabelV;
     @FXML
     private Button editPostBtn;
 
@@ -66,8 +54,6 @@ public class CmpHomePageController {
 
     @FXML
     private Label internshipTitle;
-    @FXML
-    private Label internshipTitleV;
     @FXML
     private AnchorPane postDetailsPane;
     @FXML
@@ -89,15 +75,20 @@ public class CmpHomePageController {
     private Label acceptedLabel;
 
     @FXML
+    private Label vacanciesLabel;
+
+    @FXML
+    private Label noPostLabel;
+    @FXML
     private Label pendingLabel;
 
     @FXML
     private Label rejectedLabel;
-
-    @FXML
-    private AnchorPane postDetailsViewPane;
     @FXML
     private VBox postedInternshipsContainer;
+    @FXML
+    private ScrollPane postsPane;
+
 
     String SQL;
     private int internshipNo = 0;
@@ -112,6 +103,7 @@ public class CmpHomePageController {
 
     public CmpHomePageController() throws SQLException {
     }
+   
 
     public void initialize() throws SQLException {
         homeBtn.setDisable(true);
@@ -123,6 +115,13 @@ public class CmpHomePageController {
     void displayPostedInternships(){
         //if the company have posted an internship
         createHBox();
+        //else there are no posted internships
+//        noPost();
+    }
+
+    void noPost(){
+        postsPane.setVisible(false);
+        noPostLabel.setVisible(true);
     }
 
     void createHBox(){
@@ -142,13 +141,13 @@ public class CmpHomePageController {
             Button manageButton = new Button("Manage Internship");
             manageButton.getStyleClass().add("cancelBtn");
             manageButton.setOnAction(event -> {
-                InternshipEditor();
+                showPostEditor();
             });
 
-            Button viewDetails = new Button("View Details");
+            Button viewDetails = new Button("View Applicants");
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
-                showDetails();
+                showApplications();
             });
 
             AnchorPane.setTopAnchor(titleLabel, 20.0);
@@ -184,20 +183,35 @@ public class CmpHomePageController {
             postedInternshipsContainer.getChildren().add(hBox);
     }
 
-    void InternshipEditor(){
+    void showPostEditor(){
         postedInternshipsContainer.setVisible(false);
         postDetailsPane.setVisible(true);
     }
 
-    void showDetails(){
+    void showApplications(){
         postedInternshipsContainer.setVisible(false);
-        postDetailsViewPane.setVisible(true);
+        applicationRequest.setVisible(true);
+    }
+
+    @FXML
+    void acceptBtnClicked(ActionEvent event){
+
+    }
+
+    @FXML
+    void rejectBtnClicked(ActionEvent event){
+
+    }
+
+    @FXML
+    void nextBtnClicked(ActionEvent event){
+
     }
 
     @FXML
     void returnToPostedBtnClicked(ActionEvent event){
-        postDetailsViewPane.setVisible(false);
         postDetailsPane.setVisible(false);
+        applicationRequest.setVisible(false);
         postedInternshipsContainer.setVisible(true);
     }
     @FXML

@@ -203,7 +203,7 @@
                               <Insets bottom="1.5" top="1.5" />
                            </GridPane.margin>
                         </TextArea>
-                        <ComboBox fx:id="yearOfStudyBox" prefHeight="25.0" prefWidth="168.0" promptText="Choose year of study" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="yearOfStudyBox" prefHeight="25.0" prefWidth="168.0" promptText="Choose year of study" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <Button fx:id="submitBtn" layoutX="234.0" layoutY="487.0" mnemonicParsing="false" onAction="#submitBtnClicked" styleClass="submitBtn" text="Submit" />

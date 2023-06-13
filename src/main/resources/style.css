@@ -9,6 +9,35 @@
 -fx-border-radius: 15px;
 }
 
+.table-view-columns{
+-fx-background-color: #f9e9d6;
+-fx-background-radius: 10px;
+-fx-border-radius: 10px;
+-fx-alignment: center;
+}
+
+.nextBtn{
+-fx-background-color: transparent;
+-fx-font-weight: bold;
+-fx-text-fill: white;
+-fx-border-radius: 8px;
+-fx-background-radius: 8px;
+}
+
+.nextBtn:hover{
+-fx-background-color: #Fa894e;
+/*-fx-text-fill: #0576b1;*/
+}
+
+.scrollPanes{
+-fx-background-radius: 12px;
+-fx-border-radius: 12px;
+}
+.column-header{
+-fx-background-color: #93ea76;
+-fx-text-fill: white;
+}
+
 .signUpBtn{
 -fx-background-color: #332FEC;
 -fx-background-radius: 20px;

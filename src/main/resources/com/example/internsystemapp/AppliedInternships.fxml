@@ -47,15 +47,19 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TableView layoutX="224.0" layoutY="108.0" prefHeight="200.0" prefWidth="590.0" stylesheets="@../../../style.css">
-              <columns>
-                <TableColumn fx:id="titleColumn" prefWidth="176.6667022705078" text="Title" />
-                <TableColumn fx:id="companyColumn" prefWidth="153.99996948242188" text="Company" />
-                  <TableColumn fx:id="locationColumn" prefWidth="94.0" text="Location" />
-                  <TableColumn fx:id="durationColumn" prefWidth="81.33331298828125" text="Duration" />
-                  <TableColumn fx:id="statusColumn" prefWidth="84.6666259765625" text="Status" />
-              </columns>
-            </TableView>
+            <AnchorPane layoutX="222.0" layoutY="138.0" prefHeight="321.0" prefWidth="598.0" style="-fx-background-color: white; -fx-background-radius: 12px; -fx-border-radius: 12px;">
+               <children>
+                  <TableView fx:id="tableView" layoutX="8.0" layoutY="11.0" prefHeight="295.0" prefWidth="581.0" styleClass="table-view-columns" stylesheets="@../../../style.css">
+                    <columns>
+                      <TableColumn fx:id="titleColumn" prefWidth="169.9999542236328" styleClass="column-header-left" text="Title" />
+                      <TableColumn fx:id="companyColumn" prefWidth="154.66665649414062" text="Company" />
+                        <TableColumn fx:id="locationColumn" prefWidth="93.33331298828125" text="Location" />
+                        <TableColumn fx:id="durationColumn" prefWidth="74.6666259765625" text="Duration" />
+                        <TableColumn fx:id="statusColumn" prefWidth="99.3333740234375" text="Status" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
