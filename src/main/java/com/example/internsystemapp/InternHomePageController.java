@@ -294,7 +294,7 @@ public void initialize(){
         String universityName = universityNameField.getText();
 
         String degree = degreeField.getText();
-   String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
+        String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
 //        String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
         String skills = skillsField.getText();
         String gitLink = gitHubURLField.getText();

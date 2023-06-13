@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -50,6 +51,9 @@ public class PostInternshipsController {
 
     @FXML
     private TextArea descriptionArea;
+
+    @FXML
+    private AnchorPane postInternshipPane;
 
     @FXML
     private Button postInternshipsBtn;
