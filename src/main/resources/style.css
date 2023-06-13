@@ -9,6 +9,15 @@
 -fx-border-radius: 15px;
 }
 
+.postBtn{
+-fx-background-color: #1e81b0;
+-fx-text-fill: white;
+-fx-background-radius: 10px;
+}
+
+.postBtn:hover{
+
+}
 
 .table-view-columns{
 -fx-background-color: #f9e9d6;
