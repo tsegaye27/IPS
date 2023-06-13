@@ -58,7 +58,25 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="postsPane" layoutX="292.0" layoutY="276.0" prefHeight="313.0" prefWidth="453.0" styleClass="scrollPanes" stylesheets="@../../../style.css" visible="false">
+            <AnchorPane layoutX="254.0" layoutY="77.0" prefHeight="153.0" prefWidth="503.0" style="-fx-background-color: white; -fx-background-radius: 15px;">
+               <children>
+                  <AnchorPane layoutX="34.0" layoutY="17.0" prefHeight="125.0" prefWidth="436.0" styleClass="featured-card" stylesheets="@../../../style.css">
+                     <children>
+                        <Label layoutX="9.0" layoutY="15.0" styleClass="grid-details" text="Total Internships :" />
+                        <Label layoutX="7.0" layoutY="62.0" styleClass="grid-details" text="Total Applications :" />
+                        <Label layoutX="274.0" layoutY="7.0" styleClass="grid-details" text="Accepted :" />
+                        <Label layoutX="273.0" layoutY="39.0" styleClass="grid-details" text="Pending :" />
+                        <Label layoutX="274.0" layoutY="72.0" styleClass="grid-details" text="Rejected :" />
+                        <Label fx:id="totalInternshipsLabel" layoutX="134.0" layoutY="26.0" text="Label" />
+                        <Label fx:id="totalApplicationsLabel" layoutX="137.0" layoutY="73.0" text="Label" />
+                        <Label fx:id="acceptedLabel" layoutX="353.0" layoutY="17.0" text="Label" />
+                        <Label fx:id="pendingLabel" layoutX="353.0" layoutY="50.0" text="Label" />
+                        <Label fx:id="rejectedLabel" layoutX="353.0" layoutY="82.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <ScrollPane fx:id="postsPane" layoutX="292.0" layoutY="276.0" prefHeight="313.0" prefWidth="453.0" styleClass="scrollPanes" stylesheets="@../../../style.css">
                <content>
                   <VBox fx:id="postedInternshipsContainer" stylesheets="@../../../style.css" />
                </content>
@@ -73,94 +91,6 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="postDetailsPane" layoutX="269.0" layoutY="82.0" prefHeight="496.0" prefWidth="503.0" styleClass="featured-card" stylesheets="@../../../style.css" visible="false">
-               <children>
-                  <Label fx:id="searchInternshipTitle" layoutX="177.0" layoutY="25.0" text="InternshipTitle/Field">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="returnToPostedBtn" layoutX="15.0" layoutY="12.0" mnemonicParsing="false" onAction="#returnToPostedBtnClicked" styleClass="returnBtn" stylesheets="@../../../style.css">
-                     <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" styleClass="returnArrow" />
-                     </graphic>
-                  </Button>
-                  <GridPane layoutX="41.0" layoutY="66.0" prefHeight="349.0" prefWidth="409.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="103.99995930989583" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="287.6666666666667" minWidth="10.0" prefWidth="283.3333740234375" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="82.33334350585938" minHeight="10.0" prefHeight="78.33334350585938" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="95.66665649414062" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="105.0" styleClass="login-link" text="Company Name : " textFill="WHITE" />
-                        <Label styleClass="login-link" text="Location : " textFill="WHITE" GridPane.rowIndex="1" />
-                        <Label styleClass="login-link" text="Duration : " textFill="WHITE" GridPane.rowIndex="2" />
-                        <Label styleClass="login-link" text="Contact : " textFill="WHITE" GridPane.rowIndex="3" />
-                        <Label styleClass="login-link" text="Paid/Unpaid : " textFill="WHITE" GridPane.rowIndex="4" />
-                        <Label styleClass="login-link" text="Requirements : " textFill="WHITE" GridPane.rowIndex="6" />
-                        <Label styleClass="login-link" text="Description : " textFill="WHITE" GridPane.rowIndex="7" />
-                        <Label fx:id="companyNameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" text="Label" wrapText="true" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label fx:id="locationLabel" alignment="CENTER" prefHeight="17.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label fx:id="durationLabel" alignment="CENTER" prefHeight="17.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label fx:id="contactLabel" alignment="CENTER" prefHeight="17.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label fx:id="paidUnpaidLabel" alignment="CENTER" prefHeight="17.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label fx:id="requirementsLabel" alignment="CENTER" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                        </Label>
-                        <Label fx:id="descriptionLabel" alignment="CENTER" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                        </Label>
-                        <Label styleClass="login-link" text="Vacancies :" GridPane.rowIndex="5" />
-                        <Label fx:id="vacanciesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                     </children>
-                  </GridPane>
-                  <Button fx:id="deleteBtn" layoutX="278.0" layoutY="453.0" mnemonicParsing="false" styleClass="cancelBtn" stylesheets="@../../../style.css" text="Delete" />
-                  <Button fx:id="editPostBtn" layoutX="128.0" layoutY="454.0" mnemonicParsing="false" styleClass="applyBtn" stylesheets="@../../../style.css" text="Edit Post" />
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="applicationRequest" layoutX="256.0" layoutY="27.0" prefHeight="564.0" prefWidth="526.0" styleClass="featured-card" stylesheets="@../../../style.css" visible="false">
                <children>
                   <GridPane layoutX="58.0" layoutY="76.0" minWidth="200.0" prefHeight="390.0" prefWidth="409.0">
@@ -278,36 +208,16 @@
                   <Button fx:id="nextBtn" layoutX="455.0" layoutY="22.0" mnemonicParsing="false" onAction="#nextBtnClicked" styleClass="nextBtn" text="Next" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="254.0" layoutY="77.0" prefHeight="153.0" prefWidth="503.0" style="-fx-background-color: white; -fx-background-radius: 15px;">
+            <AnchorPane fx:id="viewApplicantDetails" layoutX="221.0" layoutY="237.0" prefHeight="358.0" prefWidth="598.0" style="-fx-background-color: white; -fx-background-radius: 12px; -fx-border-radius: 12px;" visible="false">
                <children>
-                  <AnchorPane layoutX="34.0" layoutY="17.0" prefHeight="125.0" prefWidth="436.0" styleClass="featured-card" stylesheets="@../../../style.css">
-                     <children>
-                        <Label layoutX="9.0" layoutY="15.0" styleClass="grid-details" text="Total Internships :" />
-                        <Label layoutX="7.0" layoutY="62.0" styleClass="grid-details" text="Total Applications :" />
-                        <Label layoutX="274.0" layoutY="7.0" styleClass="grid-details" text="Accepted :" />
-                        <Label layoutX="273.0" layoutY="39.0" styleClass="grid-details" text="Pending :" />
-                        <Label layoutX="274.0" layoutY="72.0" styleClass="grid-details" text="Rejected :" />
-                        <Label fx:id="totalInternshipsLabel" layoutX="134.0" layoutY="26.0" text="Label" />
-                        <Label fx:id="totalApplicationsLabel" layoutX="137.0" layoutY="73.0" text="Label" />
-                        <Label fx:id="acceptedLabel" layoutX="353.0" layoutY="17.0" text="Label" />
-                        <Label fx:id="pendingLabel" layoutX="353.0" layoutY="50.0" text="Label" />
-                        <Label fx:id="rejectedLabel" layoutX="353.0" layoutY="82.0" text="Label" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="viewApplicantDetails" layoutX="221.0" layoutY="237.0" prefHeight="358.0" prefWidth="598.0" style="-fx-background-color: white; -fx-background-radius: 12px; -fx-border-radius: 12px;">
-               <children>
-                  <TableView fx:id="tableView" layoutX="8.0" layoutY="11.0" prefHeight="295.0" prefWidth="581.0" styleClass="table-view-columns" stylesheets="@../../../style.css">
+                  <TableView fx:id="tableView" layoutX="8.0" layoutY="11.0" prefHeight="295.0" prefWidth="575.0" styleClass="table-view-columns" stylesheets="@../../../style.css">
                      <columns>
-                        <TableColumn fx:id="titleColumn" prefWidth="154.00001525878906" styleClass="column-header-left" text="Full Name" />
-                        <TableColumn fx:id="companyColumn" prefWidth="119.33331298828125" text="Email" />
-                        <TableColumn fx:id="locationColumn" prefWidth="132.00003051757812" text="University Name" />
-                        <TableColumn fx:id="durationColumn" prefWidth="89.333251953125" text="Degree" />
-                        <TableColumn fx:id="statusColumn" prefWidth="99.3333740234375" text="Status" />
+                        <TableColumn fx:id="titleColumn" prefWidth="217.33326721191406" styleClass="column-header-left" text="Full Name" />
+                        <TableColumn fx:id="companyColumn" prefWidth="190.66665649414062" text="Email" />
+                        <TableColumn fx:id="locationColumn" prefWidth="168.00006103515625" text="University Name" />
                      </columns>
                   </TableView>
-                  <Button fx:id="viewDetailsBtn" layoutX="267.0" layoutY="323.0" mnemonicParsing="false" styleClass="submitBtn" stylesheets="@../../../style.css" text="View Details" />
+                  <Button fx:id="viewDetailsBtn" layoutX="267.0" layoutY="323.0" mnemonicParsing="false" onAction="#viewDetailsBtnClicked" styleClass="submitBtn" stylesheets="@../../../style.css" text="View Details" />
                </children>
             </AnchorPane>
          </children>
