@@ -55,8 +55,6 @@ public class CmpHomePageController {
     @FXML
     private Label internshipTitle;
     @FXML
-    private AnchorPane postDetailsPane;
-    @FXML
     private Button logoutBtn;
 
     @FXML
@@ -184,10 +182,10 @@ public class CmpHomePageController {
         applicationRequest.setVisible(true);
     }
 
-    void showPostEditor(){
-        postedInternshipsContainer.setVisible(false);
-        postDetailsPane.setVisible(true);
-    }
+//    void showPostEditor(){
+//        postedInternshipsContainer.setVisible(false);
+//        postDetailsPane.setVisible(true);
+//    }
 
     void showApplications(){
         postedInternshipsContainer.setVisible(false);
@@ -211,9 +209,8 @@ public class CmpHomePageController {
 
     @FXML
     void returnToPostedBtnClicked(ActionEvent event){
-        postDetailsPane.setVisible(false);
+        viewApplicantDetails.setVisible(false);
         applicationRequest.setVisible(false);
-
         postedInternshipsContainer.setVisible(true);
     }
     @FXML
