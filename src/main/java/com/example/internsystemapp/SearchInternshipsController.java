@@ -125,14 +125,14 @@ public class SearchInternshipsController {
     @FXML
     private Label descriptionLabel;
 
-    private int currCompId;
+    private int currInternshipId;
 
-    public int getCurrCompId() {
-        return currCompId;
+    public int getCurrInternshipId() {
+        return currInternshipId;
     }
 
-    public void setCurrCompId(int currCompId) {
-        this.currCompId = currCompId;
+    public void setCurrInternshipId(int internshipId) {
+        this.currInternshipId = internshipId;
     }
 
     public void initialize() {
@@ -265,8 +265,8 @@ public class SearchInternshipsController {
             contactLabel.setText(rst.getString("email"));
             requirementsLabel.setText(rst.getString("requirements"));
             descriptionLabel.setText(rst.getString("description"));
-            setCurrCompId(rst.getInt("company_id"));
-            System.out.println(getCurrCompId());
+            setCurrInternshipId(rst.getInt("id"));
+            System.out.println(getCurrInternshipId());
         }
         internshipDetailsPane.setVisible(true);
 
@@ -335,11 +335,11 @@ public class SearchInternshipsController {
 
 
         SQL = "select fullName, email, dept from stud where id ="+DBUtills.getCurrentInternId();
-        ResultSet rst = DBUtills.getInternData(SQL);
+        ResultSet rst = DBUtills.getData(SQL);
         while(rst.next()){
             fullNameField.setText(rst.getString("fullName"));
             emailField.setText(rst.getString("email"));
-//            degreeField.setText(rst.getString("dept"));
+            degreeField.setText(rst.getString("dept"));
         }
 
         applicationForm.setVisible(true);
@@ -348,12 +348,12 @@ public class SearchInternshipsController {
     @FXML
     void submitBtnClicked(ActionEvent event){
         if(validateInputs()){
-            DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrCompId(), 3, universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Your Application Has Been Sent");
-            alert.show();
+            DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), 3, universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
+            universityNameField.clear();
+            skillsField.clear();
+            gitHubURLField.clear();
+            statementOfInterestArea.clear();
+            experienceArea.clear();
         }else{
             showError("Please fill every field");
         }
@@ -364,7 +364,9 @@ public class SearchInternshipsController {
         String email = emailField.getText();
         String universityName = universityNameField.getText();
         String degree = degreeField.getText();
+
         String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
+
         String skills = skillsField.getText();
         String gitLink = gitHubURLField.getText();
         String interest = statementOfInterestArea.getText();

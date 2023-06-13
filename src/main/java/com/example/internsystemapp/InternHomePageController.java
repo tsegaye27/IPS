@@ -136,19 +136,32 @@ public class InternHomePageController {
 
         @FXML
         private GridPane gridPane;
-
-
-
         @FXML
         private AnchorPane internshipDetailsPane;
         @FXML
         private FontAwesomeIcon searchInternshipsIcon;
+        @FXML
+        private ComboBox yearOfStudyBox;
+
+        private int currInternshipId;
+
+        public int getCurrInternshipId(){
+
+            return currInternshipId;
+
+        }
+        public void setCurrInternshipId(int intId){
+            this.currInternshipId = intId;
+        }
 
     public InternHomePageController() throws SQLException {
     }
 
-    public void initialize(){
+    
 
+    String SQL;
+
+public void initialize(){
         homeBtn.setDisable(true);
         yearOfStudyBox.getItems().add(1);
         yearOfStudyBox.getItems().add(2);
@@ -156,6 +169,7 @@ public class InternHomePageController {
         yearOfStudyBox.getItems().add(4);
         yearOfStudyBox.getItems().add(5);
         }
+
         @FXML
         void appliedInternshipsBtnClicked(ActionEvent event) throws IOException{
             homeBtn.setDisable(false);
@@ -188,19 +202,20 @@ public class InternHomePageController {
                 if (rst.next()) {
                     // Read the values of the columns in the first row
                     setDetails();
+                    setCurrInternshipId(rst.getInt("id"));
                     rst.previous();
                 }
             }else if(Objects.equals(id, internshipDetailsLink1.getId())){
                 if (rst.next() && rst.next()) {
                     setDetails();
-
+                    setCurrInternshipId(rst.getInt("id"));
                     rst.previous();
                     rst.previous();
                 }
             }else if(Objects.equals(id, internshipDetailsLink2.getId())){
                 if (rst.next() && rst.next()&& rst.next()) {
                     setDetails();
-
+                    setCurrInternshipId(rst.getInt("id"));
                     rst.previous();
                     rst.previous();
                     rst.previous();
@@ -208,7 +223,7 @@ public class InternHomePageController {
             }else if(Objects.equals(id, internshipDetailsLink22.getId())){
                 if (rst.next() && rst.next()&& rst.next() && rst.next()) {
                     setDetails();
-
+                    setCurrInternshipId(rst.getInt("id"));
                     rst.previous();
                     rst.previous();
                     rst.previous();
@@ -247,37 +262,53 @@ public class InternHomePageController {
             internshipDetailsPane.setVisible(false);
             gridPane.setVisible(true);
         }
-
         @FXML
-        void applyNowBtnClicked(ActionEvent event){
+        void applyNowBtnClicked(ActionEvent event) throws SQLException {
             internshipDetailsPane.setVisible(false);
+            SQL = "select fullName, email, dept from stud where id ="+DBUtills.getCurrentInternId();
+            ResultSet rst = DBUtills.getData(SQL);
+            while(rst.next()){
+                fullNameField.setText(rst.getString("fullName"));
+                emailField.setText(rst.getString("email"));
+                degreeField.setText(rst.getString("dept"));
+            }
             applicationForm.setVisible(true);
         }
 
         @FXML
         void submitBtnClicked(ActionEvent event){
             if(validateInputs()){
-                //save into database
+                DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), 3, universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
+                universityNameField.clear();
+                skillsField.clear();
+                gitHubURLField.clear();
+                statementOfInterestArea.clear();
+                experienceArea.clear();
             }else{
                 showError("Please fill every field");
             }
         }
 
-        private boolean validateInputs(){
-            String fullName = fullNameField.getText();
-            String email = emailField.getText();
-            String phoneNumber = phoneNumberField.getText();
-            String location = locationField.getText();
-            String universityName = universityNameField.getText();
-            String degree = degreeField.getText();
-            String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
-            String skills = skillsField.getText();
 
-            if(fullName.isEmpty()||email.isEmpty()||phoneNumber.isEmpty()||location.isEmpty()||universityName.isEmpty()||degree.isEmpty()||yearOfStudy.isEmpty()||skills.isEmpty()){
-                return false;
-            }
-            return true;
+    private boolean validateInputs(){
+        String fullName = fullNameField.getText();
+        String email = emailField.getText();
+        String universityName = universityNameField.getText();
+
+        String degree = degreeField.getText();
+   String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
+//        String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
+        int yearOfStudy = 4;
+        String skills = skillsField.getText();
+        String gitLink = gitHubURLField.getText();
+        String interest = statementOfInterestArea.getText();
+        String exp = experienceArea.getText();
+
+        if(fullName.trim().isEmpty()||interest.trim().isEmpty()||exp.trim().isEmpty()||email.trim().isEmpty()||gitLink.trim().isEmpty()||universityName.isEmpty()||skills.isEmpty()){
+            return false;
         }
+        return true;
+    }
 
         private void showError(String message){
             Alert alert = new Alert(Alert.AlertType.ERROR);
