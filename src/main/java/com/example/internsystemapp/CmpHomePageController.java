@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -79,6 +80,7 @@ public class CmpHomePageController {
     @FXML
     private TableView<ApplicantsList> applicantsView;
 
+
     @FXML
     private TableColumn <ApplicantsList, String> emailColumn;
 
@@ -97,6 +99,14 @@ public class CmpHomePageController {
     private Label experienceLabel;
     @FXML
     private Label fullNameLabel;
+    @FXML
+    private Label universityNameLabel;
+    @FXML
+    private Label yearOfStudyLabel;
+    @FXML
+    private Label skillsLabel;
+    @FXML
+    private Label statementOfInterestLabel;
 
     @FXML
     private Button backBtn;
@@ -172,7 +182,11 @@ public class CmpHomePageController {
             Button viewDetails = new Button("View Applicants");
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
-                showApplications(id);
+                try {
+                    showApplications(id);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             });
 
             AnchorPane.setTopAnchor(titleLabel, 15.0);
@@ -201,9 +215,32 @@ public class CmpHomePageController {
     }
 
     @FXML
-    void viewDetailsBtnClicked(ActionEvent event){
-        viewApplicantDetails.setVisible(false);
-        applicationRequest.setVisible(true);
+    void viewDetailsBtnClicked(ActionEvent event) throws SQLException {
+        ApplicantsList selectedItem = applicantsView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            int rowIndex = applicantsView.getSelectionModel().getSelectedIndex();
+            String selectedEmail = applicantsView.getColumns().get(1).getCellData(rowIndex).toString();
+            SQL = "select stud.id, stud.fullName, stud.email, stud.dept, application.universityName, application.yearOfStudy, application.skills, application.gitURL, application.interests, application.experience from stud inner join application on stud.id = application.internId where stud.email = '"+selectedEmail+"'";
+            System.out.println(SQL);
+            ResultSet rst = DBUtills.getData(SQL);
+            while(rst.next()){
+                fullNameLabel.setText(rst.getString("fullName"));
+                emailLabel.setText(rst.getString("email"));
+                universityNameLabel.setText(rst.getString("universityName"));
+                degreeLabel.setText(rst.getString("dept"));
+                yearOfStudyLabel.setText(rst.getString("yearOfStudy"));
+                skillsLabel.setText(rst.getString("skills"));
+                gitHubURLLabel.setText(rst.getString("gitURL"));
+                statementOfInterestLabel.setText(rst.getString("interests"));
+                experienceLabel.setText(rst.getString("experience"));
+                break;
+            }
+            viewApplicantDetails.setVisible(false);
+            applicationRequest.setVisible(true);
+        } else {
+            showError("select an application to view");
+        }
+
     }
 
 //    void showPostEditor(){
@@ -211,22 +248,29 @@ public class CmpHomePageController {
 //        postDetailsPane.setVisible(true);
 //    }
 
-    void showApplications(int id){
+    void showApplications(int id) throws SQLException {
         postsPane.setVisible(false);
         viewApplicantDetails.setVisible(true);
         tableViewInfo(id);
     }
-
-    void tableViewInfo(int id){
-        ObservableList<ApplicantsList> applicants= FXCollections.observableArrayList(
-                new ApplicantsList("John Doe","jd@doe.com", "BahirDar Institute of Technology")
-        );
-
+    ObservableList<ApplicantsList> applicants= FXCollections.observableArrayList();
+    void tableViewInfo(int id) throws SQLException {
+        applicants.clear();
+        SQL = "select stud.id, stud.fullName, stud.email, application.universityName, application.status from stud inner join application on stud.id = application.internId where internshipId = "+id;
+        ResultSet rst = DBUtills.getData(SQL);
+        if(rst.isBeforeFirst()){
+            while(rst.next()){
+                if(Objects.equals(rst.getString("status"), "pending")){
+                    applicants.add(new ApplicantsList(rst.getString("fullName"),rst.getString("email"), rst.getString("universityName")));
+                }
+            }
+        }
         applicantsView.setItems(applicants);
 
         fullNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         universityNameColumn.setCellValueFactory(new PropertyValueFactory<>("universityName"));
+
     }
 
     @FXML
@@ -237,12 +281,16 @@ public class CmpHomePageController {
 
     @FXML
     void acceptBtnClicked(ActionEvent event){
-
+        DBUtills.acceptIntern(emailLabel.getText());
+        postsPane.setVisible(true);
+        viewApplicantDetails.setVisible(false);
     }
 
     @FXML
     void rejectBtnClicked(ActionEvent event){
-
+        DBUtills.rejectIntern(emailLabel.getText());
+        postsPane.setVisible(true);
+        viewApplicantDetails.setVisible(false);
     }
 
     @FXML
@@ -322,6 +370,14 @@ public class CmpHomePageController {
         rejectedLabel.setText(Integer.toString(rejectedApplicationNumber));
         pendingLabel.setText(Integer.toString(pendingApplicationNumber));
     }
+    private void showError(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
 
 }

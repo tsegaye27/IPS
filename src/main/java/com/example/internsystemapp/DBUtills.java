@@ -332,5 +332,43 @@ public class DBUtills {
 
         }
     }
+    public static void acceptIntern(String email){
+        Connection conn = null;
+        PreparedStatement psAcceptIntern = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psAcceptIntern = conn.prepareStatement("update application set status = 'accepted' where internId in (select id from stud where email = '"+email+"')");
+            psAcceptIntern.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("intern accepted");
+            alert.show();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closePreparedStatement(psAcceptIntern);
+            closeConnection(conn);
+        }
+    }
+    public static void rejectIntern(String email){
+        Connection conn = null;
+        PreparedStatement psRejectIntern = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psRejectIntern = conn.prepareStatement("update application set status = 'rejected' where internId in (select id from stud where email = '"+email+"')");
+            psRejectIntern.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("intern rejected");
+            alert.show();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closePreparedStatement(psRejectIntern);
+            closeConnection(conn);
+        }
+    }
 
 }
