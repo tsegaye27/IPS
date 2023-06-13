@@ -235,11 +235,12 @@ public class CmpHomePageController {
                 experienceLabel.setText(rst.getString("experience"));
                 break;
             }
+            viewApplicantDetails.setVisible(false);
+            applicationRequest.setVisible(true);
         } else {
             showError("select an application to view");
         }
-        viewApplicantDetails.setVisible(false);
-        applicationRequest.setVisible(true);
+
     }
 
 //    void showPostEditor(){
@@ -254,6 +255,7 @@ public class CmpHomePageController {
     }
     ObservableList<ApplicantsList> applicants= FXCollections.observableArrayList();
     void tableViewInfo(int id) throws SQLException {
+        applicants.clear();
         SQL = "select stud.id, stud.fullName, stud.email, application.universityName, application.status from stud inner join application on stud.id = application.internId where internshipId = "+id;
         ResultSet rst = DBUtills.getData(SQL);
         if(rst.isBeforeFirst()){
@@ -279,7 +281,7 @@ public class CmpHomePageController {
 
     @FXML
     void acceptBtnClicked(ActionEvent event){
-
+        DBUtills.acceptIntern(emailLabel.getText());
     }
 
     @FXML
