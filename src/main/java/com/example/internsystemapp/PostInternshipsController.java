@@ -104,8 +104,11 @@ public class PostInternshipsController {
 
     @FXML
     void nextBtnClicked(ActionEvent event){
-        postInternshipPane.setVisible(false);
-        viewPostPane.setVisible(true);
+        if(validateInputs()){
+            postInternshipPane.setVisible(false);
+            viewPostPane.setVisible(true);
+        }
+        showError("Please Fill Every Field");
     }
 
     @FXML
