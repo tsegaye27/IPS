@@ -4,11 +4,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.ManageInternshipsController">
@@ -44,14 +46,14 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="postDetailsPane" layoutX="268.0" layoutY="29.0" prefHeight="496.0" prefWidth="503.0" styleClass="featured-card" stylesheets="@../../../style.css" visible="false">
+            <AnchorPane fx:id="managePostPane" layoutX="268.0" layoutY="78.0" prefHeight="496.0" prefWidth="503.0" styleClass="featured-card" stylesheets="@../../../style.css">
                <children>
                   <Label fx:id="searchInternshipTitle" layoutX="177.0" layoutY="25.0" text="InternshipTitle/Field">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="returnToPostedBtn" layoutX="15.0" layoutY="12.0" mnemonicParsing="false" onAction="#returnToPostedBtnClicked" styleClass="returnBtn" stylesheets="@../../../style.css">
+                  <Button fx:id="returnToViewPostsBtn" layoutX="15.0" layoutY="12.0" mnemonicParsing="false" onAction="#returnToViewPostsBtnClicked" styleClass="returnBtn" stylesheets="@../../../style.css">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" styleClass="returnArrow" />
                      </graphic>
@@ -128,11 +130,24 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="deleteBtn" layoutX="278.0" layoutY="453.0" mnemonicParsing="false" styleClass="cancelBtn" stylesheets="@../../../style.css" text="Delete" />
-                  <Button fx:id="editPostBtn" layoutX="128.0" layoutY="454.0" mnemonicParsing="false" styleClass="applyBtn" stylesheets="@../../../style.css" text="Edit Post" />
+                  <Button fx:id="deleteBtn" layoutX="306.0" layoutY="453.0" mnemonicParsing="false" onAction="#deleteBtnClicked" styleClass="cancelBtn" stylesheets="@../../../style.css" text="Delete" />
+                  <Button fx:id="editPostBtn" layoutX="155.0" layoutY="453.0" mnemonicParsing="false" onAction="#editPostBtnClicked" styleClass="applyBtn" stylesheets="@../../../style.css" text="Edit Post" />
                </children>
+               <opaqueInsets>
+                  <Insets top="-4.0" />
+               </opaqueInsets>
             </AnchorPane>
-            <Label layoutX="436.0" layoutY="67.0" text="Manage Internships">
+            <Label layoutX="419.0" layoutY="30.0" text="Manage Internships">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="managePostsPane" layoutX="303.0" layoutY="143.0" prefHeight="399.0" prefWidth="453.0" styleClass="scrollPanes" stylesheets="@../../../style.css" visible="false">
+               <content>
+                  <VBox fx:id="postedInternshipsContainer" stylesheets="@../../../style.css" />
+               </content>
+            </ScrollPane>
+            <Label fx:id="noInternships" layoutX="330.0" layoutY="254.0" prefHeight="71.0" prefWidth="426.0" text="There are no Internships To Manage!" textFill="#eb0f0f" visible="false" wrapText="true">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
