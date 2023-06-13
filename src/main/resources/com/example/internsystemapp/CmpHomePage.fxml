@@ -127,7 +127,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="EmailLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="emailLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -175,7 +175,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="statementOfInteresetLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Label fx:id="statementOfInterestLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -200,24 +200,24 @@
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="returnToPostedBtn1" layoutX="26.0" layoutY="22.0" mnemonicParsing="false" onAction="#returnToPostedBtnClicked" styleClass="returnBtn" stylesheets="@../../../style.css">
+                  <Button fx:id="returnToPostedBtn" layoutX="26.0" layoutY="22.0" mnemonicParsing="false" onAction="#returnToPostedBtnClicked" styleClass="returnBtn" stylesheets="@../../../style.css">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" styleClass="returnArrow" />
                      </graphic>
                   </Button>
-                  <Button fx:id="nextBtn" layoutX="455.0" layoutY="22.0" mnemonicParsing="false" onAction="#nextBtnClicked" styleClass="nextBtn" text="Next" textFill="WHITE" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="viewApplicantDetails" layoutX="221.0" layoutY="237.0" prefHeight="358.0" prefWidth="598.0" style="-fx-background-color: white; -fx-background-radius: 12px; -fx-border-radius: 12px;" visible="false">
                <children>
-                  <TableView fx:id="tableView" layoutX="8.0" layoutY="11.0" prefHeight="295.0" prefWidth="575.0" styleClass="table-view-columns" stylesheets="@../../../style.css">
+                  <TableView fx:id="applicantsView" layoutX="8.0" layoutY="11.0" prefHeight="295.0" prefWidth="575.0" styleClass="table-view-columns" stylesheets="@../../../style.css">
                      <columns>
-                        <TableColumn fx:id="titleColumn" prefWidth="217.33326721191406" styleClass="column-header-left" text="Full Name" />
-                        <TableColumn fx:id="companyColumn" prefWidth="190.66665649414062" text="Email" />
-                        <TableColumn fx:id="locationColumn" prefWidth="168.00006103515625" text="University Name" />
+                        <TableColumn fx:id="fullNameColumn" prefWidth="192.00001525878906" styleClass="column-header-left" text="Full Name" />
+                        <TableColumn fx:id="emailColumn" prefWidth="137.99996948242188" text="Email" />
+                        <TableColumn fx:id="universityNameColumn" prefWidth="246.66668701171875" text="University Name" />
                      </columns>
                   </TableView>
                   <Button fx:id="viewDetailsBtn" layoutX="267.0" layoutY="323.0" mnemonicParsing="false" onAction="#viewDetailsBtnClicked" styleClass="submitBtn" stylesheets="@../../../style.css" text="View Details" />
+                  <Button fx:id="backBtn" layoutX="36.0" layoutY="323.0" mnemonicParsing="false" onAction="#backBtnClicked" prefHeight="25.0" prefWidth="51.0" styleClass="postBtn" stylesheets="@../../../style.css" text="Back" />
                </children>
             </AnchorPane>
          </children>
