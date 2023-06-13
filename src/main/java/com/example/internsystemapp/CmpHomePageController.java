@@ -132,11 +132,18 @@ public class CmpHomePageController {
         displayDashboard();
     }
 
-    void displayPostedInternships(){
-        //if the company have posted an internship
-        createHBox();
+    void displayPostedInternships() throws SQLException {
+        SQL = "select id, Title, duration, numberOfApplicantsNeeded from internshipposts where company_id ="+DBUtills.getCurrentCmpId();
+        ResultSet rst = DBUtills.getData(SQL);
+        if(rst.isBeforeFirst()){
+            //if the company have posted an internship
+            while(rst.next()){
+                createHBox(rst.getInt("id"), rst.getString("Title"), rst.getString("duration"), rst.getString("numberOfApplicantsNeeded"));
+            }
+        }else{
+            noPost();
+        }
         //else there are no posted internships
-//        noPost();
     }
 
     void noPost(){
@@ -144,7 +151,7 @@ public class CmpHomePageController {
         noPostLabel.setVisible(true);
     }
 
-    void createHBox(){
+    void createHBox(int id, String title, String duration, String vacancies){
             AnchorPane anchorPane = new AnchorPane();
 
             anchorPane.getStyleClass().add("post-cards");
@@ -152,9 +159,9 @@ public class CmpHomePageController {
             anchorPane.setPrefWidth(440);
             anchorPane.setPrefHeight(180);
 
-            Label titleLabel = new Label("Title");
-            Label durationLabel = new Label("Duration");
-            Label vacanciesLabel = new Label("Vacancies");
+            Label titleLabel = new Label(title);
+            Label durationLabel = new Label(duration);
+            Label vacanciesLabel = new Label(vacancies);
 
 //            Button manageButton = new Button("Manage Internship");
 //            manageButton.getStyleClass().add("cancelBtn");
@@ -165,7 +172,7 @@ public class CmpHomePageController {
             Button viewDetails = new Button("View Applicants");
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
-                showApplications();
+                showApplications(id);
             });
 
             AnchorPane.setTopAnchor(titleLabel, 15.0);
@@ -204,13 +211,13 @@ public class CmpHomePageController {
 //        postDetailsPane.setVisible(true);
 //    }
 
-    void showApplications(){
+    void showApplications(int id){
         postedInternshipsContainer.setVisible(false);
         viewApplicantDetails.setVisible(true);
-        tableViewInfo();
+        tableViewInfo(id);
     }
 
-    void tableViewInfo(){
+    void tableViewInfo(int id){
         ObservableList<ApplicantsList> applicants= FXCollections.observableArrayList(
                 new ApplicantsList("John Doe","jd@doe.com", "BahirDar Institute of Technology")
         );
