@@ -282,11 +282,15 @@ public class CmpHomePageController {
     @FXML
     void acceptBtnClicked(ActionEvent event){
         DBUtills.acceptIntern(emailLabel.getText());
+        postsPane.setVisible(true);
+        viewApplicantDetails.setVisible(false);
     }
 
     @FXML
     void rejectBtnClicked(ActionEvent event){
-
+        DBUtills.rejectIntern(emailLabel.getText());
+        postsPane.setVisible(true);
+        viewApplicantDetails.setVisible(false);
     }
 
     @FXML
