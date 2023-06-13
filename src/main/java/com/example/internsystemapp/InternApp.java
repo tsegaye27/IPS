@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class InternApp extends Application {
     private static Stage primaryStage;
@@ -90,7 +91,7 @@ public class InternApp extends Application {
     }
 
     public static void showAppliedInternships() throws IOException{
-        Parent root = FXMLLoader.load(InternApp.class.getResource("AppliedInternships.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(InternApp.class.getResource("AppliedInternships.fxml")));
         Scene scene = new Scene(root, 820, 600);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
         primaryStage.setTitle("Applied Internships");
@@ -120,10 +121,7 @@ public class InternApp extends Application {
     public void start(Stage primaryStage) throws IOException, SQLException {
         InternApp.primaryStage = primaryStage;
         primaryStage.setTitle("Internship App");
-
         InternApp.showPostInternships();
-
-
     }
     public static void main(String[] args) {
         launch(args);
