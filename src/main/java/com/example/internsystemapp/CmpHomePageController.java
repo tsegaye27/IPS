@@ -12,6 +12,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Optional;
 
 public class CmpHomePageController {
@@ -21,7 +24,8 @@ public class CmpHomePageController {
 
     @FXML
     private Label companyNameLabel;
-
+    @FXML
+    private Label greetingName;
     @FXML
     private Button nextBtn;
 
@@ -82,14 +86,30 @@ public class CmpHomePageController {
     private Label rejectedLabel;
     @FXML
     private VBox postedInternshipsContainer;
-
     @FXML
     private ScrollPane postsPane;
 
-    public void initialize(){
+
+    String SQL;
+    private int internshipNo = 0;
+    public int getInternshipNo() {
+        return internshipNo;
+    }
+
+    public void setInternshipNo(int internshipNo) {
+        this.internshipNo = internshipNo;
+    }
+
+
+    public CmpHomePageController() throws SQLException {
+    }
+   
+
+    public void initialize() throws SQLException {
         homeBtn.setDisable(true);
         postedInternshipsContainer.setSpacing(10);
         displayPostedInternships();
+        displayDashboard();
     }
 
     void displayPostedInternships(){
@@ -223,5 +243,49 @@ public class CmpHomePageController {
             DBUtills.setCurrentCmpId(0);
         }
     }
+    void displayDashboard() throws SQLException {
+        SQL = "select id from internshipposts where company_id =" + DBUtills.getCurrentCmpId();
+        System.out.println(SQL);
+        ResultSet rst = DBUtills.getData(SQL);
+        int intNo = 0;
+        while (rst.next()) {
+           intNo++;
+        }
+        setInternshipNo(intNo);
+        totalInternshipsLabel.setText(Integer.toString(intNo));
+        getCompanyName();
+        getDashboardData();
+    }
+    void getCompanyName() throws SQLException {
+        SQL = "select name from company where id =" + DBUtills.getCurrentCmpId();
+        System.out.println(SQL);
+        ResultSet rst = DBUtills.getData(SQL);
+        while (rst.next()) {
+            greetingName.setText(rst.getString("name"));
+        }
+    }
+    void getDashboardData() throws SQLException {
+        SQL = "select application.appId, application.internshipId, application.status, internshipposts.company_id from application inner join internshipposts on application.internshipId = internshipposts.id where company_id =" + DBUtills.getCurrentCmpId();
+        ResultSet rst = DBUtills.getData(SQL);
+        int applicationCounter = 0;
+        int acceptedApplicationNumber = 0;
+        int rejectedApplicationNumber = 0;
+        int pendingApplicationNumber = 0;
+        while (rst.next()) {
+            applicationCounter++;
+            if(Objects.equals(rst.getString("status"), "pending")){
+                pendingApplicationNumber++;
+            }else if(Objects.equals(rst.getString("status"), "accepted")){
+                acceptedApplicationNumber++;
+            }else{
+                rejectedApplicationNumber++;
+            }
+        }
+        totalApplicationsLabel.setText(Integer.toString(applicationCounter));
+        acceptedLabel.setText(Integer.toString(acceptedApplicationNumber));
+        rejectedLabel.setText(Integer.toString(rejectedApplicationNumber));
+        pendingLabel.setText(Integer.toString(pendingApplicationNumber));
+    }
+
 
 }
