@@ -20,11 +20,7 @@
                         <Image url="@../../../img/signUp.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="22.0" layoutY="-9.0" prefHeight="137.0" prefWidth="278.0" text="WELCOME TO INTERNXYZ" textAlignment="CENTER" textFill="#1f6e6c" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="27.0" />
-                     </font>
-                  </Label>
+                  <Label layoutX="22.0" layoutY="-9.0" prefHeight="137.0" prefWidth="278.0" styleClass="welcome-text" text="WELCOME TO InternXYZ" textAlignment="CENTER" wrapText="true" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="300.0" prefHeight="421.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
@@ -39,14 +35,14 @@
                         <Font name="Roboto" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="internBtn" layoutX="92.0" layoutY="193.0" mnemonicParsing="false" onAction="#internBtnClicked" prefHeight="35.0" prefWidth="140.0" styleClass="sidebar-Btn" text=" an INTERN">
+                  <Button fx:id="internBtn" layoutX="92.0" layoutY="193.0" mnemonicParsing="false" onAction="#internBtnClicked" prefHeight="35.0" prefWidth="140.0" styleClass="internBtn" text="Intern">
                      <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.5em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="companyBtn" layoutX="92.0" layoutY="250.0" mnemonicParsing="false" onAction="#companyBtnClicked" prefHeight="35.0" prefWidth="140.0" styleClass="sidebar-Btn" text=" a COMPANY">
+                  <Button fx:id="companyBtn" layoutX="92.0" layoutY="250.0" mnemonicParsing="false" onAction="#companyBtnClicked" prefHeight="35.0" prefWidth="140.0" styleClass="internBtn" text="Company">
                      <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="DESKTOP" size="2em" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="DESKTOP" size="1.5em" />
                      </graphic>
                   </Button>
                </children>
