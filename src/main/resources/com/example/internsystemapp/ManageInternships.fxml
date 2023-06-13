@@ -144,7 +144,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="managePostsPane" layoutX="303.0" layoutY="88.0" prefHeight="485.0" prefWidth="453.0" styleClass="scrollPanes" stylesheets="@../../../style.css">
+            <ScrollPane fx:id="viewPostsPane" layoutX="303.0" layoutY="88.0" prefHeight="485.0" prefWidth="453.0" styleClass="scrollPanes" stylesheets="@../../../style.css">
                <content>
                   <VBox fx:id="internshipsContainer" stylesheets="@../../../style.css" />
                </content>

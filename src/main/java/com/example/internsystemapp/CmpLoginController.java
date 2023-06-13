@@ -32,7 +32,6 @@ public class CmpLoginController {
             showError("Please fill every field");
         }else{
             DBUtills.loginCmp(event, companyName, companyEmail, password);
-            showInfo("Successfully Logged-in");
 
         }
     }
@@ -43,14 +42,6 @@ public class CmpLoginController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-
-    private void showInfo(String message){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.show();
     }
 
     @FXML

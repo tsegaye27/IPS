@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -69,7 +70,7 @@ public class ManageInternshipsController {
     private AnchorPane managePostPane;
 
     @FXML
-    private ScrollPane managePostsPane;
+    private ScrollPane viewPostsPane;
 
     @FXML
     private Label noInternships;
@@ -114,17 +115,72 @@ public class ManageInternshipsController {
     }
 
     void displayInternships(){
+    //if the company have posted internships
+        createHBox();
+        //else
+//        noInternshipsPosted();
+    }
 
+    void noInternshipsPosted(){
+        viewPostsPane.setVisible(false);
+        noInternships.setVisible(true);
+    }
+
+    void createHBox(){
+        AnchorPane anchorPane = new AnchorPane();
+
+        anchorPane.getStyleClass().add("post-cards");
+
+        anchorPane.setPrefWidth(440);
+        anchorPane.setPrefHeight(180);
+
+        Label titleLabel = new Label("title");
+        Label durationLabel = new Label("duration");
+        Label vacanciesLabel = new Label("vacancies");
+
+        Button manageButton = new Button("Manage Internship");
+        manageButton.getStyleClass().add("sidebarBtn");
+        manageButton.setOnAction(event -> {
+            showPostEditor();
+        });
+
+        AnchorPane.setTopAnchor(titleLabel, 15.0);
+        AnchorPane.setLeftAnchor(titleLabel, 190.0);
+
+        AnchorPane.setTopAnchor(vacanciesLabel, 60.0);
+        AnchorPane.setLeftAnchor(vacanciesLabel, 160.0);
+
+        AnchorPane.setTopAnchor(durationLabel, 90.0);
+        AnchorPane.setLeftAnchor(durationLabel, 160.0);
+
+        AnchorPane.setTopAnchor(manageButton, 120.0);
+        AnchorPane.setLeftAnchor(manageButton, 175.0);
+
+        anchorPane.getChildren().addAll(titleLabel,durationLabel,vacanciesLabel, manageButton);
+
+        titleLabel.getStyleClass().add("internship-title");
+        durationLabel.getStyleClass().add("internship-details");
+        vacanciesLabel.getStyleClass().add("internship-details");
+        HBox hBox = new HBox(anchorPane);
+        hBox.setSpacing(10);
+        internshipsContainer.getChildren().add(hBox);
+    }
+
+    void showPostEditor(){
+        viewPostsPane.setVisible(false);
+        managePostPane.setVisible(true);
     }
 
     @FXML
     void returnToViewPostsBtnClicked(ActionEvent event){
-
+        managePostPane.setVisible(false);
+        viewPostsPane.setVisible(true);
     }
 
     @FXML
     void editPostBtnClicked(ActionEvent event){
-
+        managePostPane.setVisible(false);
+        internshipEditorPane.setVisible(true);
     }
 
     @FXML
@@ -139,7 +195,8 @@ public class ManageInternshipsController {
 
     @FXML
     void cancelBtnClicked(ActionEvent event){
-
+        internshipEditorPane.setVisible(false);
+        managePostPane.setVisible(true);
     }
 
     @FXML
