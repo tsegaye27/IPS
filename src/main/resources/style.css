@@ -16,7 +16,8 @@
 }
 
 .postBtn:hover{
-
+-fx-border-radius: 10px;
+-fx-border-color: black;
 }
 
 .table-view-columns{
