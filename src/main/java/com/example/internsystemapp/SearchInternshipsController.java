@@ -348,11 +348,12 @@ public class SearchInternshipsController {
     @FXML
     void submitBtnClicked(ActionEvent event){
         if(validateInputs()){
-            DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), (Integer) yearOfStudyBox.getValue(), universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
+            DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), Integer.parseInt(yearOfStudyBox.getValue().toString()), universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
             universityNameField.clear();
             skillsField.clear();
             gitHubURLField.clear();
             statementOfInterestArea.clear();
+            yearOfStudyBox.getSelectionModel().clearSelection();
             experienceArea.clear();
         }else{
             showError("Please fill every field");
@@ -365,7 +366,7 @@ public class SearchInternshipsController {
         String universityName = universityNameField.getText();
         String degree = degreeField.getText();
 
-        String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
+        String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
 
         String skills = skillsField.getText();
         String gitLink = gitHubURLField.getText();

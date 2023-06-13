@@ -212,7 +212,7 @@ public class CmpHomePageController {
 //    }
 
     void showApplications(int id){
-        postedInternshipsContainer.setVisible(false);
+        postsPane.setVisible(false);
         viewApplicantDetails.setVisible(true);
         tableViewInfo(id);
     }
@@ -232,7 +232,7 @@ public class CmpHomePageController {
     @FXML
     void backBtnClicked(ActionEvent event){
         viewApplicantDetails.setVisible(false);
-        postedInternshipsContainer.setVisible(true);
+        postsPane.setVisible(true);
     }
 
     @FXML
