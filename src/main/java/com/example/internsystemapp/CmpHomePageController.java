@@ -240,11 +240,6 @@ public class CmpHomePageController {
 
     }
 
-//    void showPostEditor(){
-//        postedInternshipsContainer.setVisible(false);
-//        postDetailsPane.setVisible(true);
-//    }
-
     void showApplications(int id) throws SQLException {
         postsPane.setVisible(false);
         viewApplicantDetails.setVisible(true);
