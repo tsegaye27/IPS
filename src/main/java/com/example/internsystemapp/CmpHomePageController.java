@@ -183,12 +183,6 @@ public class CmpHomePageController {
             Label durationLabel = new Label(duration);
             Label vacanciesLabel = new Label(vacancies);
 
-//            Button manageButton = new Button("Manage Internship");
-//            manageButton.getStyleClass().add("cancelBtn");
-//            manageButton.setOnAction(event -> {
-//                showPostEditor();
-//            });
-
             Button viewDetails = new Button("View Applicants");
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
@@ -208,9 +202,6 @@ public class CmpHomePageController {
             AnchorPane.setTopAnchor(durationLabel, 90.0);
             AnchorPane.setLeftAnchor(durationLabel, 160.0);
 
-//            AnchorPane.setTopAnchor(manageButton, 120.0);
-//            AnchorPane.setLeftAnchor(manageButton, 70.0);
-
             AnchorPane.setTopAnchor(viewDetails, 140.0);
             AnchorPane.setLeftAnchor(viewDetails, 175.0);
 
@@ -222,6 +213,12 @@ public class CmpHomePageController {
             HBox hBox = new HBox(anchorPane);
             hBox.setSpacing(10);
             postedInternshipsContainer.getChildren().add(hBox);
+    }
+
+    @FXML
+    void managedApplicantsBtnClicked(ActionEvent event) throws IOException{
+        homeBtn.setDisable(false);
+        InternApp.showManagedApplicants();
     }
 
     @FXML
@@ -252,11 +249,6 @@ public class CmpHomePageController {
         }
 
     }
-
-//    void showPostEditor(){
-//        postedInternshipsContainer.setVisible(false);
-//        postDetailsPane.setVisible(true);
-//    }
 
     void showApplications(int id) throws SQLException {
         postsPane.setVisible(false);

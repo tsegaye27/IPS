@@ -45,6 +45,7 @@ public class AppliedInternshipsController {
 
     ObservableList<AppliedInternshipsLists> internships = FXCollections.observableArrayList();
     String SQL;
+
     public void initialize() throws SQLException {
         tableViewInfo();
         appliedInternshipsBtn.setDisable(true);

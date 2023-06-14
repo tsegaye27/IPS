@@ -7,7 +7,7 @@
 .internBtn {
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-font-size: 18px;
+    -fx-font-size: 15px;
     -fx-text-fill: black;
     -fx-transition: text-fill 0.4s ease;
 }
@@ -156,9 +156,9 @@
 -fx-text-fill: white;
 }
 
-/*.signUpImg{
--fx-opacity: 0.6;
-}*/
+.signUpImg{
+-fx-opacity: 0.8;
+}
 
 .searchBar{
 -fx-background-radius: 12px;
@@ -174,7 +174,7 @@
 }
 
 .filterBtn:hover{
--fx-background-color: red;
+-fx-background-color: #8afa3b;
 }
 
 .filterBtn-focused{
