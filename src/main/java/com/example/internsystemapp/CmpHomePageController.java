@@ -122,6 +122,16 @@ public class CmpHomePageController {
 
     String SQL;
     private int internshipNo = 0;
+
+    public int getCurrentInternshipId() {
+        return currentInternshipId;
+    }
+
+    public void setCurrentInternshipId(int currentInternshipId) {
+        this.currentInternshipId = currentInternshipId;
+    }
+
+    private int currentInternshipId = 0;
     public int getInternshipNo() {
         return internshipNo;
     }
@@ -220,7 +230,7 @@ public class CmpHomePageController {
         if (selectedItem != null) {
             int rowIndex = applicantsView.getSelectionModel().getSelectedIndex();
             String selectedEmail = applicantsView.getColumns().get(1).getCellData(rowIndex).toString();
-            SQL = "select stud.id, stud.fullName, stud.email, stud.dept, application.universityName, application.yearOfStudy, application.skills, application.gitURL, application.interests, application.experience from stud inner join application on stud.id = application.internId where stud.email = '"+selectedEmail+"'";
+            SQL = "select stud.id, stud.fullName, stud.email, stud.dept, application.universityName, application.yearOfStudy, application.skills, application.gitURL, application.interests, application.experience from stud inner join application on stud.id = application.internId where stud.email = '"+selectedEmail+"' and application.InternshipId = "+getCurrentInternshipId();
             System.out.println(SQL);
             ResultSet rst = DBUtills.getData(SQL);
             while(rst.next()){
@@ -251,6 +261,7 @@ public class CmpHomePageController {
     void showApplications(int id) throws SQLException {
         postsPane.setVisible(false);
         viewApplicantDetails.setVisible(true);
+        setCurrentInternshipId(id);
         tableViewInfo(id);
     }
     ObservableList<ApplicantsList> applicants= FXCollections.observableArrayList();
@@ -277,18 +288,18 @@ public class CmpHomePageController {
     void backBtnClicked(ActionEvent event){
         viewApplicantDetails.setVisible(false);
         postsPane.setVisible(true);
+        currentInternshipId = 0;
     }
 
     @FXML
     void acceptBtnClicked(ActionEvent event){
-        DBUtills.acceptIntern(emailLabel.getText());
+        DBUtills.acceptIntern(emailLabel.getText(), currentInternshipId);
         postsPane.setVisible(true);
         viewApplicantDetails.setVisible(false);
     }
-
     @FXML
     void rejectBtnClicked(ActionEvent event){
-        DBUtills.rejectIntern(emailLabel.getText());
+        DBUtills.rejectIntern(emailLabel.getText(), currentInternshipId);
         postsPane.setVisible(true);
         viewApplicantDetails.setVisible(false);
     }

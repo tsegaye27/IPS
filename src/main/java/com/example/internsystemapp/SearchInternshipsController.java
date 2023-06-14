@@ -6,16 +6,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.w3c.dom.Text;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-import java.util.ArrayList;
 
 public class SearchInternshipsController {
     @FXML
@@ -108,7 +103,7 @@ public class SearchInternshipsController {
     private AnchorPane internshipDetailsPane;
 
     @FXML
-    private ComboBox yearOfStudyBox;
+    private ComboBox<Integer> yearOfStudyBox;
     @FXML
     private Label locationLabel;
 

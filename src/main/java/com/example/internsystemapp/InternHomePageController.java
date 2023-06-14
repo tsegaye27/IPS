@@ -13,8 +13,6 @@ import javafx.stage.Stage;
 import java.sql.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -60,7 +58,7 @@ public class InternHomePageController {
         private TextField degreeField;
 
         @FXML
-        private ComboBox yearOfStudyBox;
+        private ComboBox<Integer> yearOfStudyBox;
 
         @FXML
         private TextField skillsField;
@@ -294,7 +292,7 @@ public void initialize(){
         String universityName = universityNameField.getText();
 
         String degree = degreeField.getText();
-        String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
+        String yearOfStudy =yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
 //        String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
         String skills = skillsField.getText();
         String gitLink = gitHubURLField.getText();
