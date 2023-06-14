@@ -11,6 +11,7 @@ import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ManageInternshipsController {
@@ -240,8 +241,42 @@ public class ManageInternshipsController {
     }
 
     @FXML
-    void updateBtnClicked(ActionEvent event){
+    void updateBtnClicked(ActionEvent event) throws SQLException {
 
+        if(!Objects.equals(titleField.getText(), searchInternshipTitle.getText()) || !Objects.equals(durationField.getText(), durationLabel.getText()) || !Objects.equals(paidUnpaidField.getText(), paidUnpaidLabel.getText()) || !Objects.equals(vacanciesField.getText(), vacanciesLabel.getText()) || !Objects.equals(requirementsArea.getText(), requirementsLabel.getText()) || !Objects.equals(descriptionArea.getText(), descriptionLabel.getText()) ){
+            int updateCount = 0;
+            if(!Objects.equals(titleField.getText(), searchInternshipTitle.getText())){
+                DBUtills.updateTitle(titleField.getText(), getCurrentInternshipId());
+                updateCount++;
+            }
+            if(!Objects.equals(durationField.getText(), durationLabel.getText())){
+                DBUtills.updateDuration(durationField.getText(), getCurrentInternshipId());
+                updateCount++;
+            }
+            if( !Objects.equals(paidUnpaidField.getText(), paidUnpaidLabel.getText())){
+                DBUtills.updatePaidUnpaid(paidUnpaidField.getText(), getCurrentInternshipId());
+                updateCount++;
+            }
+            if(!Objects.equals(vacanciesField.getText(), vacanciesLabel.getText())){
+                DBUtills.updateVacancies(vacanciesField.getText(), getCurrentInternshipId());
+                updateCount++;
+            }
+            if(!Objects.equals(requirementsArea.getText(), requirementsLabel.getText())){
+                DBUtills.updateRequirements(requirementsArea.getText(), getCurrentInternshipId());
+                updateCount++;
+            }
+            if(!Objects.equals(descriptionArea.getText(), descriptionLabel.getText())){
+                DBUtills.updateDescription(descriptionArea.getText(), getCurrentInternshipId());
+                updateCount++;
+            }
+            String message = Integer.toString(updateCount)+" changes made";
+            showInformation(message);
+            cancelBtnClicked(event);
+            showPostEditor(getCurrentInternshipId());
+
+        }else{
+            showError("There is nothing to be changed");
+        }
     }
 
     @FXML
@@ -274,5 +309,20 @@ public class ManageInternshipsController {
         manageInternshipsBtn.setDisable(false);
         InternApp.showPostInternships();
     }
+    private void showError(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    public void showInformation(String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.show();
+    }
+
 
 }

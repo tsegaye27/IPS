@@ -370,5 +370,89 @@ public class DBUtills {
             closeConnection(conn);
         }
     }
+    public static void updateTitle(String title, int currInternshipId){
+        Connection conn = null;
+        PreparedStatement psUpdate = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psUpdate = conn.prepareStatement("update internshipposts set title = '"+title+"' where id="+currInternshipId+" and company_id="+getCurrentCmpId());
+            psUpdate.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closePreparedStatement(psUpdate);
+            closeConnection(conn);
+        }
+    }
+    public static void updateDuration(String duration, int currInternshipId){
+        Connection conn = null;
+        PreparedStatement psUpdate = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psUpdate = conn.prepareStatement("update internshipposts set duration = '"+duration+"' where id="+currInternshipId+" and company_id="+getCurrentCmpId());
+            psUpdate.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closePreparedStatement(psUpdate);
+            closeConnection(conn);
+        }
+    }
+    public static void updatePaidUnpaid(String paidUnpaid, int currInternshipId){
+        Connection conn = null;
+        PreparedStatement psUpdate = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psUpdate = conn.prepareStatement("update internshipposts set type = '"+paidUnpaid+"' where id="+currInternshipId+" and company_id="+getCurrentCmpId());
+            psUpdate.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closePreparedStatement(psUpdate);
+            closeConnection(conn);
+        }
+    }
+    public static void updateVacancies(String vacancies, int currInternshipId){
+        Connection conn = null;
+        PreparedStatement psUpdate = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psUpdate = conn.prepareStatement("update internshipposts set numberOfApplicantsNeeded = '"+vacancies+"' where id="+currInternshipId+" and company_id="+getCurrentCmpId());
+            psUpdate.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closePreparedStatement(psUpdate);
+            closeConnection(conn);
+        }
+    }
+    public static void updateRequirements(String requirements, int currInternshipId){
+        Connection conn = null;
+        PreparedStatement psUpdate = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psUpdate = conn.prepareStatement("update internshipposts set requirements = '"+requirements+"' where id="+currInternshipId+" and company_id="+getCurrentCmpId());
+            psUpdate.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closePreparedStatement(psUpdate);
+            closeConnection(conn);
+        }
+    }
+    public static void updateDescription(String description, int currInternshipId){
+        Connection conn = null;
+        PreparedStatement psUpdate = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psUpdate = conn.prepareStatement("update internshipposts set description = '"+description+"' where id="+currInternshipId+" and company_id="+getCurrentCmpId());
+            psUpdate.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closePreparedStatement(psUpdate);
+            closeConnection(conn);
+        }
+    }
 
 }
