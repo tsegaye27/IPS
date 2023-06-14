@@ -33,6 +33,15 @@ public class InternApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    public static void showManagedApplicants() throws IOException{
+        Parent root = FXMLLoader.load(InternApp.class.getResource("ManagedApplicants.fxml"));
+        Scene scene = new Scene(root, 820, 600);
+        scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
+        primaryStage.setTitle("Managed Applicants");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
     public static void showInternLoginPage() throws IOException {
         Parent root = FXMLLoader.load(InternApp.class.getResource("InternLogin.fxml"));
         Scene scene = new Scene(root, 600, 400);
