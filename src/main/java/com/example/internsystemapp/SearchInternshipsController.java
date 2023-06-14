@@ -273,53 +273,53 @@ public class SearchInternshipsController {
 
     }
 
-    void createHBoxPaid(){
-        HBox hBox = new HBox();
-        hBox.setSpacing(10);
-
-        AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setPrefWidth(540);
-        anchorPane.setPrefHeight(140);
-        anchorPane.getStyleClass().add("featured-card");
-
-        Label internshipTitleLabel = new Label("Internship Title");//fetch from database
-        Label locationLabel = new Label("Location");
-        Label durationLabel = new Label("Duration");
-        Label paidLabel = new Label("Paid");
-
-        Hyperlink readMoreLink = new Hyperlink("Read More");
-        readMoreLink.setOnAction(event -> {
-//            AnchorPane clickedAnchorPane = (AnchorPane) event.getSource();
-//            String internshipId = (String) clickedAnchorPane.getUserData();
-
-            showDetails();
-        });
-
-        anchorPane.getChildren().addAll(internshipTitleLabel, locationLabel, durationLabel, paidLabel, readMoreLink);
-
-        AnchorPane.setTopAnchor(internshipTitleLabel, 10.0);
-        AnchorPane.setTopAnchor(locationLabel, 40.0);
-        AnchorPane.setTopAnchor(durationLabel, 60.0);
-        AnchorPane.setTopAnchor(paidLabel, 80.0);
-        AnchorPane.setTopAnchor(readMoreLink,100.0);
-
-        AnchorPane.setLeftAnchor(internshipTitleLabel, 230.0);
-        AnchorPane.setLeftAnchor(locationLabel, 250.0);
-        AnchorPane.setLeftAnchor(durationLabel, 250.0);
-        AnchorPane.setLeftAnchor(paidLabel, 250.0);
-        AnchorPane.setLeftAnchor(readMoreLink, 240.0);
-
-        internshipTitleLabel.getStyleClass().add("internship-title");
-        locationLabel.getStyleClass().add("internship-details");
-        durationLabel.getStyleClass().add("internship-details");
-        paidLabel.getStyleClass().add("internship-details");
-        readMoreLink.getStyleClass().add("login-link");
-
-
-        hBox.getChildren().add(anchorPane);
-
-        searchResultContainer.getChildren().add(hBox);
-    }
+//    void createHBoxPaid(){
+//        HBox hBox = new HBox();
+//        hBox.setSpacing(10);
+//
+//        AnchorPane anchorPane = new AnchorPane();
+//        anchorPane.setPrefWidth(540);
+//        anchorPane.setPrefHeight(140);
+//        anchorPane.getStyleClass().add("featured-card");
+//
+//        Label internshipTitleLabel = new Label("Internship Title");//fetch from database
+//        Label locationLabel = new Label("Location");
+//        Label durationLabel = new Label("Duration");
+//        Label paidLabel = new Label("Paid");
+//
+//        Hyperlink readMoreLink = new Hyperlink("Read More");
+//        readMoreLink.setOnAction(event -> {
+////            AnchorPane clickedAnchorPane = (AnchorPane) event.getSource();
+////            String internshipId = (String) clickedAnchorPane.getUserData();
+//
+//            showDetails();
+//        });
+//
+//        anchorPane.getChildren().addAll(internshipTitleLabel, locationLabel, durationLabel, paidLabel, readMoreLink);
+//
+//        AnchorPane.setTopAnchor(internshipTitleLabel, 10.0);
+//        AnchorPane.setTopAnchor(locationLabel, 40.0);
+//        AnchorPane.setTopAnchor(durationLabel, 60.0);
+//        AnchorPane.setTopAnchor(paidLabel, 80.0);
+//        AnchorPane.setTopAnchor(readMoreLink,100.0);
+//
+//        AnchorPane.setLeftAnchor(internshipTitleLabel, 230.0);
+//        AnchorPane.setLeftAnchor(locationLabel, 250.0);
+//        AnchorPane.setLeftAnchor(durationLabel, 250.0);
+//        AnchorPane.setLeftAnchor(paidLabel, 250.0);
+//        AnchorPane.setLeftAnchor(readMoreLink, 240.0);
+//
+//        internshipTitleLabel.getStyleClass().add("internship-title");
+//        locationLabel.getStyleClass().add("internship-details");
+//        durationLabel.getStyleClass().add("internship-details");
+//        paidLabel.getStyleClass().add("internship-details");
+//        readMoreLink.getStyleClass().add("login-link");
+//
+//
+//        hBox.getChildren().add(anchorPane);
+//
+//        searchResultContainer.getChildren().add(hBox);
+//    }
 
     void noResultFound(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
