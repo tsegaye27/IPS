@@ -76,6 +76,16 @@
 .signUpBtn{
 -fx-background-color: #332FEC;
 -fx-background-radius: 20px;
+-fx-font-weight: bold;
+}
+
+.showPassBtn{
+-fx-background-color: transparent;
+}
+
+.showPassBtn:hover{
+-fx-text-fill: white;
+-fx-font-size: 12.5px;
 }
 
 .cancelAppBtn{

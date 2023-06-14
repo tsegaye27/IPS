@@ -18,7 +18,7 @@ public class InternApp extends Application {
 
     public static void showInternSignUpPage() throws IOException{
         Parent root = FXMLLoader.load(InternApp.class.getResource("SignUpIntern.fxml"));
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 600, 440);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
         primaryStage.setTitle("Sign-up");
         primaryStage.setScene(scene);
