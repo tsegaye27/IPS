@@ -48,27 +48,29 @@
                   <DatePicker fx:id="graduationYearField" layoutX="39.0" layoutY="304.0" prefHeight="25.0" prefWidth="220.0" promptText="Graduation Year" />
                   <DatePicker fx:id="dateOfBirthField" layoutX="39.0" layoutY="331.0" prefHeight="25.0" prefWidth="220.0" promptText="Date of Birth" />
                   <ComboBox fx:id="genderBox" layoutX="40.0" layoutY="119.0" prefHeight="25.0" prefWidth="171.0" promptText="Gender" styleClass="input" />
-                  <Button fx:id="showPasswordBtn" layoutX="4.0" layoutY="153.0" mnemonicParsing="false" onAction="#showPasswordBtnClicked" styleClass="showPassBtn">
+                  <Button fx:id="showPasswordBtn" layoutX="1.0" layoutY="153.0" mnemonicParsing="false" onAction="#showPasswordBtnClicked" styleClass="showPassBtn">
                      <graphic>
                         <FontAwesomeIcon glyphName="EYE" size="1.5em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="hidePasswordBtn" layoutX="4.0" layoutY="153.0" mnemonicParsing="false" onAction="#hidePasswordBtnClicked" styleClass="showPassBtn" visible="false">
+                  <Button fx:id="hidePasswordBtn" layoutX="1.0" layoutY="153.0" mnemonicParsing="false" onAction="#hidePasswordBtnClicked" styleClass="showPassBtn" visible="false">
                      <graphic>
                         <FontAwesomeIcon glyphName="EYE_SLASH" size="1.5em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="showConfirmPasswordBtn" layoutX="3.0" layoutY="183.0" mnemonicParsing="false" onAction="#showConfirmPasswordBtnClicked" styleClass="showPassBtn">
+                  <Button fx:id="showConfirmPasswordBtn" layoutX="1.0" layoutY="183.0" mnemonicParsing="false" onAction="#showConfirmPasswordBtnClicked" styleClass="showPassBtn">
                      <graphic>
                         <FontAwesomeIcon glyphName="EYE" size="1.5em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="hideConfirmPasswordBtn" layoutX="3.0" layoutY="183.0" mnemonicParsing="false" onAction="#hideConfirmPasswordBtnClicked" styleClass="showPassBtn" visible="false">
+                  <Button fx:id="hideConfirmPasswordBtn" layoutX="1.0" layoutY="183.0" mnemonicParsing="false" onAction="#hideConfirmPasswordBtnClicked" styleClass="showPassBtn" visible="false">
                      <graphic>
                         <FontAwesomeIcon glyphName="EYE_SLASH" size="1.5em" />
                      </graphic>
                   </Button>
                   <PasswordField fx:id="confirmPasswordField" layoutX="41.0" layoutY="180.0" prefHeight="30.0" prefWidth="220.0" promptText="Confirm Password" styleClass="input" stylesheets="@../../../style.css" />
+                  <TextField fx:id="passwordViewField" layoutX="40.0" layoutY="149.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="input" visible="false" />
+                  <TextField fx:id="confirmPasswordViewField" layoutX="41.0" layoutY="180.0" prefHeight="30.0" prefWidth="220.0" promptText="Confirm Password" styleClass="input" visible="false" />
                </children>
             </AnchorPane>
          </children>
