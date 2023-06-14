@@ -37,6 +37,12 @@ public class SignUpInternController{
     private TextField fieldOfStudyField;
 
     @FXML
+    private TextField passwordViewField;
+
+    @FXML
+    private TextField confirmPasswordViewField;
+
+    @FXML
     private TextField fullNameField;
 
     @FXML
@@ -73,23 +79,44 @@ public class SignUpInternController{
                 return false;
         }
     }
+
+    private boolean validatePhoneNumber(){
+        // Removing any non-digit characters from the phone number
+        String phoneNumber = phoneNumberField.getText();
+        phoneNumber.replaceAll("[^\\d]", "");
+
+        // Check if the phone number has exactly 10 digits
+        if (phoneNumber.length() != 10) {
+                return false;
+            }
+        // Check if the phone number contains only digits
+        if (!phoneNumber.matches("\\d+")) {
+                return false;
+            }
+
+            return true;
+
+    }
     @FXML
     void signUpClicked(ActionEvent event) throws IOException {
+
         if (!validateInputs()){
             showError("Please fill in every field");
         }
         else{
             if(validateEmail()){
-                LocalDate graduationYearDate = graduationYearField.getValue();
-                LocalDate dateOfBirthDate = dateOfBirthField.getValue();
-                String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
-                String graduationYear = graduationYearDate.format(formatDate);
 
-                if(validateInputs()){
+                if (validatePhoneNumber()){
+
+                    LocalDate graduationYearDate = graduationYearField.getValue();
+                    LocalDate dateOfBirthDate = dateOfBirthField.getValue();
+                    String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
+                    String graduationYear = graduationYearDate.format(formatDate);
                     DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
                     InternApp.showInternLoginPage();
-                }
-                else showError("Please fill in every field");
+
+                }else showError("Invalid Phone Number");
+
             }else showError("Invalid Email");
         }
     }
@@ -116,24 +143,36 @@ public class SignUpInternController{
     void hideConfirmPasswordBtnClicked(ActionEvent event){
         hideConfirmPasswordBtn.setVisible(false);
         showConfirmPasswordBtn.setVisible(true);
+        confirmPasswordViewField.setVisible(false);
+        confirmPasswordField.setVisible(true);
+        confirmPasswordField.setText(confirmPasswordViewField.getText());
     }
 
     @FXML
     void hidePasswordBtnClicked(ActionEvent event){
         hidePasswordBtn.setVisible(false);
         showPasswordBtn.setVisible(true);
+        passwordViewField.setVisible(false);
+        passwordField.setVisible(true);
+        passwordField.setText(passwordViewField.getText());
     }
 
     @FXML
     void showConfirmPasswordBtnClicked(ActionEvent event){
         showConfirmPasswordBtn.setVisible(false);
         hideConfirmPasswordBtn.setVisible(true);
+        confirmPasswordField.setVisible(false);
+        confirmPasswordViewField.setVisible(true);
+        confirmPasswordViewField.setText(confirmPasswordField.getText());
     }
 
     @FXML
     void showPasswordBtnClicked(ActionEvent event){
         showPasswordBtn.setVisible(false);
         hidePasswordBtn.setVisible(true);
+        passwordField.setVisible(false);
+        passwordViewField.setVisible(true);
+        passwordViewField.setText(passwordField.getText());
     }
     @FXML
     void loginLinkClicked(ActionEvent event) throws IOException {
