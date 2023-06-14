@@ -284,16 +284,18 @@ public class CmpHomePageController {
     }
 
     @FXML
-    void acceptBtnClicked(ActionEvent event){
+    void acceptBtnClicked(ActionEvent event) throws SQLException {
         DBUtills.acceptIntern(emailLabel.getText(), currentInternshipId);
-        postsPane.setVisible(true);
-        viewApplicantDetails.setVisible(false);
+        tableViewInfo(getCurrentInternshipId());
+        viewApplicantDetails.setVisible(true);
+        applicationRequest.setVisible(false);
     }
     @FXML
-    void rejectBtnClicked(ActionEvent event){
+    void rejectBtnClicked(ActionEvent event) throws SQLException {
         DBUtills.rejectIntern(emailLabel.getText(), currentInternshipId);
-        postsPane.setVisible(true);
-        viewApplicantDetails.setVisible(false);
+        tableViewInfo(getCurrentInternshipId());
+        viewApplicantDetails.setVisible(true);
+        applicationRequest.setVisible(false);
     }
 
     @FXML
