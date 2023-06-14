@@ -236,7 +236,11 @@ public class ManageInternshipsController {
     }
 
     @FXML
-    void deleteBtnClicked(ActionEvent event){
+    void deleteBtnClicked(ActionEvent event) throws SQLException {
+        DBUtills.deletePost(getCurrentInternshipId());
+        showInformation("Post Deleted");
+        displayInternships();
+        returnToViewPostsBtnClicked(event);
 
     }
 

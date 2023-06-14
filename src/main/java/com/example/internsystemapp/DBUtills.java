@@ -454,5 +454,19 @@ public class DBUtills {
             closeConnection(conn);
         }
     }
+    public static void deletePost(int id){
+        Connection conn = null;
+        PreparedStatement psDeletePost = null;
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
+            psDeletePost = conn.prepareStatement("delete from internshipposts where id = "+id);
+            psDeletePost.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closePreparedStatement(psDeletePost);
+            closeConnection(conn);
+        }
+    }
 
 }
