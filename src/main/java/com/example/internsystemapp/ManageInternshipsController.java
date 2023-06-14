@@ -139,7 +139,7 @@ public class ManageInternshipsController {
         Label vacanciesLabel = new Label("vacancies");
 
         Button manageButton = new Button("Manage Internship");
-        manageButton.getStyleClass().add("sidebarBtn");
+        manageButton.getStyleClass().add("postBtn");
         manageButton.setOnAction(event -> {
             showPostEditor();
         });
@@ -154,7 +154,7 @@ public class ManageInternshipsController {
         AnchorPane.setLeftAnchor(durationLabel, 160.0);
 
         AnchorPane.setTopAnchor(manageButton, 120.0);
-        AnchorPane.setLeftAnchor(manageButton, 175.0);
+        AnchorPane.setLeftAnchor(manageButton, 160.0);
 
         anchorPane.getChildren().addAll(titleLabel,durationLabel,vacanciesLabel, manageButton);
 
@@ -175,6 +175,12 @@ public class ManageInternshipsController {
     void returnToViewPostsBtnClicked(ActionEvent event){
         managePostPane.setVisible(false);
         viewPostsPane.setVisible(true);
+    }
+
+    @FXML
+    void managedApplicantsBtnClicked(ActionEvent event) throws IOException{
+        manageInternshipsBtn.setDisable(false);
+        InternApp.showManagedApplicants();
     }
 
     @FXML

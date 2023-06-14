@@ -46,6 +46,11 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />
                      </graphic>
                   </Button>
+                  <Button fx:id="manageApplicantsBtn" layoutY="334.0" mnemonicParsing="false" onAction="#managedApplicantsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Managed Applicants">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="managePostPane" layoutX="268.0" layoutY="78.0" prefHeight="496.0" prefWidth="503.0" styleClass="featured-card" stylesheets="@../../../style.css" visible="false">
