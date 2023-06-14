@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -12,39 +14,61 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.SignUpInternController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.SignUpInternController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="440.0">
          <children>
-            <AnchorPane layoutY="1.0" prefHeight="400.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
+            <AnchorPane layoutY="1.0" prefHeight="440.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
                <children>
-                  <ImageView fitHeight="421.0" fitWidth="300.0" pickOnBounds="true" styleClass="sign-up-img">
+                  <ImageView fitHeight="440.0" fitWidth="300.0" pickOnBounds="true" styleClass="sign-up-img">
                      <image>
                         <Image url="@../../../img/signUp.jpg" />
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <AnchorPane layoutX="300.0" layoutY="1.0" prefHeight="421.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
+            <AnchorPane layoutX="300.0" layoutY="1.0" prefHeight="440.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
                <children>
-                  <Label layoutX="105.0" layoutY="47.0" text="SIGN UP" textFill="WHITE">
+                  <Label layoutX="99.0" layoutY="15.0" text="SIGN UP" textFill="WHITE">
                      <font>
-                        <Font name="Roboto Bold" size="24.0" />
+                        <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="fullNameField" layoutX="40.0" layoutY="91.0" prefHeight="30.0" prefWidth="220.0" promptText="Full Name" styleClass="input" />
-                  <TextField fx:id="emailField" layoutX="40.0" layoutY="122.0" prefHeight="30.0" prefWidth="220.0" promptText="email" styleClass="input" />
+                  <TextField fx:id="fullNameField" layoutX="40.0" layoutY="57.0" prefHeight="30.0" prefWidth="220.0" promptText="Full Name" styleClass="input" />
+                  <TextField fx:id="emailField" layoutX="40.0" layoutY="88.0" prefHeight="30.0" prefWidth="220.0" promptText="Email" styleClass="input" />
                   <Label layoutX="85.0" layoutY="346.0" textFill="WHITE">
                      <font>
                         <Font name="Roboto" size="12.0" />
                      </font></Label>
-                  <Button fx:id="signUpButton" layoutX="84.0" layoutY="335.0" mnemonicParsing="false" onAction="#signUpClicked" prefHeight="30.0" prefWidth="131.0" styleClass="signUpBtn" stylesheets="@../../../style.css" text="Sign-up" textFill="WHITE" />
-                  <TextField fx:id="fieldOfStudyField" layoutX="40.0" layoutY="184.0" prefHeight="30.0" prefWidth="220.0" promptText="Field of study" styleClass="input" />
-                  <Hyperlink fx:id="loginLink" layoutX="81.0" layoutY="376.0" onAction="#loginLinkClicked" styleClass="login-link" stylesheets="@../../../style.css" text="Already have an account" />
-                  <PasswordField fx:id="passwordField" layoutX="40.0" layoutY="153.0" prefHeight="30.0" prefWidth="220.0" promptText="password" styleClass="input" stylesheets="@../../../style.css" />
-                  <TextField fx:id="locationField" layoutX="40.0" layoutY="215.0" prefHeight="30.0" prefWidth="220.0" promptText="Location" styleClass="input" />
-                  <TextField fx:id="phoneNumberField" layoutX="40.0" layoutY="246.0" prefHeight="30.0" prefWidth="220.0" promptText="Phone Number" styleClass="input" />
-                  <DatePicker fx:id="graduationYearField" layoutX="39.0" layoutY="277.0" prefHeight="25.0" prefWidth="220.0" promptText="Graduation Year" />
-                  <DatePicker fx:id="dateOfBirthField" layoutX="39.0" layoutY="304.0" prefHeight="25.0" prefWidth="220.0" promptText="Date of Birth" />
+                  <Button fx:id="signUpButton" layoutX="84.0" layoutY="366.0" mnemonicParsing="false" onAction="#signUpClicked" prefHeight="30.0" prefWidth="131.0" styleClass="signUpBtn" stylesheets="@../../../style.css" text="Sign-up" textFill="WHITE" />
+                  <TextField fx:id="fieldOfStudyField" layoutX="40.0" layoutY="211.0" prefHeight="30.0" prefWidth="220.0" promptText="Field of study" styleClass="input" />
+                  <Hyperlink fx:id="loginLink" layoutX="75.0" layoutY="402.0" onAction="#loginLinkClicked" styleClass="login-link" stylesheets="@../../../style.css" text="Already have an account" />
+                  <PasswordField fx:id="passwordField" layoutX="40.0" layoutY="149.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="input" stylesheets="@../../../style.css" />
+                  <TextField fx:id="locationField" layoutX="40.0" layoutY="242.0" prefHeight="30.0" prefWidth="220.0" promptText="Location" styleClass="input" />
+                  <TextField fx:id="phoneNumberField" layoutX="40.0" layoutY="273.0" prefHeight="30.0" prefWidth="220.0" promptText="Phone Number" styleClass="input" />
+                  <DatePicker fx:id="graduationYearField" layoutX="39.0" layoutY="304.0" prefHeight="25.0" prefWidth="220.0" promptText="Graduation Year" />
+                  <DatePicker fx:id="dateOfBirthField" layoutX="39.0" layoutY="331.0" prefHeight="25.0" prefWidth="220.0" promptText="Date of Birth" />
+                  <ComboBox fx:id="genderBox" layoutX="40.0" layoutY="119.0" prefHeight="25.0" prefWidth="171.0" promptText="Gender" styleClass="input" />
+                  <Button fx:id="showPasswordBtn" layoutX="4.0" layoutY="153.0" mnemonicParsing="false" onAction="#showPasswordBtnClicked" styleClass="showPassBtn">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="EYE" size="1.5em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="hidePasswordBtn" layoutX="4.0" layoutY="153.0" mnemonicParsing="false" onAction="#hidePasswordBtnClicked" styleClass="showPassBtn" visible="false">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="EYE_SLASH" size="1.5em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="showConfirmPasswordBtn" layoutX="3.0" layoutY="183.0" mnemonicParsing="false" onAction="#showConfirmPasswordBtnClicked" styleClass="showPassBtn">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="EYE" size="1.5em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="hideConfirmPasswordBtn" layoutX="3.0" layoutY="183.0" mnemonicParsing="false" onAction="#hideConfirmPasswordBtnClicked" styleClass="showPassBtn" visible="false">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="EYE_SLASH" size="1.5em" />
+                     </graphic>
+                  </Button>
+                  <PasswordField fx:id="confirmPasswordField" layoutX="41.0" layoutY="180.0" prefHeight="30.0" prefWidth="220.0" promptText="Confirm Password" styleClass="input" stylesheets="@../../../style.css" />
                </children>
             </AnchorPane>
          </children>
