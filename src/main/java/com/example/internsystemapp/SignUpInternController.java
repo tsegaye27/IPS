@@ -16,6 +16,24 @@ public class SignUpInternController{
     private TextField emailField;
 
     @FXML
+    private PasswordField confirmPasswordField;
+
+    @FXML
+    private ComboBox<String> genderBox;
+
+    @FXML
+    private Button hideConfirmPasswordBtn;
+
+    @FXML
+    private Button hidePasswordBtn;
+
+    @FXML
+    private Button showConfirmPasswordBtn;
+
+    @FXML
+    private Button showPasswordBtn;
+
+    @FXML
     private TextField fieldOfStudyField;
 
     @FXML
@@ -41,17 +59,38 @@ public class SignUpInternController{
     @FXML
     private TextField locationField;
 
+    public void initialize(){
+        genderBox.getItems().add("Male");
+        genderBox.getItems().add("Female");
+    }
+
+    private boolean validateEmail(){
+            String email = emailField.getText();
+
+            if (email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+                return true;
+            } else {
+                return false;
+        }
+    }
     @FXML
     void signUpClicked(ActionEvent event) throws IOException {
-        LocalDate graduationYearDate = graduationYearField.getValue();
-        LocalDate dateOfBirthDate = dateOfBirthField.getValue();
-        String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
-        String graduationYear = graduationYearDate.format(formatDate);
-        if(validateInputs()){
-            DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
-            InternApp.showInternLoginPage();
-        }else {
+        if (!validateInputs()){
             showError("Please fill in every field");
+        }
+        else{
+            if(validateEmail()){
+                LocalDate graduationYearDate = graduationYearField.getValue();
+                LocalDate dateOfBirthDate = dateOfBirthField.getValue();
+                String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
+                String graduationYear = graduationYearDate.format(formatDate);
+
+                if(validateInputs()){
+                    DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
+                    InternApp.showInternLoginPage();
+                }
+                else showError("Please fill in every field");
+            }else showError("Invalid Email");
         }
     }
 
@@ -64,8 +103,37 @@ public class SignUpInternController{
         LocalDate graduationYear = graduationYearField.getValue();
         LocalDate dateOfBirth = dateOfBirthField.getValue();
         String location = locationField.getText();
+        String gender = genderBox.getSelectionModel().getSelectedItem();
+        String confirmPassword = confirmPasswordField.getText();
 
-        return (!fullName.trim().isEmpty()) && (!email.trim().isEmpty()) && (!password.trim().isEmpty()) && (!phoneNumber.trim().isEmpty()) && (graduationYear != null) && (!fieldOfStudy.trim().isEmpty()) && (!location.trim().isEmpty()) && dateOfBirth != null;
+        if(fullName.trim().isEmpty()||email.trim().isEmpty()||gender.isEmpty()||password.trim().isEmpty()||confirmPassword.trim().isEmpty()||phoneNumber.trim().isEmpty()||graduationYear.toString().trim().isEmpty()|| fieldOfStudy.trim().isEmpty()||location.trim().isEmpty()||dateOfBirth.toString().trim().isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void hideConfirmPasswordBtnClicked(ActionEvent event){
+        hideConfirmPasswordBtn.setVisible(false);
+        showConfirmPasswordBtn.setVisible(true);
+    }
+
+    @FXML
+    void hidePasswordBtnClicked(ActionEvent event){
+        hidePasswordBtn.setVisible(false);
+        showPasswordBtn.setVisible(true);
+    }
+
+    @FXML
+    void showConfirmPasswordBtnClicked(ActionEvent event){
+        showConfirmPasswordBtn.setVisible(false);
+        hideConfirmPasswordBtn.setVisible(true);
+    }
+
+    @FXML
+    void showPasswordBtnClicked(ActionEvent event){
+        showPasswordBtn.setVisible(false);
+        hidePasswordBtn.setVisible(true);
     }
     @FXML
     void loginLinkClicked(ActionEvent event) throws IOException {
