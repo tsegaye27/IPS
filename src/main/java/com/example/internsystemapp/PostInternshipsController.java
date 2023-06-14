@@ -149,6 +149,12 @@ public class PostInternshipsController {
     }
 
     @FXML
+    void managedApplicantsBtnClicked(ActionEvent event) throws IOException{
+        postInternshipsBtn.setDisable(false);
+        InternApp.showManagedApplicants();
+    }
+
+    @FXML
     void manageInternshipsBtnClicked(ActionEvent event) throws IOException {
         postInternshipsBtn.setDisable(false);
         InternApp.showManageInternships();
