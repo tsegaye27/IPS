@@ -2,7 +2,9 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -72,6 +74,7 @@
                      <rowConstraints>
                         <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
@@ -83,13 +86,13 @@
                      <children>
                         <Label styleClass="login-link" text="Full Name : " />
                         <Label styleClass="login-link" text="Email : " GridPane.rowIndex="1" />
-                        <Label styleClass="login-link" text="University Name : " GridPane.rowIndex="2" />
-                        <Label styleClass="login-link" text="Degree/Program : " GridPane.rowIndex="3" />
-                        <Label styleClass="login-link" text="Year of study : " GridPane.rowIndex="4" />
-                        <Label styleClass="login-link" text="Skills : " GridPane.rowIndex="5" />
-                        <Label styleClass="login-link" text="Experience : " GridPane.rowIndex="8" />
-                        <Label styleClass="login-link" text="GitHub URL : " GridPane.rowIndex="6" />
-                        <Label styleClass="login-link" text="Statement of Interest : " GridPane.rowIndex="7" />
+                        <Label styleClass="login-link" text="University Name : " GridPane.rowIndex="3" />
+                        <Label styleClass="login-link" text="Degree/Program : " GridPane.rowIndex="4" />
+                        <Label styleClass="login-link" text="Year of study : " GridPane.rowIndex="5" />
+                        <Label styleClass="login-link" text="Skills : " GridPane.rowIndex="6" />
+                        <Label styleClass="login-link" text="Experience : " GridPane.rowIndex="9" />
+                        <Label styleClass="login-link" text="GitHub URL : " GridPane.rowIndex="7" />
+                        <Label styleClass="login-link" text="Statement of Interest : " GridPane.rowIndex="8" />
                         <Label fx:id="fullNameLabel" text="Label" GridPane.columnIndex="1">
                            <opaqueInsets>
                               <Insets />
@@ -106,7 +109,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="universityNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="universityNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -114,7 +117,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="degreeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label fx:id="degreeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -122,7 +125,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="yearOfStudyLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label fx:id="yearOfStudyLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -130,7 +133,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="skillsLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label fx:id="skillsLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -138,7 +141,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="gitHubURLLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="statementOfInterestLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -146,7 +149,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="statementOfInterestLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Label fx:id="experienceLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -154,10 +157,16 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="experienceLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                        <Hyperlink fx:id="gitHubURLLink" text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </Hyperlink>
+                        <Label styleClass="login-link" text="Gender : " GridPane.rowIndex="2" />
+                        <Label fx:id="genderLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
@@ -218,7 +227,7 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="managedApplicantsBtn" layoutY="334.0" mnemonicParsing="false" onAction="#managedApplicantsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Managed Applicants">
+                  <Button fx:id="reviewedApplicantsBtn" layoutY="334.0" mnemonicParsing="false" onAction="#reviewedApplicantsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Reviewed Applicants">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
                      </graphic>

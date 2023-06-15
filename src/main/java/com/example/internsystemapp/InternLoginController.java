@@ -12,9 +12,6 @@ public class InternLoginController {
         private TextField emailField;
 
         @FXML
-        private TextField fullNameField;
-
-        @FXML
         private Button loginBtn;
 
         @FXML
@@ -25,14 +22,13 @@ public class InternLoginController {
 
         @FXML
         void loginBtnClicked(ActionEvent event) throws IOException{
-        String fullName = fullNameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        if(fullName.trim().isEmpty()||email.trim().isEmpty()||password.trim().isEmpty()){
+        if(email.trim().isEmpty()||password.trim().isEmpty()){
                 showError("Please fill every field");
         } else{
-                DBUtills.loginIntern(event, fullName,email, password);
+                DBUtills.loginIntern(event, "chala",email, password);
         }
         }
 

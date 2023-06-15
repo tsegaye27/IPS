@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.ManageInternshipsController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.ManageInternshipsController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -37,7 +46,7 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="manageApplicantsBtn" layoutY="334.0" mnemonicParsing="false" onAction="#managedApplicantsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Managed Applicants">
+                  <Button fx:id="reviewedApplicantsBtn" layoutY="334.0" mnemonicParsing="false" onAction="#reviewedApplicantsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Reviewed Applicants">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
                      </graphic>
@@ -128,8 +137,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="deleteBtn" layoutX="305.0" layoutY="451.0" mnemonicParsing="false" onAction="#deleteBtnClicked" styleClass="cancelBtn" stylesheets="@../../../style.css" text="Delete" />
-                  <Button fx:id="editPostBtn" layoutX="155.0" layoutY="451.0" mnemonicParsing="false" onAction="#editPostBtnClicked" styleClass="applyBtn" stylesheets="@../../../style.css" text="Edit Post" />
+                  <Button fx:id="editPostBtn" layoutX="219.0" layoutY="447.0" mnemonicParsing="false" onAction="#editPostBtnClicked" styleClass="applyBtn" stylesheets="@../../../style.css" text="Edit Post" />
                </children>
                <opaqueInsets>
                   <Insets top="-4.0" />

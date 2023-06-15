@@ -7,7 +7,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -154,9 +153,11 @@ public class ManageInternshipsController {
         anchorPane.setPrefWidth(440);
         anchorPane.setPrefHeight(180);
 
-        Label titleLabel = new Label(title);
-        Label durationLabel = new Label(duration);
-        Label vacanciesLabel = new Label(vacancies);
+        Label titleLabel = new Label("title");
+        Label durationL = new Label("Duration: ");
+        Label durationLabel = new Label("duration");
+        Label vacanciesL = new Label("Vacancies: ");
+        Label vacanciesLabel = new Label("vacancies");
 
         Button manageButton = new Button("Manage Internship");
         manageButton.getStyleClass().add("postBtn");
@@ -172,19 +173,25 @@ public class ManageInternshipsController {
         AnchorPane.setLeftAnchor(titleLabel, 190.0);
 
         AnchorPane.setTopAnchor(vacanciesLabel, 60.0);
+        AnchorPane.setTopAnchor(vacanciesL, 60.0);
         AnchorPane.setLeftAnchor(vacanciesLabel, 160.0);
+        AnchorPane.setLeftAnchor(vacanciesL, 80.0);
 
         AnchorPane.setTopAnchor(durationLabel, 90.0);
+        AnchorPane.setTopAnchor(durationL, 90.0);
         AnchorPane.setLeftAnchor(durationLabel, 160.0);
+        AnchorPane.setLeftAnchor(durationL, 80.0);
 
         AnchorPane.setTopAnchor(manageButton, 120.0);
         AnchorPane.setLeftAnchor(manageButton, 160.0);
 
-        anchorPane.getChildren().addAll(titleLabel,durationLabel,vacanciesLabel, manageButton);
+        anchorPane.getChildren().addAll(titleLabel,durationL,durationLabel,vacanciesL,vacanciesLabel, manageButton);
 
         titleLabel.getStyleClass().add("internship-title");
         durationLabel.getStyleClass().add("internship-details");
         vacanciesLabel.getStyleClass().add("internship-details");
+        durationL.getStyleClass().add("login-link");
+        vacanciesL.getStyleClass().add("login-link");
         HBox hBox = new HBox(anchorPane);
         hBox.setSpacing(10);
         internshipsContainer.getChildren().add(hBox);
@@ -217,9 +224,9 @@ public class ManageInternshipsController {
     }
 
     @FXML
-    void managedApplicantsBtnClicked(ActionEvent event) throws IOException{
+    void reviewedApplicantsBtnClicked(ActionEvent event) throws IOException{
         manageInternshipsBtn.setDisable(false);
-        InternApp.showManagedApplicants();
+        InternApp.showReviewedApplicants();
     }
 
     @FXML
@@ -235,14 +242,6 @@ public class ManageInternshipsController {
         descriptionArea.setText(descriptionLabel.getText());
         managePostPane.setVisible(false);
         internshipEditorPane.setVisible(true);
-    }
-
-    @FXML
-    void deleteBtnClicked(ActionEvent event) throws SQLException {
-        DBUtills.deletePost(getCurrentInternshipId());
-        showInformation("Post Deleted");
-        returnToViewPostsBtnClicked(event);
-
     }
 
     @FXML

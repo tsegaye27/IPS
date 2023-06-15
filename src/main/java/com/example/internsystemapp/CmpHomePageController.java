@@ -19,7 +19,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
-
 public class CmpHomePageController {
 
     @FXML
@@ -39,6 +38,9 @@ public class CmpHomePageController {
     private Button returnToPostedBtn;
     @FXML
     private Button logoutBtn;
+
+    @FXML
+    private Label genderLabel;
 
     @FXML
     private Button manageInternshipsBtn;
@@ -111,7 +113,7 @@ public class CmpHomePageController {
     private Button backBtn;
 
     @FXML
-    private Label gitHubURLLabel;
+    private Hyperlink gitHubURLLink;
 
     @FXML
     private Button rejectBtn;
@@ -196,7 +198,9 @@ public class CmpHomePageController {
             anchorPane.setPrefHeight(180);
 
             Label titleLabel = new Label(title);
+            Label durationL = new Label("Duration: ");
             Label durationLabel = new Label(duration);
+            Label vacanciesL = new Label("Vacancies: ");
             Label vacanciesLabel = new Label(vacancies);
 
             Button viewDetails = new Button("View Applicants");
@@ -213,28 +217,34 @@ public class CmpHomePageController {
             AnchorPane.setLeftAnchor(titleLabel, 190.0);
 
             AnchorPane.setTopAnchor(vacanciesLabel, 60.0);
+            AnchorPane.setTopAnchor(vacanciesL, 60.0);
             AnchorPane.setLeftAnchor(vacanciesLabel, 160.0);
+            AnchorPane.setLeftAnchor(vacanciesL, 80.0);
 
             AnchorPane.setTopAnchor(durationLabel, 90.0);
+            AnchorPane.setTopAnchor(durationL, 90.0);
             AnchorPane.setLeftAnchor(durationLabel, 160.0);
+            AnchorPane.setLeftAnchor(durationL, 80.0);
 
             AnchorPane.setTopAnchor(viewDetails, 140.0);
             AnchorPane.setLeftAnchor(viewDetails, 175.0);
 
-            anchorPane.getChildren().addAll(titleLabel,durationLabel,vacanciesLabel, viewDetails);
+            anchorPane.getChildren().addAll(titleLabel, durationL,durationLabel, vacanciesL,vacanciesLabel, viewDetails);
 
             titleLabel.getStyleClass().add("internship-title");
             durationLabel.getStyleClass().add("internship-details");
             vacanciesLabel.getStyleClass().add("internship-details");
+            durationL.getStyleClass().add("login-link");
+            vacanciesL.getStyleClass().add("login-link");
             HBox hBox = new HBox(anchorPane);
             hBox.setSpacing(10);
             postedInternshipsContainer.getChildren().add(hBox);
     }
 
     @FXML
-    void managedApplicantsBtnClicked(ActionEvent event) throws IOException{
+    void reviewedApplicantsBtnClicked(ActionEvent event) throws IOException{
         homeBtn.setDisable(false);
-        InternApp.showManagedApplicants();
+        InternApp.showReviewedApplicants();
     }
 
     @FXML
@@ -253,7 +263,7 @@ public class CmpHomePageController {
                 degreeLabel.setText(rst.getString("dept"));
                 yearOfStudyLabel.setText(rst.getString("yearOfStudy"));
                 skillsLabel.setText(rst.getString("skills"));
-                gitHubURLLabel.setText(rst.getString("gitURL"));
+                gitHubURLLink.setText(rst.getString("gitURL"));
                 statementOfInterestLabel.setText(rst.getString("interests"));
                 experienceLabel.setText(rst.getString("experience"));
                 break;
@@ -263,6 +273,8 @@ public class CmpHomePageController {
         } else {
             showError("select an application to view");
         }
+
+        gitHubURLLink.getStyleClass().add("gitHubLink");
 
     }
 

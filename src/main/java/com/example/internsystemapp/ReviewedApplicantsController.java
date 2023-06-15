@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
 
-public class ManagedApplicantsController {
+public class ReviewedApplicantsController {
 
     @FXML
     private TableView<ApplicantsList> acceptedApplicantsView;
@@ -46,7 +46,7 @@ public class ManagedApplicantsController {
     private Button manageInternshipsBtn;
 
     @FXML
-    private Button managedApplicantsBtn;
+    private Button reviewedApplicantsBtn;
 
     @FXML
     private Label noInternships;
@@ -87,7 +87,7 @@ public class ManagedApplicantsController {
     }
     String SQL;
     public void initialize() throws SQLException {
-        managedApplicantsBtn.setDisable(true);
+        reviewedApplicantsBtn.setDisable(true);
         internshipsContainer.setSpacing(10);
         displayInternships();
     }
@@ -138,7 +138,7 @@ public class ManagedApplicantsController {
         });
 
         AnchorPane.setTopAnchor(titleLabel, 10.0);
-        AnchorPane.setLeftAnchor(titleLabel, 190.0);
+        AnchorPane.setLeftAnchor(titleLabel, 140.0);
 
         AnchorPane.setTopAnchor(acceptedButton, 60.0);
         AnchorPane.setLeftAnchor(acceptedButton, 50.0);
@@ -211,7 +211,7 @@ public class ManagedApplicantsController {
     }
     @FXML
     void homeBtnClicked(ActionEvent event) throws IOException {
-        managedApplicantsBtn.setDisable(false);
+        reviewedApplicantsBtn.setDisable(false);
         InternApp.showCmpHomePage();
     }
 
@@ -229,7 +229,7 @@ public class ManagedApplicantsController {
     }
     @FXML
     void manageInternshipsBtnClicked(ActionEvent event) throws IOException {
-        managedApplicantsBtn.setDisable(false);
+        reviewedApplicantsBtn.setDisable(false);
         InternApp.showManageInternships();
     }
 
@@ -247,7 +247,7 @@ public class ManagedApplicantsController {
 
     @FXML
     void postInternshipsBtnClicked(ActionEvent event) throws IOException {
-        managedApplicantsBtn.setDisable(false);
+        reviewedApplicantsBtn.setDisable(false);
         InternApp.showPostInternships();
     }
 
