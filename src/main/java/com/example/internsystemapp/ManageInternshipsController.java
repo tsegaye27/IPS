@@ -127,6 +127,7 @@ public class ManageInternshipsController {
     }
 
     void displayInternships() throws SQLException {
+        internshipsContainer.getChildren().clear();
         SQL = "select id, Title, duration, numberOfApplicantsNeeded from internshipposts where company_id ="+DBUtills.getCurrentCmpId();
         ResultSet rst = DBUtills.getData(SQL);
         if(rst.isBeforeFirst()){
@@ -209,7 +210,8 @@ public class ManageInternshipsController {
     }
 
     @FXML
-    void returnToViewPostsBtnClicked(ActionEvent event){
+    void returnToViewPostsBtnClicked(ActionEvent event) throws SQLException {
+        displayInternships();
         managePostPane.setVisible(false);
         viewPostsPane.setVisible(true);
     }
@@ -239,7 +241,6 @@ public class ManageInternshipsController {
     void deleteBtnClicked(ActionEvent event) throws SQLException {
         DBUtills.deletePost(getCurrentInternshipId());
         showInformation("Post Deleted");
-        displayInternships();
         returnToViewPostsBtnClicked(event);
 
     }

@@ -146,16 +146,15 @@ public class InternHomePageController {
             return currInternshipId;
 
         }
+
+
+        String SQL;
         public void setCurrInternshipId(int intId){
             this.currInternshipId = intId;
         }
 
     public InternHomePageController() throws SQLException {
     }
-
-    
-
-    String SQL;
 
 public void initialize(){
         homeBtn.setDisable(true);

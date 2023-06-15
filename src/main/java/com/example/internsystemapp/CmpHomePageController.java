@@ -303,8 +303,6 @@ public class CmpHomePageController {
     @FXML
     void acceptBtnClicked(ActionEvent event) throws SQLException {
     if(getNumberOfAcceptedApplicants() < getInternshipVacancy()){
-        System.out.println(getNumberOfAcceptedApplicants());
-        System.out.println(getInternshipVacancy());
         DBUtills.acceptIntern(emailLabel.getText(), currentInternshipId);
         tableViewInfo(getCurrentInternshipId());
         displayDashboard();
@@ -319,12 +317,14 @@ public class CmpHomePageController {
     void rejectBtnClicked(ActionEvent event) throws SQLException {
         DBUtills.rejectIntern(emailLabel.getText(), currentInternshipId);
         tableViewInfo(getCurrentInternshipId());
+        displayDashboard();
         viewApplicantDetails.setVisible(true);
         applicationRequest.setVisible(false);
     }
 
     @FXML
     void returnToPostedBtnClicked(ActionEvent event){
+
         viewApplicantDetails.setVisible(true);
         applicationRequest.setVisible(false);
     }
