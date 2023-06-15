@@ -14,7 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -121,7 +120,24 @@ public class CmpHomePageController {
 
 
     String SQL;
+    public int getNumberOfAcceptedApplicants() throws SQLException {
+        SQL = "select count(*) from application where status = 'accepted' and internshipId ="+getCurrentInternshipId();
+        ResultSet rst = DBUtills.getData(SQL);
+        rst.next();
+        return rst.getInt(1);
+    }
     private int internshipNo = 0;
+
+    public int getInternshipVacancy() {
+        return internshipVacancy;
+    }
+
+    public void setInternshipVacancy(int internshipVacancy) {
+        this.internshipVacancy = internshipVacancy;
+    }
+
+    private int internshipVacancy = 0;
+
 
     public int getCurrentInternshipId() {
         return currentInternshipId;
@@ -187,7 +203,7 @@ public class CmpHomePageController {
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
                 try {
-                    showApplications(id);
+                    showApplications(id, Integer.parseInt(vacancies));
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -250,10 +266,11 @@ public class CmpHomePageController {
 
     }
 
-    void showApplications(int id) throws SQLException {
+    void showApplications(int id, int vacancies) throws SQLException {
         postsPane.setVisible(false);
         viewApplicantDetails.setVisible(true);
         setCurrentInternshipId(id);
+        setInternshipVacancy(vacancies);
         tableViewInfo(id);
     }
     ObservableList<ApplicantsList> applicants= FXCollections.observableArrayList();
@@ -285,10 +302,18 @@ public class CmpHomePageController {
 
     @FXML
     void acceptBtnClicked(ActionEvent event) throws SQLException {
+    if(getNumberOfAcceptedApplicants() < getInternshipVacancy()){
+        System.out.println(getNumberOfAcceptedApplicants());
+        System.out.println(getInternshipVacancy());
         DBUtills.acceptIntern(emailLabel.getText(), currentInternshipId);
         tableViewInfo(getCurrentInternshipId());
+        displayDashboard();
         viewApplicantDetails.setVisible(true);
         applicationRequest.setVisible(false);
+    }else{
+        showError("You have already fulfilled the quota");
+    }
+
     }
     @FXML
     void rejectBtnClicked(ActionEvent event) throws SQLException {
