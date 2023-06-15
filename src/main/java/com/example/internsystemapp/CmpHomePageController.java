@@ -253,7 +253,7 @@ public class CmpHomePageController {
         if (selectedItem != null) {
             int rowIndex = applicantsView.getSelectionModel().getSelectedIndex();
             String selectedEmail = applicantsView.getColumns().get(1).getCellData(rowIndex).toString();
-            SQL = "select stud.id, stud.fullName, stud.email, stud.dept, application.universityName, application.yearOfStudy, application.skills, application.gitURL, application.interests, application.experience from stud inner join application on stud.id = application.internId where stud.email = '"+selectedEmail+"' and application.InternshipId = "+getCurrentInternshipId();
+            SQL = "select stud.id, stud.fullName, stud.email, stud.dept, stud.gender, application.universityName, application.yearOfStudy, application.skills, application.gitURL, application.interests, application.experience from stud inner join application on stud.id = application.internId where stud.email = '"+selectedEmail+"' and application.InternshipId = "+getCurrentInternshipId();
             System.out.println(SQL);
             ResultSet rst = DBUtills.getData(SQL);
             while(rst.next()){
@@ -266,6 +266,7 @@ public class CmpHomePageController {
                 gitHubURLLink.setText(rst.getString("gitURL"));
                 statementOfInterestLabel.setText(rst.getString("interests"));
                 experienceLabel.setText(rst.getString("experience"));
+                genderLabel.setText(rst.getString("gender"));
                 break;
             }
             viewApplicantDetails.setVisible(false);
