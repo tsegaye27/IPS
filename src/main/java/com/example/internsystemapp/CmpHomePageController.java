@@ -40,6 +40,9 @@ public class CmpHomePageController {
     private Button logoutBtn;
 
     @FXML
+    private Label genderLabel;
+
+    @FXML
     private Button manageInternshipsBtn;
 
     @FXML
@@ -239,9 +242,9 @@ public class CmpHomePageController {
     }
 
     @FXML
-    void managedApplicantsBtnClicked(ActionEvent event) throws IOException{
+    void reviewedApplicantsBtnClicked(ActionEvent event) throws IOException{
         homeBtn.setDisable(false);
-        InternApp.showManagedApplicants();
+        InternApp.showReviewedApplicants();
     }
 
     @FXML

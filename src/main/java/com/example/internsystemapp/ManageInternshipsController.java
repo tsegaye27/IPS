@@ -7,7 +7,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -225,9 +224,9 @@ public class ManageInternshipsController {
     }
 
     @FXML
-    void managedApplicantsBtnClicked(ActionEvent event) throws IOException{
+    void reviewedApplicantsBtnClicked(ActionEvent event) throws IOException{
         manageInternshipsBtn.setDisable(false);
-        InternApp.showManagedApplicants();
+        InternApp.showReviewedApplicants();
     }
 
     @FXML
@@ -243,14 +242,6 @@ public class ManageInternshipsController {
         descriptionArea.setText(descriptionLabel.getText());
         managePostPane.setVisible(false);
         internshipEditorPane.setVisible(true);
-    }
-
-    @FXML
-    void deleteBtnClicked(ActionEvent event) throws SQLException {
-        DBUtills.deletePost(getCurrentInternshipId());
-        showInformation("Post Deleted");
-        returnToViewPostsBtnClicked(event);
-
     }
 
     @FXML

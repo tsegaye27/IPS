@@ -186,7 +186,7 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="managedApplicantsBtn" layoutY="334.0" mnemonicParsing="false" onAction="#managedApplicantsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Managed Applicants">
+                  <Button fx:id="reviewedApplicantsBtn" layoutY="334.0" mnemonicParsing="false" onAction="#reviewedApplicantsBtnClicked" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Reviewed Applicants">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
                      </graphic>

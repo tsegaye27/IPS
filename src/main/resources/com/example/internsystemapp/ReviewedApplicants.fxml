@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.ManagedApplicantsController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.internsystemapp.ReviewedApplicantsController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -42,14 +42,14 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />
                      </graphic>
                   </Button>
-                  <Button fx:id="managedApplicantsBtn" layoutY="334.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Managed Applicants">
+                  <Button fx:id="reviewedApplicantsBtn" layoutY="334.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="220.0" styleClass="sidebar-Btn" text="Reviewed Applicants">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
                      </graphic>
                   </Button>
                </children>
             </AnchorPane>
-            <Label layoutX="422.0" layoutY="30.0" text="Managed Applicants">
+            <Label layoutX="422.0" layoutY="30.0" text="Reviewed Applicants">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

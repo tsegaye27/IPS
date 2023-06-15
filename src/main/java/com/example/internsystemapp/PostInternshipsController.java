@@ -2,14 +2,9 @@ package com.example.internsystemapp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-import javax.xml.xpath.XPathEvaluationResult;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -149,9 +144,9 @@ public class PostInternshipsController {
     }
 
     @FXML
-    void managedApplicantsBtnClicked(ActionEvent event) throws IOException{
+    void reviewedApplicantsBtnClicked(ActionEvent event) throws IOException{
         postInternshipsBtn.setDisable(false);
-        InternApp.showManagedApplicants();
+        InternApp.showReviewedApplicants();
     }
 
     @FXML

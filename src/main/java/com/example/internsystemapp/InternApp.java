@@ -4,13 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,8 +38,8 @@ public class InternApp extends Application {
         primaryStage.show();
     }
 
-    public static void showManagedApplicants() throws IOException{
-        Parent root = FXMLLoader.load(InternApp.class.getResource("ManagedApplicants.fxml"));
+    public static void showReviewedApplicants() throws IOException{
+        Parent root = FXMLLoader.load(InternApp.class.getResource("ReviewedApplicants.fxml"));
         Scene scene = new Scene(root, 820, 600);
         scene.getStylesheets().add(String.valueOf((InternApp.class.getResource("/style.css"))));
         Image image = new Image(InternApp.class.getResource("/img/logo1.png").toExternalForm());
