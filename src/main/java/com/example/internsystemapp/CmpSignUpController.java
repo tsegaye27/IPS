@@ -3,6 +3,7 @@ package com.example.internsystemapp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -24,20 +25,124 @@ public class CmpSignUpController {
     private TextField locationField;
 
     @FXML
+    private PasswordField confirmPasswordField;
+
+    @FXML
+    private TextField passwordViewField;
+
+    @FXML
+    private TextField confirmPasswordViewField;
+
+    @FXML
+    private Button hideConfirmPasswordBtn;
+
+    @FXML
+    private Button showConfirmPasswordBtn;
+
+    @FXML
+    private Button showPasswordBtn;
+
+    @FXML
+    private Button hidePasswordBtn;
+
+    @FXML
     private PasswordField passwordField;
 
     @FXML
     private Button signUpButton;
 
+    private boolean validateEmail(){
+        String email = companyEmailField.getText();
+
+        if (email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean validatePasswordLength(){
+        String pd = passwordField.getText();
+        if (pd.length()<6){
+            return false;
+        }
+        return true;
+    }
+    private boolean validatePhoneNumber(){
+        // Removing any non-digit characters from the phone number
+        String phoneNumber = contactPhoneField.getText();
+        phoneNumber.replaceAll("[^\\d]", "");
+
+        // Check if the phone number has exactly 10 digits
+        if (phoneNumber.length() != 10) {
+            return false;
+        }
+        // Check if the phone number contains only digits
+        if (!phoneNumber.matches("\\d+")) {
+            return false;
+        }
+
+        return true;
+
+    }
+
+    private boolean validateConfirmPassword() {
+        String password = passwordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+        return password.equals(confirmPassword);
+    }
+
     @FXML
     void SignUpClicked(ActionEvent event) throws IOException {
         if(validateInputs()){
-            DBUtills.signUpCmp(event, companyNameField.getText(), companyEmailField.getText(), passwordField.getText(),Integer.parseInt(contactPhoneField.getText()), locationField.getText());
-            showInfo("Successfully signed-up");
-            InternApp.showCmpLoginPage();
-        }else{
-            showError("Please fill every field");
-        }
+            if(validateEmail()){
+                if(validatePasswordLength()){
+                    if(validateConfirmPassword()){
+                        if(validatePhoneNumber()){
+                            DBUtills.signUpCmp(event, companyNameField.getText(), companyEmailField.getText(), passwordField.getText(),Integer.parseInt(contactPhoneField.getText()), locationField.getText());
+                            showInfo("Successfully signed-up");
+                            InternApp.showCmpLoginPage();
+                        }else showWarning("Phone Number must be 10 digits long!");
+                    }else showError("Passwords do not match!");
+                }else showWarning("Password must be at least 6 characters long!");
+            }else showError("Invalid Email!");
+        }else showError("Please fill every field!");
+    }
+
+    @FXML
+    void hideConfirmPasswordBtnClicked(ActionEvent event){
+        hideConfirmPasswordBtn.setVisible(false);
+        showConfirmPasswordBtn.setVisible(true);
+        confirmPasswordViewField.setVisible(false);
+        confirmPasswordField.setVisible(true);
+        confirmPasswordField.setText(confirmPasswordViewField.getText());
+    }
+
+    @FXML
+    void hidePasswordBtnClicked(ActionEvent event){
+        hidePasswordBtn.setVisible(false);
+        showPasswordBtn.setVisible(true);
+        passwordViewField.setVisible(false);
+        passwordField.setVisible(true);
+        passwordField.setText(passwordViewField.getText());
+    }
+
+    @FXML
+    void showConfirmPasswordBtnClicked(ActionEvent event){
+        showConfirmPasswordBtn.setVisible(false);
+        hideConfirmPasswordBtn.setVisible(true);
+        confirmPasswordField.setVisible(false);
+        confirmPasswordViewField.setVisible(true);
+        confirmPasswordViewField.setText(confirmPasswordField.getText());
+    }
+
+    @FXML
+    void showPasswordBtnClicked(ActionEvent event){
+        showPasswordBtn.setVisible(false);
+        hidePasswordBtn.setVisible(true);
+        passwordField.setVisible(false);
+        passwordViewField.setVisible(true);
+        passwordViewField.setText(passwordField.getText());
     }
 
     private boolean validateInputs(){
@@ -68,6 +173,15 @@ public class CmpSignUpController {
         alert.setContentText(message);
         alert.show();
     }
+
+    private void showWarning(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     @FXML
     void loginLinkClicked(ActionEvent event) throws IOException {
         InternApp.showCmpLoginPage();
