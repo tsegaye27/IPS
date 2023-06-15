@@ -112,7 +112,9 @@ public class SignUpInternController{
                     LocalDate dateOfBirthDate = dateOfBirthField.getValue();
                     String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
                     String graduationYear = graduationYearDate.format(formatDate);
-                    DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
+                    String gender = genderBox.getSelectionModel().getSelectedItem();
+                    DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText(), gender);
+
                     InternApp.showInternLoginPage();
 
                 }else showError("Invalid Phone Number");
@@ -133,7 +135,7 @@ public class SignUpInternController{
         String gender = genderBox.getSelectionModel().getSelectedItem();
         String confirmPassword = confirmPasswordField.getText();
 
-        if(fullName.trim().isEmpty()||email.trim().isEmpty()||gender.isEmpty()||password.trim().isEmpty()||confirmPassword.trim().isEmpty()||phoneNumber.trim().isEmpty()||graduationYear.toString().trim().isEmpty()|| fieldOfStudy.trim().isEmpty()||location.trim().isEmpty()||dateOfBirth.toString().trim().isEmpty()){
+        if(fullName.trim().isEmpty()||email.trim().isEmpty()|| gender == null ||password.trim().isEmpty()||confirmPassword.trim().isEmpty()||phoneNumber.trim().isEmpty()||graduationYear.toString().trim().isEmpty()|| fieldOfStudy.trim().isEmpty()||location.trim().isEmpty()||dateOfBirth.toString().trim().isEmpty()){
             return false;
         }
         return true;
