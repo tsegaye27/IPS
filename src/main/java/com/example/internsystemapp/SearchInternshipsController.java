@@ -6,16 +6,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.w3c.dom.Text;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.ArrayList;
 
 public class SearchInternshipsController {
     @FXML
@@ -111,7 +107,7 @@ public class SearchInternshipsController {
     private AnchorPane internshipDetailsPane;
 
     @FXML
-    private ComboBox yearOfStudyBox;
+    private ComboBox<Integer> yearOfStudyBox;
     @FXML
     private Label locationLabel;
 
@@ -140,8 +136,8 @@ public class SearchInternshipsController {
 
     public void initialize() {
         searchInternshipsBtn.setDisable(true);
-        paymentStatusFilterBtn.getItems().add("Paid");
-        paymentStatusFilterBtn.getItems().add("Unpaid");
+        paymentStatusFilterBtn.getItems().add("paid");
+        paymentStatusFilterBtn.getItems().add("unpaid");
         searchResultContainer.setSpacing(10);
         yearOfStudyBox.getItems().add(1);
         yearOfStudyBox.getItems().add(2);
@@ -157,28 +153,33 @@ public class SearchInternshipsController {
         boolean filterByDuration = durationFilterBtn.isSelected();
         boolean filterByField = fieldsFilterBtn.isSelected();
         String selectedValue = paymentStatusFilterBtn.getSelectionModel().getSelectedItem();
+        System.out.println(selectedValue);
         searchResultContainer.getChildren().clear();
 
-        if (searchedText != "") {
+        if (!Objects.equals(searchedText, "")) {
 
+            String paidUnpaidFilter = (selectedValue != null) ? ((selectedValue.equals("unpaid")) ? " and internshipposts.type ='" + selectedValue + "'" : " and internshipposts.type != 'unpaid'") : "";
             if (filterByLocation) {
                 //compare searchedText with location values in DB
-                SQL = "SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where company.location like '%" + searchedText + "%'";
+                SQL = "SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where company.location like '%" + searchedText + "%'"+ paidUnpaidFilter;
+                System.out.println(SQL);
             } else if (filterByDuration) {
 
-                SQL = "SELECT id FROM internshipposts where duration like '%" + searchedText + "%'";
+                SQL = "SELECT id FROM internshipposts where duration like '%" + searchedText + "%'"+ paidUnpaidFilter;
+                System.out.println(SQL);
             } else if (filterByField) {
 
-                SQL = "SELECT id,requirements FROM internshipposts where requirements like '%" + searchedText + "%'";
+                SQL = "SELECT id,requirements FROM internshipposts where requirements like '%" + searchedText + "%'"+paidUnpaidFilter;
+                System.out.println(SQL);
 //            SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.requirements like '%"+searchedText+"%'";
-
             }
 //        else if(selectedValue.equals("Paid")){
 //                   createHBoxPaid();
 //
 //        }
             else {
-                SQL = "SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.title like'%" + searchedText + "%' or company.name like '%" + searchedText + "%' or internshipposts.requirements like'%" + searchedText + "%' or internshipposts.duration like '%" + searchedText + "%' or company.location like '%" + searchedText + "%'";
+                SQL = "SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.title like'%" + searchedText + "%' or company.name like '%" + searchedText + "%' or internshipposts.requirements like'%" + searchedText + "%' or internshipposts.duration like '%" + searchedText + "%' or company.location like '%" + searchedText + "%'"+paidUnpaidFilter;
+                System.out.println(SQL);
             }
 
             ResultSet rst = DBUtills.searchInternships(SQL);
@@ -265,6 +266,7 @@ public class SearchInternshipsController {
             companyNameLabel.setText(rst.getString("name"));
             locationLabel.setText(rst.getString("location"));
             durationLabel.setText(rst.getString("duration"));
+            paidUnpaidLabel.setText(rst.getString("type"));
             contactLabel.setText(rst.getString("email"));
             requirementsLabel.setText(rst.getString("requirements"));
             descriptionLabel.setText(rst.getString("description"));
