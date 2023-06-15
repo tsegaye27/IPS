@@ -97,27 +97,43 @@ public class SignUpInternController{
             return true;
 
     }
+
+    private boolean validatePasswordLength(){
+        String pd = passwordField.getText();
+        if (pd.length()<6){
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateConfirmPassword() {
+        String password = passwordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+
+        return password.equals(confirmPassword);
+    }
     @FXML
     void signUpClicked(ActionEvent event) throws IOException {
 
         if (!validateInputs()){
-            showError("Please fill in every field");
+            showError("Please fill in every field!");
         }
         else{
             if(validateEmail()){
+                if(validatePasswordLength()){
+                    if(validateConfirmPassword()){
+                        if (validatePhoneNumber()){
+                            LocalDate graduationYearDate = graduationYearField.getValue();
+                            LocalDate dateOfBirthDate = dateOfBirthField.getValue();
+                            String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
+                            String graduationYear = graduationYearDate.format(formatDate);
+                            DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
+                            InternApp.showInternLoginPage();
 
-                if (validatePhoneNumber()){
-
-                    LocalDate graduationYearDate = graduationYearField.getValue();
-                    LocalDate dateOfBirthDate = dateOfBirthField.getValue();
-                    String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
-                    String graduationYear = graduationYearDate.format(formatDate);
-                    DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
-                    InternApp.showInternLoginPage();
-
-                }else showError("Invalid Phone Number");
-
-            }else showError("Invalid Email");
+                        }else showWarning("Phone Number must be 10 digits long!");
+                    }else showError("Passwords do not match!");
+                }else showWarning("Password must be at least 6 characters long!");
+            }else showError("Invalid Email!");
         }
     }
 
@@ -182,6 +198,14 @@ public class SignUpInternController{
     private void showError(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showWarning(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
