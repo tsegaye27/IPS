@@ -37,6 +37,7 @@
 .postBtn:hover{
 -fx-border-radius: 10px;
 -fx-border-color: black;
+-fx-cursor: hand;
 }
 
 .table-view-columns{
@@ -61,6 +62,7 @@
 
 .nextBtn:hover{
 -fx-background-color: #Fa894e;
+-fx-cursor: hover;
 /*-fx-text-fill: #0576b1;*/
 }
 
@@ -79,6 +81,10 @@
 -fx-font-weight: bold;
 }
 
+.signUpBtn:hover{
+-fx-cursor: hand;
+}
+
 .showPassBtn{
 -fx-background-color: transparent;
 }
@@ -86,6 +92,7 @@
 .showPassBtn:hover{
 -fx-text-fill: white;
 -fx-font-size: 12.5px;
+-fx-cursor: hand;
 }
 
 .cancelAppBtn{
@@ -104,15 +111,24 @@
 .cancelAppBtn:hover{
 -fx-border-radius: 15px;
 -fx-border-color: white;
+-fx-cursor: hand;
 }
 
 .close-Btn{
 -fx-background-color: transparent;
 }
 
+.close-Btn{
+-fx-cursor: hand;
+}
+
 .login-link{
 -fx-text-fill: white;
 -fx-font-weight: Bold;
+}
+
+.gitHubLink{
+-fx-cursor: hand;
 }
 
 .sidebar{
@@ -185,10 +201,11 @@
 
 .filterBtn:hover{
 -fx-background-color: #8afa3b;
+-fx-cursor: hand;
 }
 
 .filterBtn-focused{
--fx-background-color: red;
+-fx-background-color: #8afa3b;
 }
 
 .comboBox{
@@ -204,6 +221,10 @@
 
 .searchBtn{
 -fx-background-color: transparent;
+}
+
+.searchBtn:hover{
+-fx-cursor: hand;
 }
 
 .datePicker{
@@ -231,6 +252,7 @@
 .applyBtn:hover{
 -fx-border-color: #6C69F0;
 -fx-border-radius: 12px;
+-fx-cursor: hand;
 }
 
 .returnBtn{
@@ -241,6 +263,7 @@
 
 .returnBtn:hover{
 -fx-background-color: #6C69F0;
+-fx-cursor: hand;
 }
 
 .submitBtn{
@@ -253,6 +276,7 @@
 
 .submitBtn:hover{
 -fx-border-color: #6C69F0;
+-fx-cursor: hand;
 }
 
 .cancelBtn{
@@ -265,4 +289,5 @@
 
 .cancelBtn:hover{
 -fx-font-size: 13px;
+-fx-cursor: hand;
 }
