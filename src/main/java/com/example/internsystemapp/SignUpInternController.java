@@ -149,7 +149,7 @@ public class SignUpInternController{
         String gender = genderBox.getSelectionModel().getSelectedItem();
         String confirmPassword = confirmPasswordField.getText();
 
-        if(fullName.trim().isEmpty()||email.trim().isEmpty()||gender.isEmpty()||password.trim().isEmpty()||confirmPassword.trim().isEmpty()||phoneNumber.trim().isEmpty()||graduationYear.toString().trim().isEmpty()|| fieldOfStudy.trim().isEmpty()||location.trim().isEmpty()||dateOfBirth.toString().trim().isEmpty()){
+        if(fullName.trim().isEmpty()||email.trim().isEmpty()||gender==null||password.trim().isEmpty()||confirmPassword.trim().isEmpty()||phoneNumber.trim().isEmpty()||graduationYear.toString().trim().isEmpty()|| fieldOfStudy.trim().isEmpty()||location.trim().isEmpty()||dateOfBirth.toString().trim().isEmpty()){
             return false;
         }
         return true;
