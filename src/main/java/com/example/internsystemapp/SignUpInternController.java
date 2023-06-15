@@ -134,6 +134,7 @@ public class SignUpInternController{
                     }else showError("Passwords do not match!");
                 }else showWarning("Password must be at least 6 characters long!");
             }else showError("Invalid Email!");
+
         }
     }
 
@@ -149,7 +150,9 @@ public class SignUpInternController{
         String gender = genderBox.getSelectionModel().getSelectedItem();
         String confirmPassword = confirmPasswordField.getText();
 
+
         if(fullName.trim().isEmpty()||email.trim().isEmpty()||gender==null||password.trim().isEmpty()||confirmPassword.trim().isEmpty()||phoneNumber.trim().isEmpty()||graduationYear.toString().trim().isEmpty()|| fieldOfStudy.trim().isEmpty()||location.trim().isEmpty()||dateOfBirth.toString().trim().isEmpty()){
+
             return false;
         }
         return true;

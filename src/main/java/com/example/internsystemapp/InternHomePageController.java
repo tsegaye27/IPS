@@ -186,6 +186,7 @@ public void initialize(){
             durationLabel.setText(rst.getString("duration"));
             contactLabel.setText(rst.getString("email"));
             descriptionLabel.setText(rst.getString("description"));
+            vacanciesLabel.setText(rst.getString("numberOfApplicantsNeeded"));
         }
         ResultSet rst = DBUtills.getFeaturedInternships();
 
