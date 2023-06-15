@@ -17,7 +17,7 @@
          <children>
             <AnchorPane layoutY="5.0" prefHeight="402.0" prefWidth="300.0">
                <children>
-                  <ImageView fitHeight="402.0" fitWidth="300.0" layoutY="-2.0" pickOnBounds="true">
+                  <ImageView fitHeight="400.0" fitWidth="300.0" layoutY="-2.0" pickOnBounds="true">
                      <image>
                         <Image url="@../../../img/loginIMG.jpg" />
                      </image>
@@ -26,14 +26,13 @@
             </AnchorPane>
             <AnchorPane layoutX="300.0" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="signUpBg" stylesheets="@../../../style.css">
                <children>
-                  <TextField fx:id="companyNameField" layoutX="43.0" layoutY="124.0" prefHeight="30.0" prefWidth="220.0" promptText="Company Name" styleClass="input" stylesheets="@../../../style.css" />
-                  <TextField fx:id="companyEmailField" layoutX="42.0" layoutY="155.0" prefHeight="30.0" prefWidth="220.0" promptText="Company Email" styleClass="input" stylesheets="@../../../style.css" />
+                  <TextField fx:id="companyEmailField" layoutX="42.0" layoutY="144.0" prefHeight="30.0" prefWidth="220.0" promptText="Company Email" styleClass="input" stylesheets="@../../../style.css" />
                   <Label layoutX="109.0" layoutY="78.0" text="LOGIN" textFill="WHITE">
                      <font>
                         <Font name="Century Gothic Bold" size="26.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwordField" layoutX="43.0" layoutY="186.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="input" stylesheets="@../../../style.css" />
+                  <PasswordField fx:id="passwordField" layoutX="43.0" layoutY="183.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="input" stylesheets="@../../../style.css" />
                   <Button fx:id="loginBtn" layoutX="113.0" layoutY="231.0" mnemonicParsing="false" onAction="#loginBtnClicked" prefHeight="30.0" prefWidth="74.0" styleClass="signUpBtn" stylesheets="@../../../style.css" text="Login" textFill="WHITE" />
                   <Hyperlink fx:id="signUplink" layoutX="88.0" layoutY="268.0" onAction="#signUplinkClicked" styleClass="login-link" stylesheets="@../../../style.css" text="Create a new Account" />
                </children>
