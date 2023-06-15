@@ -14,7 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -120,7 +119,34 @@ public class CmpHomePageController {
 
 
     String SQL;
+    public int getNumberOfAcceptedApplicants() throws SQLException {
+        SQL = "select count(*) from application where status = 'accepted' and internshipId ="+getCurrentInternshipId();
+        ResultSet rst = DBUtills.getData(SQL);
+        rst.next();
+        return rst.getInt(1);
+    }
     private int internshipNo = 0;
+
+    public int getInternshipVacancy() {
+        return internshipVacancy;
+    }
+
+    public void setInternshipVacancy(int internshipVacancy) {
+        this.internshipVacancy = internshipVacancy;
+    }
+
+    private int internshipVacancy = 0;
+
+
+    public int getCurrentInternshipId() {
+        return currentInternshipId;
+    }
+
+    public void setCurrentInternshipId(int currentInternshipId) {
+        this.currentInternshipId = currentInternshipId;
+    }
+
+    private int currentInternshipId = 0;
     public int getInternshipNo() {
         return internshipNo;
     }
@@ -178,7 +204,7 @@ public class CmpHomePageController {
             viewDetails.getStyleClass().add("submitBtn");
             viewDetails.setOnAction(event -> {
                 try {
-                    showApplications(id);
+                    showApplications(id, Integer.parseInt(vacancies));
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -224,7 +250,7 @@ public class CmpHomePageController {
         if (selectedItem != null) {
             int rowIndex = applicantsView.getSelectionModel().getSelectedIndex();
             String selectedEmail = applicantsView.getColumns().get(1).getCellData(rowIndex).toString();
-            SQL = "select stud.id, stud.fullName, stud.email, stud.dept, application.universityName, application.yearOfStudy, application.skills, application.gitURL, application.interests, application.experience from stud inner join application on stud.id = application.internId where stud.email = '"+selectedEmail+"'";
+            SQL = "select stud.id, stud.fullName, stud.email, stud.dept, application.universityName, application.yearOfStudy, application.skills, application.gitURL, application.interests, application.experience from stud inner join application on stud.id = application.internId where stud.email = '"+selectedEmail+"' and application.InternshipId = "+getCurrentInternshipId();
             System.out.println(SQL);
             ResultSet rst = DBUtills.getData(SQL);
             while(rst.next()){
@@ -249,9 +275,11 @@ public class CmpHomePageController {
 
     }
 
-    void showApplications(int id) throws SQLException {
+    void showApplications(int id, int vacancies) throws SQLException {
         postsPane.setVisible(false);
         viewApplicantDetails.setVisible(true);
+        setCurrentInternshipId(id);
+        setInternshipVacancy(vacancies);
         tableViewInfo(id);
     }
     ObservableList<ApplicantsList> applicants= FXCollections.observableArrayList();
@@ -278,24 +306,34 @@ public class CmpHomePageController {
     void backBtnClicked(ActionEvent event){
         viewApplicantDetails.setVisible(false);
         postsPane.setVisible(true);
+        currentInternshipId = 0;
     }
 
     @FXML
-    void acceptBtnClicked(ActionEvent event){
-        DBUtills.acceptIntern(emailLabel.getText());
-        postsPane.setVisible(true);
-        viewApplicantDetails.setVisible(false);
+    void acceptBtnClicked(ActionEvent event) throws SQLException {
+    if(getNumberOfAcceptedApplicants() < getInternshipVacancy()){
+        DBUtills.acceptIntern(emailLabel.getText(), currentInternshipId);
+        tableViewInfo(getCurrentInternshipId());
+        displayDashboard();
+        viewApplicantDetails.setVisible(true);
+        applicationRequest.setVisible(false);
+    }else{
+        showError("You have already fulfilled the quota");
     }
 
+    }
     @FXML
-    void rejectBtnClicked(ActionEvent event){
-        DBUtills.rejectIntern(emailLabel.getText());
-        postsPane.setVisible(true);
-        viewApplicantDetails.setVisible(false);
+    void rejectBtnClicked(ActionEvent event) throws SQLException {
+        DBUtills.rejectIntern(emailLabel.getText(), currentInternshipId);
+        tableViewInfo(getCurrentInternshipId());
+        displayDashboard();
+        viewApplicantDetails.setVisible(true);
+        applicationRequest.setVisible(false);
     }
 
     @FXML
     void returnToPostedBtnClicked(ActionEvent event){
+
         viewApplicantDetails.setVisible(true);
         applicationRequest.setVisible(false);
     }

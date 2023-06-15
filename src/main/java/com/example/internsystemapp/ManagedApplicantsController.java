@@ -11,6 +11,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ManagedApplicantsController {
@@ -74,21 +77,38 @@ public class ManagedApplicantsController {
 
     @FXML
     private AnchorPane viewRejectedApplicantsPane;
+    private int currentInternshipId = 0;
+    public int getCurrentInternshipId() {
+        return currentInternshipId;
+    }
 
-    public void initialize(){
+    public void setCurrentInternshipId(int currentInternshipId) {
+        this.currentInternshipId = currentInternshipId;
+    }
+    String SQL;
+    public void initialize() throws SQLException {
         managedApplicantsBtn.setDisable(true);
+        internshipsContainer.setSpacing(10);
         displayInternships();
     }
 
-    void displayInternships(){
-        //if the company have posted an internship
-        createHBox();
-        //else
-        //viewPostsPane.setVisible(false);
-        //noInternships.setVisible(true);
+    void displayInternships() throws SQLException {
+        SQL = "select id, Title from internshipposts where company_id ="+DBUtills.getCurrentCmpId();
+        ResultSet rst = DBUtills.getData(SQL);
+        if(rst.isBeforeFirst()){
+            //if the company have posted an internship
+            while(rst.next()){
+//                createHBox(rst.getInt("id"), rst.getString("Title"), rst.getString("duration"), rst.getString("numberOfApplicantsNeeded"));
+                createHBox(rst.getInt("id"), rst.getString("Title"));
+            }
+        }else{
+            viewPostsPane.setVisible(false);
+            noInternships.setVisible(true);
+        }
+
     }
 
-    void createHBox(){
+    void createHBox(int id, String Title){
         AnchorPane anchorPane = new AnchorPane();
 
         anchorPane.getStyleClass().add("post-cards");
@@ -96,17 +116,25 @@ public class ManagedApplicantsController {
         anchorPane.setPrefWidth(440);
         anchorPane.setPrefHeight(100);
 
-        Label titleLabel = new Label("title");
+        Label titleLabel = new Label(Title);
 
         Button acceptedButton = new Button("Accepted Applicants");
         acceptedButton.getStyleClass().add("submitBtn");
         acceptedButton.setOnAction(event -> {
-            showAccepted();
+            try {
+                showAccepted(id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
         Button rejectedButton = new Button("Rejected Applicants");
         rejectedButton.getStyleClass().add("cancelBtn");
         rejectedButton.setOnAction(event -> {
-            showRejected();
+            try {
+                showRejected(id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         AnchorPane.setTopAnchor(titleLabel, 10.0);
@@ -126,17 +154,27 @@ public class ManagedApplicantsController {
         internshipsContainer.getChildren().add(hBox);
     }
 
-    void showAccepted(){
+    void showAccepted(int id) throws SQLException {
+        setCurrentInternshipId(id);
         viewPostsPane.setVisible(false);
         viewAcceptedApplicantsPane.setVisible(true);
-        tableViewAccepted();
+        tableViewAccepted(id);
     }
 
-    void tableViewAccepted(){
+    void tableViewAccepted(int id) throws SQLException {
         ObservableList<ApplicantsList> accepted= FXCollections.observableArrayList(
                 new ApplicantsList("John Doe", "matt@doe.com", "Gonder")
         );
-
+        accepted.clear();
+        SQL = "select stud.id, stud.fullName, stud.email, application.universityName, application.status from stud inner join application on stud.id = application.internId where internshipId = "+id;
+        ResultSet rst = DBUtills.getData(SQL);
+        if(rst.isBeforeFirst()){
+            while(rst.next()){
+                if(Objects.equals(rst.getString("status"), "accepted")){
+                    accepted.add(new ApplicantsList(rst.getString("fullName"),rst.getString("email"), rst.getString("universityName")));
+                }
+            }
+        }
         acceptedApplicantsView.setItems(accepted);
 
         acceptedFullNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
@@ -144,17 +182,27 @@ public class ManagedApplicantsController {
         acceptedUniversityNameColumn.setCellValueFactory(new PropertyValueFactory<>("universityName"));
     }
 
-    void showRejected(){
+    void showRejected(int id) throws SQLException {
+        setCurrentInternshipId(id);
         viewPostsPane.setVisible(false);
         viewRejectedApplicantsPane.setVisible(true);
-        tableViewRejected();
+        tableViewRejected(id);
     }
 
-    void tableViewRejected(){
+    void tableViewRejected(int id) throws SQLException {
         ObservableList<ApplicantsList> rejected= FXCollections.observableArrayList(
                 new ApplicantsList("rejectedName", "rejectedEmail","rejectedUniversityName")
         );
-
+        rejected.clear();
+        SQL = "select stud.id, stud.fullName, stud.email, application.universityName, application.status from stud inner join application on stud.id = application.internId where internshipId = "+id;
+        ResultSet rst = DBUtills.getData(SQL);
+        if(rst.isBeforeFirst()){
+            while(rst.next()){
+                if(Objects.equals(rst.getString("status"), "rejected")){
+                    rejected.add(new ApplicantsList(rst.getString("fullName"),rst.getString("email"), rst.getString("universityName")));
+                }
+            }
+        }
         rejectedApplicantsView.setItems(rejected);
 
         rejectedFullNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
