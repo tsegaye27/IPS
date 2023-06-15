@@ -31,6 +31,9 @@ public class InternHomePageController {
         private Button cancelBtn;
 
         @FXML
+        private Label vacanciesLabel;
+
+        @FXML
         private TextField emailField;
 
         @FXML
@@ -275,11 +278,13 @@ public void initialize(){
 
         @FXML
         void submitBtnClicked(ActionEvent event){
+            String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
             if(validateInputs()){
-                DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), 3, universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
+                DBUtills.addApplication(event, DBUtills.getCurrentInternId(), getCurrInternshipId(), Integer.parseInt(yearOfStudy), universityNameField.getText(), skillsField.getText(),gitHubURLField.getText(), statementOfInterestArea.getText(), experienceArea.getText());
                 universityNameField.clear();
                 skillsField.clear();
                 gitHubURLField.clear();
+                yearOfStudyBox.getSelectionModel().clearSelection();
                 statementOfInterestArea.clear();
                 experienceArea.clear();
             }else{
@@ -292,16 +297,14 @@ public void initialize(){
         String fullName = fullNameField.getText();
         String email = emailField.getText();
         String universityName = universityNameField.getText();
-
         String degree = degreeField.getText();
-        String yearOfStudy = (String) yearOfStudyBox.getSelectionModel().getSelectedItem();
-//        String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
+        String yearOfStudy = yearOfStudyBox.getSelectionModel().getSelectedItem().toString();
         String skills = skillsField.getText();
         String gitLink = gitHubURLField.getText();
         String interest = statementOfInterestArea.getText();
         String exp = experienceArea.getText();
 
-        if(fullName.trim().isEmpty()||interest.trim().isEmpty()||exp.trim().isEmpty()||email.trim().isEmpty()||gitLink.trim().isEmpty()||universityName.isEmpty()||skills.isEmpty()){
+        if(fullName.trim().isEmpty()||interest.trim().isEmpty()||exp.trim().isEmpty()||email.trim().isEmpty()||gitLink.trim().isEmpty()||universityName.isEmpty()|| yearOfStudy.isEmpty()||skills.isEmpty()){
             return false;
         }
         return true;

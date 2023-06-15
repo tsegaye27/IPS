@@ -22,6 +22,9 @@ public class SearchInternshipsController {
     private Button appliedInternshipsBtn;
 
     @FXML
+    private Label vacanciesLabel;
+
+    @FXML
     private AnchorPane applicationForm;
 
     @FXML
