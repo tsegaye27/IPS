@@ -2,7 +2,9 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -138,14 +140,6 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="gitHubURLLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
                         <Label fx:id="statementOfInterestLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <opaqueInsets>
                               <Insets />
@@ -162,6 +156,14 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
+                        <Hyperlink fx:id="gitHubURLLink" text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </Hyperlink>
                      </children>
                   </GridPane>
                   <Button fx:id="acceptBtn" layoutX="147.0" layoutY="514.0" mnemonicParsing="false" onAction="#acceptBtnClicked" styleClass="submitBtn" text="Accept" />
