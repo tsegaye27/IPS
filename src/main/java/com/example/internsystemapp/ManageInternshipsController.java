@@ -135,7 +135,9 @@ public class ManageInternshipsController {
         anchorPane.setPrefHeight(180);
 
         Label titleLabel = new Label("title");
+        Label durationL = new Label("Duration: ");
         Label durationLabel = new Label("duration");
+        Label vacanciesL = new Label("Vacancies: ");
         Label vacanciesLabel = new Label("vacancies");
 
         Button manageButton = new Button("Manage Internship");
@@ -148,19 +150,25 @@ public class ManageInternshipsController {
         AnchorPane.setLeftAnchor(titleLabel, 190.0);
 
         AnchorPane.setTopAnchor(vacanciesLabel, 60.0);
+        AnchorPane.setTopAnchor(vacanciesL, 60.0);
         AnchorPane.setLeftAnchor(vacanciesLabel, 160.0);
+        AnchorPane.setLeftAnchor(vacanciesL, 80.0);
 
         AnchorPane.setTopAnchor(durationLabel, 90.0);
+        AnchorPane.setTopAnchor(durationL, 90.0);
         AnchorPane.setLeftAnchor(durationLabel, 160.0);
+        AnchorPane.setLeftAnchor(durationL, 80.0);
 
         AnchorPane.setTopAnchor(manageButton, 120.0);
         AnchorPane.setLeftAnchor(manageButton, 160.0);
 
-        anchorPane.getChildren().addAll(titleLabel,durationLabel,vacanciesLabel, manageButton);
+        anchorPane.getChildren().addAll(titleLabel,durationL,durationLabel,vacanciesL,vacanciesLabel, manageButton);
 
         titleLabel.getStyleClass().add("internship-title");
         durationLabel.getStyleClass().add("internship-details");
         vacanciesLabel.getStyleClass().add("internship-details");
+        durationL.getStyleClass().add("login-link");
+        vacanciesL.getStyleClass().add("login-link");
         HBox hBox = new HBox(anchorPane);
         hBox.setSpacing(10);
         internshipsContainer.getChildren().add(hBox);
