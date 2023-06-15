@@ -27,7 +27,7 @@ public class CmpLoginController {
         if (companyEmail.trim().isEmpty()||password.trim().isEmpty()){
             showError("Please fill every field");
         }else{
-            DBUtills.loginCmp(event, "XYZ", companyEmail, password);
+            DBUtills.loginCmp(event, companyEmail, password);
 
         }
     }

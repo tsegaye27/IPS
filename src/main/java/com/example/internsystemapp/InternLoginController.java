@@ -28,7 +28,7 @@ public class InternLoginController {
         if(email.trim().isEmpty()||password.trim().isEmpty()){
                 showError("Please fill every field");
         } else{
-                DBUtills.loginIntern(event, "chala",email, password);
+                DBUtills.loginIntern(event,email, password);
         }
         }
 

@@ -127,7 +127,8 @@ public class SignUpInternController{
                             LocalDate dateOfBirthDate = dateOfBirthField.getValue();
                             String dateOfBirth = dateOfBirthDate.format(dOBFormatter);
                             String graduationYear = graduationYearDate.format(formatDate);
-                            DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText());
+                            String gender = genderBox.getSelectionModel().getSelectedItem();
+                            DBUtills.signUpIntern(event, fullNameField.getText(), emailField.getText(), passwordField.getText(),Integer.parseInt(phoneNumberField.getText()), fieldOfStudyField.getText(), dateOfBirth, graduationYear, locationField.getText(), gender);
                             InternApp.showInternLoginPage();
 
                         }else showWarning("Phone Number must be 10 digits long!");

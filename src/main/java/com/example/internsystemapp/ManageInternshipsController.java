@@ -155,9 +155,9 @@ public class ManageInternshipsController {
 
         Label titleLabel = new Label("title");
         Label durationL = new Label("Duration: ");
-        Label durationLabel = new Label("duration");
+        Label durationLabel = new Label(duration);
         Label vacanciesL = new Label("Vacancies: ");
-        Label vacanciesLabel = new Label("vacancies");
+        Label vacanciesLabel = new Label(vacancies);
 
         Button manageButton = new Button("Manage Internship");
         manageButton.getStyleClass().add("postBtn");

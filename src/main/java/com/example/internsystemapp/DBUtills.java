@@ -101,7 +101,7 @@ public class DBUtills {
         }
     }
 
-    public static void loginIntern(ActionEvent e, String fullName, String email, String password) {
+    public static void loginIntern(ActionEvent e, String email, String password) {
         Connection conn = null;
         PreparedStatement psInternLogin = null;
         ResultSet rst = null;
@@ -177,7 +177,7 @@ public class DBUtills {
         }
     }
 
-    public static void loginCmp(ActionEvent e, String name, String email, String password) {
+    public static void loginCmp(ActionEvent e, String email, String password) {
         Connection conn = null;
         PreparedStatement psCmpLogin = null;
         ResultSet rst = null;
