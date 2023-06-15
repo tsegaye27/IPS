@@ -153,7 +153,6 @@ public class SearchInternshipsController {
         boolean filterByDuration = durationFilterBtn.isSelected();
         boolean filterByField = fieldsFilterBtn.isSelected();
         String selectedValue = paymentStatusFilterBtn.getSelectionModel().getSelectedItem();
-        System.out.println(selectedValue);
         searchResultContainer.getChildren().clear();
 
         if (!Objects.equals(searchedText, "")) {
@@ -162,15 +161,12 @@ public class SearchInternshipsController {
             if (filterByLocation) {
                 //compare searchedText with location values in DB
                 SQL = "SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where company.location like '%" + searchedText + "%'"+ paidUnpaidFilter;
-                System.out.println(SQL);
             } else if (filterByDuration) {
 
                 SQL = "SELECT id FROM internshipposts where duration like '%" + searchedText + "%'"+ paidUnpaidFilter;
-                System.out.println(SQL);
             } else if (filterByField) {
 
                 SQL = "SELECT id,requirements FROM internshipposts where requirements like '%" + searchedText + "%'"+paidUnpaidFilter;
-                System.out.println(SQL);
 //            SQL="SELECT internshipposts.id, internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.requirements like '%"+searchedText+"%'";
             }
 //        else if(selectedValue.equals("Paid")){
@@ -179,7 +175,6 @@ public class SearchInternshipsController {
 //        }
             else {
                 SQL = "SELECT internshipposts.id FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.title like'%" + searchedText + "%' or company.name like '%" + searchedText + "%' or internshipposts.requirements like'%" + searchedText + "%' or internshipposts.duration like '%" + searchedText + "%' or company.location like '%" + searchedText + "%'"+paidUnpaidFilter;
-                System.out.println(SQL);
             }
 
             ResultSet rst = DBUtills.searchInternships(SQL);
@@ -259,7 +254,6 @@ public class SearchInternshipsController {
     void showDetails(int id) throws SQLException {
         scrollPane.setVisible(false);
         SQL="SELECT internshipposts.id,internshipposts.company_id,internshipposts.title, internshipposts.duration, internshipposts.requirements, internshipposts.description, internshipposts.type, internshipposts.numberOfApplicantsNeeded, company.name, company.email,company.location FROM internshipposts INNER JOIN company ON internshipposts.company_id = company.id where internshipposts.id ="+id;
-        System.out.println(SQL);
         ResultSet rst = DBUtills.searchInternships(SQL);
         while(rst.next()){
             searchInternshipTitle.setText(rst.getString("title"));
@@ -272,7 +266,6 @@ public class SearchInternshipsController {
             descriptionLabel.setText(rst.getString("description"));
             vacanciesLabel.setText(rst.getString("numberOfApplicantsNeeded"));
             setCurrInternshipId(rst.getInt("id"));
-            System.out.println(getCurrInternshipId());
         }
         internshipDetailsPane.setVisible(true);
     }

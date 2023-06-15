@@ -153,7 +153,7 @@ public class ManageInternshipsController {
         anchorPane.setPrefWidth(440);
         anchorPane.setPrefHeight(180);
 
-        Label titleLabel = new Label("title");
+        Label titleLabel = new Label(title);
         Label durationL = new Label("Duration: ");
         Label durationLabel = new Label(duration);
         Label vacanciesL = new Label("Vacancies: ");
