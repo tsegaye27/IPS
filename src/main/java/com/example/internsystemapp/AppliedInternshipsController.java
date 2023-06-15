@@ -53,7 +53,6 @@ public class AppliedInternshipsController {
 
     void tableViewInfo() throws SQLException {
         SQL = "select internshipposts.title, internshipposts.duration, company.name, company.location, application.status from internshipposts join application on internshipposts.id = application.internshipId join company on internshipposts.company_id = company.id where application.internId ="+DBUtills.getCurrentInternId();
-        System.out.println(SQL);
         ResultSet rst = DBUtills.getData(SQL);
         while(rst.next()){
             String title = rst.getString("title");

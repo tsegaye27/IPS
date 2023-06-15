@@ -192,11 +192,8 @@ public void initialize(){
 
         @FXML
         void internshipDetailsLinkClicked(ActionEvent event) throws SQLException {
-            System.out.println(event.getSource());
             Hyperlink hyperlink = (Hyperlink) event.getSource();
             String id = hyperlink.getId();
-            System.out.println(id);
-            System.out.println(internshipDetailsLink.getId());
             if(Objects.equals(id, internshipDetailsLink.getId())){
                 if (rst.next()) {
                     // Read the values of the columns in the first row

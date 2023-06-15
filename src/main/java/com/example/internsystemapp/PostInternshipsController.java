@@ -180,7 +180,6 @@ public class PostInternshipsController {
     }
     void getCompanyDetail() throws SQLException {
         SQL = "select name, email, location from company where id = "+DBUtills.getCurrentCmpId();
-        System.out.println(SQL);
         ResultSet rst = DBUtills.getData(SQL);
         while(rst.next()){
             companyNameField.setText(rst.getString("name"));

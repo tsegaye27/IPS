@@ -77,7 +77,6 @@ public class DBUtills {
                 alert.show();
             } else {
                 psInsertIntern = conn.prepareStatement("insert into stud(fullName, email, pass, phone, dept, birth, gradYear, location, gender) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                System.out.println(fullName + " " + email + " " + password + " " + phoneNumber + " " + field + " " + DOB + " " + gradYear + " " + location);
                 psInsertIntern.setString(1, fullName);
                 psInsertIntern.setString(2, email);
                 psInsertIntern.setString(3, password);
@@ -89,7 +88,6 @@ public class DBUtills {
                 psInsertIntern.setString(9, gender);
 
                 psInsertIntern.executeUpdate();
-                System.out.println("db updated");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -121,7 +119,6 @@ public class DBUtills {
                         setCurrentInternId(Integer.parseInt(rst.getString(1)));
                         InternApp.showInternHomePage();
 
-                        System.out.println(getCurrentInternId());
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Incorrect Credentials");
@@ -157,14 +154,12 @@ public class DBUtills {
                 alert.show();
             } else {
                 psInsertCmp = conn.prepareStatement("insert into company(name, email, pass, phone, location) values (?, ?, ?, ?, ?)");
-                System.out.println(name + " " + email + " " + password + " " + phoneNumber + " " + location);
                 psInsertCmp.setString(1, name);
                 psInsertCmp.setString(2, email);
                 psInsertCmp.setString(3, password);
                 psInsertCmp.setInt(4, phoneNumber);
                 psInsertCmp.setString(5, location);
                 psInsertCmp.executeUpdate();
-                System.out.println("db updated");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -196,7 +191,6 @@ public class DBUtills {
                     if (userPass.equals(password)) {
                         setCurrentCmpId(Integer.parseInt(rst.getString(1)));
                         InternApp.showCmpHomePage();
-                        System.out.println(getCurrentCmpId());
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Incorrect Credentials");
@@ -278,7 +272,6 @@ public class DBUtills {
                 alert.show();
             } else {
                 psAddApp = conn.prepareStatement("insert into application(internId, internshipId, yearOfStudy, universityName, skills, gitURL, interests, experience) values (?, ?, ?, ?, ?, ?, ?, ?)");
-//                System.out.println(name + " " + email + " " + password + " " + phoneNumber + " " + location);
                 psAddApp.setInt(1, internId);
                 psAddApp.setInt(2, internshipId);
                 psAddApp.setInt(3, yearOfStudy);
@@ -311,7 +304,6 @@ public class DBUtills {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ois", "root", "");
             psPostInternship = conn.prepareStatement("insert into internshipposts(company_id, Title, duration, requirements, description, type, numberOfApplicantsNeeded) values (?, ?, ?, ?, ?, ?, ?)");
-//                System.out.println(name + " " + email + " " + password + " " + phoneNumber + " " + location);
             psPostInternship.setInt(1, companyId);
             psPostInternship.setString(2, title);
             psPostInternship.setString(3, duration);
